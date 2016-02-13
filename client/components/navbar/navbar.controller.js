@@ -9,7 +9,7 @@ class NavbarController {
     },
     {
       'title': 'Services',
-      'state': ''
+      'state': 'services'
     },
     {
       'title': 'Testimonials',
@@ -17,27 +17,27 @@ class NavbarController {
     },
     {
       'title': 'Corporate',
-      'state': ''
+      'state': 'corporate'
     },
     {
       'title': 'Weddings',
-      'state': ''
+      'state': 'weddings'
     },
     {
       'title': 'Celebrations',
-      'state': ''
+      'state': 'celebrations'
     },
     {
       'title': 'Reservations',
-      'state': ''
+      'state': 'reservations'
     },
     {
       'title': 'Links',
-      'state': ''
+      'state': 'links'
     },
     {
       'title': 'About Us',
-      'state': ''
+      'state': 'aboutus'
     }
   ];
 
