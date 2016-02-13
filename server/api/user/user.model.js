@@ -17,7 +17,7 @@ var UserSchema = new Schema({
   },
   password: String,
   provider: String,
-  salt: String,
+  salt: String,             //Will have to .populate('information').exec(function(err, post)
   information: {type: mongoose.Schema.Types.ObjectId, ref: 'Customer'}
 });
 
