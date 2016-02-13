@@ -18,7 +18,7 @@ var UserSchema = new Schema({
   password: String,
   provider: String,
   salt: String,
-  information: Customer
+  information: {type: mongoose.Schema.Types.ObjectId, ref: 'Customer'}
 });
 
 /**

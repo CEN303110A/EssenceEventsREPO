@@ -5,11 +5,11 @@ var mongoose = require('mongoose'),
 
 var customerSchema = new Schema({
   phoneNumber: Number,
-  subcontractor: [Subcontractor],
+  subcontractor: [{type: mongoose.Schema.Types.ObjectId, ref: 'Subcontractor'}],
   budget: {
     total: Number
   },
-  events: [Event]
+  events: [{type: mongoose.Schema.Types.ObjectId, ref: 'Event'}]
 });
 
 var Customer = mongoose.model('Costumer', customerSchema);
