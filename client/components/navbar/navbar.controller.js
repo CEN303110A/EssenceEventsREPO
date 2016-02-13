@@ -2,10 +2,44 @@
 
 class NavbarController {
   //start-non-standard
-  menu = [{
-    'title': 'Home',
-    'state': 'main'
-  }];
+  menu = [
+    {
+      'title': 'Home',
+      'state': 'main'
+    },
+    {
+      'title': 'Services',
+      'state': ''
+    },
+    {
+      'title': 'Testimonials',
+      'state': ''
+    },
+    {
+      'title': 'Corporate',
+      'state': ''
+    },
+    {
+      'title': 'Weddings',
+      'state': ''
+    },
+    {
+      'title': 'Celebrations',
+      'state': ''
+    },
+    {
+      'title': 'Reservations',
+      'state': ''
+    },
+    {
+      'title': 'Links',
+      'state': ''
+    },
+    {
+      'title': 'About Us',
+      'state': ''
+    }
+  ];
 
   isCollapsed = true;
   //end-non-standard
