@@ -2,7 +2,6 @@
 
 import crypto from 'crypto';
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
-var Customer = require('./../customer/customer.model.js');
 import {Schema} from 'mongoose';
 
 var UserSchema = new Schema({
@@ -11,14 +10,15 @@ var UserSchema = new Schema({
     type: String,
     lowercase: true
   },
+  phoneNumber: Number,
   role: {
     type: String,
     default: 'user'
   },
   password: String,
   provider: String,
-  salt: String,             //Will have to .populate('information').exec(function(err, post)
-  information: {type: mongoose.Schema.Types.ObjectId, ref: 'Customer'}
+  salt: String,             //Will have to .populate('events').exec(function(err, post)
+  events: {type: mongoose.Schema.Types.ObjectId, ref: 'Event'}
 });
 
 /**

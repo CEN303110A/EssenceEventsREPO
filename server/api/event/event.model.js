@@ -23,7 +23,12 @@ var eventSchema = new Schema({
     phoneNumber: Number,
     partySize: Number,
     accepted: Boolean
-  }]
+  }],
+  budget: [{
+    title: String,
+    amount: Number
+  }],
+  subcontractors: [{type: mongoose.Schema.Types.ObjectId, ref: 'Subcontractor'}]
 });
 
 var Event = mongoose.model('Event', eventSchema);
