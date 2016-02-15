@@ -5,39 +5,47 @@ class NavbarController {
   menu = [
     {
       'title': 'Home',
-      'state': 'main'
+      'state': 'main',
+      'hasDropDown' : false
     },
     {
       'title': 'Services',
-      'state': 'services'
+      'state': 'services',
+      'hasDropDown' : false
     },
     {
       'title': 'Testimonials',
-      'state': ''
-    },
-    {
-      'title': 'Corporate',
-      'state': 'corporate'
-    },
-    {
-      'title': 'Weddings',
-      'state': 'weddings'
-    },
-    {
-      'title': 'Celebrations',
-      'state': 'celebrations'
+      'state': '',
+      'hasDropDown' : true,
+      'sublinks' : [
+        {
+          'title': 'Corporate',
+          'state': 'corporate'
+        },
+        {
+          'title': 'Weddings',
+          'state': 'weddings'
+        },
+        {
+          'title': 'Celebrations',
+          'state': 'celebrations'
+        }
+      ]
     },
     {
       'title': 'Reservations',
-      'state': 'reservations'
+      'state': 'reservations',
+      'hasDropDown' : false
     },
     {
       'title': 'Links',
-      'state': 'links'
+      'state': 'links',
+      'hasDropDown' : false
     },
     {
       'title': 'About Us',
-      'state': 'aboutus'
+      'state': 'aboutus',
+      'hasDropDown' : false
     }
   ];
 
