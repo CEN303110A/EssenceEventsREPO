@@ -23,8 +23,9 @@ angular.module('essenceEventsRepoApp')
       })
       .state('signup', {
         url: '/signup',
-        templateUrl: 'app/account/signup/signup.html',
+        templateUrl: 'app/admin/partials/signup/signup.html',
         controller: 'SignupController',
+        authenticate: 'admin',
         controllerAs: 'vm'
       })
       .state('settings', {
