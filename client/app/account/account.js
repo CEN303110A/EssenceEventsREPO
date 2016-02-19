@@ -21,13 +21,13 @@ angular.module('essenceEventsRepoApp')
           $state.go(referrer);
         }
       })
-      .state('signup', {
-        url: '/signup',
-        templateUrl: 'app/admin/partials/signup/signup.html',
-        controller: 'SignupController',
-        authenticate: 'admin',
-        controllerAs: 'vm'
-      })
+      // .state('signup', {
+      //   url: '/signup',
+      //   templateUrl: 'app/admin/partials/signup/signup.html',
+      //   controller: 'SignupController',
+      //   authenticate: 'admin',
+      //   controllerAs: 'vm'
+      // })
       .state('settings', {
         url: '/settings',
         templateUrl: 'app/account/settings/settings.html',

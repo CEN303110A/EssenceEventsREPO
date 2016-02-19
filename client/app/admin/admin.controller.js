@@ -4,39 +4,38 @@
 
 class AdminController {
 
-
   Functions = [
     {
       'title': 'New Client',
       'description': 'Create an account for a new client',
-      'state': 'signup',
+      'state': 'admin.createAccount',
     },
     {
       'title': 'Manage Clients',
       'description': 'Manage existing clients',
-      'state': 'manageClients',
+      'state': 'admin.manageClients',
     },
     {
       'title': 'Create Event',
       'description': 'Create an event for a existing client',
-      'state': 'createEvent',
+      'state': 'admin.createEvent',
     },
     {
       'title': 'Manage Event(s)',
       'description': 'Manage an event for a existing client',
-      'state': 'manageEvent',
+      'state': 'admin.manageEvent',
     },
     {
       'title': 'Create Contractor',
       'description': 'Create a contractor entry',
-      'state': 'createContractor',
+      'state': 'admin.createContractor',
     },
     {
       'title': 'Manage Contractors',
       'description': 'Manage existing contractors',
-      'state': 'manageContractors',
-    },
-  ]
+      'state': 'admin.manageContractors',
+    }
+  ];
 
   constructor(User) {
     // Use the User $resource to fetch all users

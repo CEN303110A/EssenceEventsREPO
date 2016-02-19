@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp')
+angular.module('essenceEventsRepoApp.admin')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('manageContractors', {
+      .state('admin.manageContractors', {
         url: '/manageContractors',
         templateUrl: 'app/admin/partials/manageContractors/manageContractors.html',
         controller: 'ManageContractorsCtrl',

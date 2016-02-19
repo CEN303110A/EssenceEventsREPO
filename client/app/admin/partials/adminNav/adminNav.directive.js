@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp')
+angular.module('essenceEventsRepoApp.admin')
   .directive('adminnav', () => ({
       templateUrl: 'app/admin/partials/adminNav/adminNav.html',
       restrict: 'E',

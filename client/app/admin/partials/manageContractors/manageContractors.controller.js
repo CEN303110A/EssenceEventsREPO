@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('essenceEventsRepoApp')
+angular.module('essenceEventsRepoApp.admin')
   .controller('ManageContractorsCtrl', function ($scope) {
     $scope.message = 'Hello';
   });

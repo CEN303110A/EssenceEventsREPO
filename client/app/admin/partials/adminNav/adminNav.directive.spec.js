@@ -3,7 +3,7 @@
 describe('Directive: adminNav', function () {
 
   // load the directive's module and view
-  beforeEach(module('essenceEventsRepoApp'));
+  beforeEach(module('essenceEventsRepoApp.admin'));
   beforeEach(module('app/admin/partials/adminNav/adminNav.html'));
 
   var element, scope;
