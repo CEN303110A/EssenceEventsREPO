@@ -13,11 +13,32 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
       <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
+      <link rel="stylesheet" href="app/aboutus/aboutus.css">
+      <link rel="stylesheet" href="app/admin/admin.css">
+      <link rel="stylesheet" href="app/admin/partials/adminNav/adminNav.css">
+      <link rel="stylesheet" href="app/admin/partials/createContractor/createContractor.css">
+      <link rel="stylesheet" href="app/admin/partials/createEvent/createEvent.css">
+      <link rel="stylesheet" href="app/admin/partials/manageClients/manageClients.css">
+      <link rel="stylesheet" href="app/admin/partials/manageContractors/manageContractors.css">
+      <link rel="stylesheet" href="app/admin/partials/manageEvent/manageEvent.css">
+      <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/celebrations/celebrations.css">
+      <link rel="stylesheet" href="app/corporate/corporate.css">
+      <link rel="stylesheet" href="app/links/links.css">
+      <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/reservations/reservations.css">
+      <link rel="stylesheet" href="app/services/services.css">
+      <link rel="stylesheet" href="app/weddings/weddings.css">
+      <link rel="stylesheet" href="components/font-awesome-4.5.0/css/font-awesome.css">
+      <link rel="stylesheet" href="components/font-awesome-4.5.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="components/footer/footer.css">
+      <link rel="stylesheet" href="components/modal/modal.css">
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
@@ -48,11 +69,71 @@
     <![endif]-->
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
+      <script src="app/admin/admin.module.js"></script>
+      <script src="components/auth/auth.module.js"></script>
+      <script src="components/util/util.module.js"></script>
+      <script src="app/celebrations/celebrations.controller.js"></script>
+      <script src="app/account/settings/settings.controller.js"></script>
+      <script src="app/admin/admin.controller.js"></script>
+      <script src="app/aboutus/aboutus.controller.js"></script>
+      <script src="app/admin/admin.router.js"></script>
+      <script src="app/admin/partials/adminContent/adminContent.directive.js"></script>
+      <script src="app/admin/partials/adminNav/adminNav.directive.js"></script>
+      <script src="app/admin/partials/createContractor/createContractor.controller.js"></script>
+      <script src="app/admin/partials/createContractor/createContractor.js"></script>
+      <script src="app/admin/partials/createEvent/createEvent.controller.js"></script>
+      <script src="app/admin/partials/createEvent/createEvent.js"></script>
+      <script src="app/admin/partials/manageClients/manageClients.controller.js"></script>
+      <script src="app/admin/partials/manageClients/manageClients.js"></script>
+      <script src="app/admin/partials/manageContractors/manageContractors.controller.js"></script>
+      <script src="app/admin/partials/manageContractors/manageContractors.js"></script>
+      <script src="app/admin/partials/manageEvent/manageEvent.controller.js"></script>
+      <script src="app/admin/partials/manageEvent/manageEvent.js"></script>
+      <script src="app/admin/partials/signup/signup.controller.js"></script>
+      <script src="app/admin/partials/signup/signup.js"></script>
+      <script src="app/admin/partials/test/test.controller.js"></script>
+      <script src="app/admin/partials/test/test.js"></script>
+      <script src="app/app.constant.js"></script>
+      <script src="app/aboutus/aboutus.js"></script>
+      <script src="app/celebrations/celebrations.js"></script>
+      <script src="app/corporate/corporate.controller.js"></script>
+      <script src="app/corporate/corporate.js"></script>
+      <script src="app/links/links.controller.js"></script>
+      <script src="app/links/links.js"></script>
+      <script src="app/main/main.controller.js"></script>
+      <script src="app/main/main.js"></script>
+      <script src="app/reservations/reservations.controller.js"></script>
+      <script src="app/reservations/reservations.js"></script>
+      <script src="app/services/services.controller.js"></script>
+      <script src="app/services/services.js"></script>
+      <script src="app/weddings/weddings.controller.js"></script>
+      <script src="app/weddings/weddings.js"></script>
+      <script src="app/account/account.js"></script>
+      <script src="components/auth/auth.service.js"></script>
+      <script src="components/auth/interceptor.service.js"></script>
+      <script src="components/auth/router.decorator.js"></script>
+      <script src="components/auth/user.service.js"></script>
+      <script src="components/footer/footer.directive.js"></script>
+      <script src="components/modal/modal.service.js"></script>
+      <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+      <script src="components/navbar/navbar.controller.js"></script>
+      <script src="components/navbar/navbar.directive.js"></script>
+      <script src="app/account/login/login.controller.js"></script>
+      <script src="components/util/util.service.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->
   </body>

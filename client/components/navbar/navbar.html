@@ -7,18 +7,27 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">essence-events-repo</a>
+      <a href="/" class="navbar-brand"><img src="../assets/images/EELogoIMG.png" height="50" width="50"></a>
     </div>
-    <div collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+    <div collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main" role="navigation">
       <ul class="nav navbar-nav">
-        <li ng-repeat="item in nav.menu" ui-sref-active="active">
-            <a ui-sref="{{item.state}}">{{item.title}}</a>
+        <span ng-repeat-start="item in nav.menu"></span>
+        <li ng-if="item.hasDropDown" dropdown ui-sref-active="active">
+            <a  dropdown-toggle>{{item.title}}<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li ng-repeat="subItem in $parent.item.sublinks">
+                <a ui-sref="{{subItem.state}}">{{subItem.title}}</a>
+              </li>
+            </ul>
         </li>
+        <li ng-if="!item.hasDropDown" ui-sref-active="active">
+          <a ui-sref="{{item.state}}">{{item.title}}</a>
+        </li>
+        <span ng-repeat-end></span>
         <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
         <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
         <li ng-show="nav.isLoggedIn()"><p class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p> </li>
         <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
