@@ -39,5 +39,5 @@ class SignupController {
   }
 }
 
-angular.module('essenceEventsRepoApp')
+angular.module('essenceEventsRepoApp.admin')
   .controller('SignupController', SignupController);
