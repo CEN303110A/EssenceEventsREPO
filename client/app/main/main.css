@@ -8,7 +8,7 @@
 
 #banner {
   border-bottom: none;
-  background: url(/assets/images/about-bg.jpg) top center no-repeat;
+  background: pink;
   background-position-y: 28%;
   height: 400px;
   margin-top: -20px;
@@ -60,7 +60,7 @@
 
 .section-heading {
     margin-top: 0;
-    color: #E90080;
+    color: white;
 }
 
 .service-box {
