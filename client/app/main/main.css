@@ -38,6 +38,15 @@
   margin-left: 15px;
 }
 
+/*.navbar-brand{
+    resize: 30%;
+    overflow: auto;
+}*/
+
+#homeLogo{
+
+}
+
 
 
 
@@ -85,7 +94,8 @@
     text-align: center;
     color: #fff;
     opacity: 0;
-    background: rgba(240,95,64,.9);
+    background: #E90080;
+    /*background: rgba(240,95,64,.9);*/
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
