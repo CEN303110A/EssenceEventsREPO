@@ -2,9 +2,21 @@
   margin: 20px 0;
 }
 
+.lead{
+  bottom: 0;
+}
+
 #banner {
   border-bottom: none;
+  background: url(/assets/images/about-bg.jpg) top center no-repeat;
+  background-position-y: 28%;
+  height: 400px;
   margin-top: -20px;
+}
+
+#mainlogo{
+  max-width: 150px;
+  max-height: 150px;
 }
 
 #banner h1 {
@@ -39,6 +51,7 @@
 
 .section-heading {
     margin-top: 0;
+    color: #E90080;
 }
 
 .service-box {
