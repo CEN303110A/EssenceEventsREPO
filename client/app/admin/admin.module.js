@@ -2,5 +2,6 @@
 
 angular.module('essenceEventsRepoApp.admin', [
   'essenceEventsRepoApp.auth',
-  'ui.router'
+  'ui.router',
+  'ngTable'
 ]);
