@@ -2,9 +2,21 @@
   margin: 20px 0;
 }
 
+.lead{
+  bottom: 0;
+}
+
 #banner {
   border-bottom: none;
+  background: url(/assets/images/about-bg.jpg) top center no-repeat;
+  background-position-y: 28%;
+  height: 400px;
   margin-top: -20px;
+}
+
+#mainlogo{
+  max-width: 150px;
+  max-height: 150px;
 }
 
 #banner h1 {
@@ -26,6 +38,15 @@
   margin-left: 15px;
 }
 
+/*.navbar-brand{
+    resize: 30%;
+    overflow: auto;
+}*/
+
+#homeLogo{
+
+}
+
 
 
 
@@ -39,6 +60,7 @@
 
 .section-heading {
     margin-top: 0;
+    color: #E90080;
 }
 
 .service-box {
@@ -72,7 +94,8 @@
     text-align: center;
     color: #fff;
     opacity: 0;
-    background: rgba(240,95,64,.9);
+    background: #E90080;
+    /*background: rgba(240,95,64,.9);*/
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
