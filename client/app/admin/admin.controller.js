@@ -36,9 +36,11 @@ class AdminController {
       'state': 'admin.manageContractors',
     }
   ];
-
+/*
   constructor(User) {
     // Use the User $resource to fetch all users
+    console.log('called');
+
     this.users = User.query();
   }
 
@@ -47,7 +49,7 @@ class AdminController {
     this.users.splice(this.users.indexOf(user), 1);
   }
 }
-
+*/
 angular.module('essenceEventsRepoApp.admin')
   .controller('AdminController', AdminController);
 

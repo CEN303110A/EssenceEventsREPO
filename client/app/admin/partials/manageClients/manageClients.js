@@ -7,7 +7,7 @@ angular.module('essenceEventsRepoApp.admin')
         url: '/manageClients',
         templateUrl: 'app/admin/partials/manageClients/manageClients.html',
         controller: 'ManageClientsCtrl',
-        //controllerAs: 'mc',
+        controllerAs: 'mc',
         authenticate: 'admin'
       });
   });

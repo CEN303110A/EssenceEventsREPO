@@ -7,11 +7,11 @@
         <td>Email</td>
         <td>Manage</td>
       </tr>
-      <tr ng-repeat="user in data">
+
+      <tr ng-repeat="user in mc.alldata">
           <td>{{user.name}}</td>
           <td>{{user.phoneNumber}}</td>
           <td>{{user.email}}</td>
-          <td>{{user.manage}}</td>
-
+          <td><button type="button">Manage</button></td>
       </tr>
   </table>
