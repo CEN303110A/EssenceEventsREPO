@@ -29,16 +29,16 @@ class NavbarController {
       'hasDropDown' : true,
       'sublinks' : [
         {
+          'title': 'Celebrations',
+          'state': 'celebrations'
+        },
+        {
           'title': 'Corporate',
           'state': 'corporate'
         },
         {
           'title': 'Weddings',
           'state': 'weddings'
-        },
-        {
-          'title': 'Celebrations',
-          'state': 'celebrations'
         }
       ]
     },
