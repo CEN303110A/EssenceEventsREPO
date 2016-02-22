@@ -37,19 +37,21 @@ class AdminController {
     }
   ];
 /*
-  constructor(User) {
-    // Use the User $resource to fetch all users
-    console.log('called');
+constructor(User) {
+  // Use the User $resource to fetch all users
+  console.log('called');
 
-    this.users = User.query();
-  }
+  this.users = User.query();
+}
 
-  delete(user) {
-    user.$remove();
-    this.users.splice(this.users.indexOf(user), 1);
-  }
+delete(user) {
+  user.$remove();
+  this.users.splice(this.users.indexOf(user), 1);
+}
 }
 */
+}
+
 angular.module('essenceEventsRepoApp.admin')
   .controller('AdminController', AdminController);
 
