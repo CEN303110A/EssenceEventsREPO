@@ -1,14 +1,17 @@
-<h1>Manage existing clients.</h1>
+  <h1>Manage existing clients.</h1>
 
-<table ng-table="vm.tableParams" class="table" show-filter="true">
-    <tr ng-repeat="user in $data">
-        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
-            {{user.name}}</td>
-        <td title="'Phone Number'" filter="{ age: 'number'}" sortable="'age'">
-            {{user.age}}</td>
-        <td title="'Email'" filter="{ name: 'text'}" sortable="'name'">
-            {{user.name}}</td>
-        <td title="'Manage'" filter="{ age: 'number'}">
-            </td>
-    </tr>
-</table>
+  <table class="table" >
+      <tr>
+        <td>Name</td>
+        <td>Phone Number</td>
+        <td>Email</td>
+        <td>Manage</td>
+      </tr>
+      <tr ng-repeat="user in data">
+          <td>{{user.name}}</td>
+          <td>{{user.phoneNumber}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.manage}}</td>
+
+      </tr>
+  </table>
