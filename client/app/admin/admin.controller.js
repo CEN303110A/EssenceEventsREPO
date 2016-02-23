@@ -37,11 +37,6 @@ class AdminController {
     }
   ];
 
-  $scope.initScope = function()
-  {
-    console.log('here!');
-    $state.go('admin.createAccount');
-  }
 /*
 constructor(User) {
   // Use the User $resource to fetch all users

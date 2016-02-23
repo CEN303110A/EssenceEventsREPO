@@ -3,13 +3,17 @@
 
   class ManageClientsCtrl{
 
-
       constructor(User) {
         // Use the User $resource to fetch all users
         //console.log('called');
         console.log('IN the new constructor');
         this.alldata = User.query();
-        console.log(this.alldata);
+        // console.log(this.alldata);
+      }
+
+      openModal(user){
+        // $dialogs.error(user);
+        console.log(user);
       }
 
       delete(user) {
