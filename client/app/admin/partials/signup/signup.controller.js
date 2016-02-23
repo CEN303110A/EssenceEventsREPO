@@ -23,8 +23,9 @@ class SignupController {
         phoneNumber: this.user.phoneNumber
       })
       .then(() => {
-        // Account created, redirect to home
-        this.$state.go('main');
+        // Account created, redirect to admin basic
+        //todo - redirect to create event
+        this.$state.go('admin');
       })
       .catch(err => {
         err = err.data;
