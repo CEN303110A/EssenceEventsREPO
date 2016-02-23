@@ -3,17 +3,29 @@
 
   class ManageClientsCtrl{
 
-      constructor(User) {
+      //pass dependencies through constructor
+      constructor(User, $modal, $scope) {
         // Use the User $resource to fetch all users
-        //console.log('called');
-        console.log('IN the new constructor');
         this.alldata = User.query();
-        // console.log(this.alldata);
+        this.modalService = $modal;
       }
 
       openModal(user){
-        // $dialogs.error(user);
-        console.log(user);
+        // console.log(user);
+        var modalInstance = this.modalService.open({
+          animation: true,
+          templateUrl: 'app/admin/partials/manageClients/manageClientsModal/manageClientsModal.html',
+          controller: 'ManageClientsModalCtrl',
+          resolve: {
+            user: function()
+            {
+              return user;
+            }
+          }
+        });
+
+
+
       }
 
       delete(user) {

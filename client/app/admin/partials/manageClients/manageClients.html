@@ -5,13 +5,13 @@
         <td>Name</td>
         <td>Phone Number</td>
         <td>Email</td>
-        <td>Manage</td>
+        <td></td>
       </tr>
 
       <tr ng-repeat="user in mc.alldata">
           <td>{{user.name}}</td>
           <td>{{user.phoneNumber}}</td>
           <td>{{user.email}}</td>
-          <td><button type="button" ng-click=mc.openModal(user)>Manage</button></td>
+          <td><button type="button" class="btn btn-md btn-default" ng-click=mc.openModal(user)>Manage</button></td>
       </tr>
   </table>
