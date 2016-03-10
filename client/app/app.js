@@ -9,7 +9,9 @@ angular.module('essenceEventsRepoApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  // 'api-check',
+  // 'angular-formly'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
