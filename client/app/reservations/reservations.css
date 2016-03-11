@@ -8,3 +8,7 @@
     font-size: 35px;
     color: pink;
 }
+
+.angular-google-map-container {
+  height: 400px;
+}
