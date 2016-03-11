@@ -1,5 +1,15 @@
 ul{
-    margin:1em;
+    /*margin:1em;*/
+}
+.servList{
+  list-style-type: circle;
+  /*padding: 5px;*/
+  /*margin-left: 15px;*/
+  list-style-position: inside;
+}
+.image-service-box{
+  /*border: 2px solid;*/
+  /*border-collapse: seperate;*/
 }
 #pearl {
 color:black;
