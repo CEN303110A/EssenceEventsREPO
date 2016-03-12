@@ -1,26 +1,21 @@
-.fa-facebook-official {
+.fa {
   color:grey;
 }
-.fa-facebook-official:hover {
+.fa-facebook-official:hover, .fa-facebook-official:focus{
     color: #3b5998;
+    text-decoration: none;
 }
-.fa-pinterest-square {
-  color:grey;
-}
-.fa-pinterest-square:hover {
+.fa-pinterest-square:hover, .fa-pinterest-square:focus {
     color: #c92228;
+    text-decoration: none;
 }
-.fa-instagram {
-  color:grey;
-}
-.fa-instagram:hover {
+.fa-instagram:hover, .fa-instagram:focus {
     color: #CD853F;
+    text-decoration: none;
 }
-.fa-linkedin-square {
-  color:grey;
-}
-.fa-linkedin-square:hover {
+.fa-linkedin-square:hover, .fa-linkedin-square:focus {
   color:#0077B5;
+  text-decoration: none;
 }
 .fa {
   padding: 5px;
