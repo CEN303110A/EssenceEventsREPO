@@ -15,7 +15,7 @@ router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);
 */
 
-router.get('/', auth.isAuthenticated() , controller.index);
-router.post('/', auth.hasRole('admin'), controller.create);
+router.get('/', controller.index);
+router.post('/', controller.create);
 
 export default router;
