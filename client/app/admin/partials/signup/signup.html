@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h1>Sign up</h1>
+      <h1>Create new customer</h1>
     </div>
     <div class="col-sm-12">
       <form class="form" name="form" ng-submit="vm.register(form)" novalidate>
@@ -64,13 +64,21 @@
           </p>
         </div>
 
+        <div class="form-group" ng-class="{ 'has-success': form.phoneNumber.$valid && vm.submitted,
+                                            'has-error': form.phoneNumber.$invalid && vm.submitted }">
+          <label>Phone Number</label>
+
+          <input type="text" name="phoneNumber" class="form-control" ng-model="vm.user.phoneNumber"
+                 required/>
+          <p class="help-block" ng-show="form.phoneNumber.$error.required && vm.submitted">
+            A phone number is required
+          </p>
+        </div>
+
         <div>
           <button class="btn btn-inverse btn-lg btn-register" type="submit">
-            Sign up
+            Create Account
           </button>
-          <a class="btn btn-default btn-lg btn-login" ui-sref="login">
-            Login
-          </a>
         </div>
 
       </form>

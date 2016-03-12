@@ -1,0 +1,14 @@
+.header {
+    color: pink;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: pink;
+}
+
+.angular-google-map-container {
+  height: 400px;
+}
