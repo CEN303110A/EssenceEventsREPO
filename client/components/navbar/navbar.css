@@ -1,0 +1,27 @@
+.fa-facebook-official {
+  color:grey;
+}
+.fa-facebook-official:hover {
+    color: #3b5998;
+}
+.fa-pinterest-square {
+  color:grey;
+}
+.fa-pinterest-square:hover {
+    color: #c92228;
+}
+.fa-instagram {
+  color:grey;
+}
+.fa-instagram:hover {
+    color: #CD853F;
+}
+.fa-linkedin-square {
+  color:grey;
+}
+.fa-linkedin-square:hover {
+  color:#0077B5;
+}
+.fa {
+  padding: 5px;
+}
