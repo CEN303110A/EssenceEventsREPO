@@ -38,27 +38,13 @@
 .navbar-text {
   margin-left: 15px;
 }
-
 /*.navbar-brand{
     resize: 30%;
     overflow: auto;
 }*/
-
 #homeLogo{
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 .section-heading {
     margin-top: 0;
     color: white;
@@ -73,6 +59,10 @@
     .service-box {
         margin: 20px auto 0;
     }
+}
+
+.service-box i {
+  color: pink;
 }
 
 .service-box p {
