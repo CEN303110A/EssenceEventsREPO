@@ -3,21 +3,25 @@
     <tab heading="Manage User">
       <h2 class="page-header">Client information:</h2>
       <container>
-        <form>
+        <form class = "form" name="form" ng-submit="submit(form)" novalidate>
           <div class="form-group">
             <label for="clientName">Client name</label>
-            <input type="text" class="form-control" id="clientName" value={{username}}>
+            <input type="text" class="form-control" ng-model="username" id="clientName" value={{username}}>
           </div>
           <div class="form-group">
             <label for="clientEmail">Client email</label>
-            <input type="text" class="form-control" id="clientEmail" value={{email}}>
+            <input type="text" class="form-control" ng-model="email" id="clientEmail" value={{email}}>
           </div>
           <div class="form-group">
             <label for="clientPhone">Client phone number</label>
-            <input type="text" class="form-control" id="clientPhone" value={{phoneNumber}}>
+            <input type="text" class="form-control" ng-model="phoneNumber" id="clientPhone" value={{phoneNumber}}>
+          </div>
+          <div>
+            <button type="submit" id="submit" class="btn btn-default" ng-click="submit(form)">Save Changes</button>
           </div>
         </form>
-        <button class="btn btn-default">Save Changes</button>
+
+        <!-- <button type="button" class="btn btn-md btn-default" ng-click=mc.openModal(user)>Manage</button> -->
     </container>
 
     </tab>
