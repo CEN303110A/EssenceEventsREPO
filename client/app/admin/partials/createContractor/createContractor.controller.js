@@ -2,5 +2,11 @@
 
 angular.module('essenceEventsRepoApp.admin')
   .controller('CreateContractorCtrl', function ($scope) {
-    $scope.message = 'Hello';
-  });
+    $scope.submit = function() {
+      var contractor = {
+        name: $scope.name,
+	link: $scope.link
+      }
+      
+    };
+});
