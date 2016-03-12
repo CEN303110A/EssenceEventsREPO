@@ -19,11 +19,13 @@ class SignupController {
       this.Auth.createUser({
         name: this.user.name,
         email: this.user.email,
-        password: this.user.password
+        password: this.user.password,
+        phoneNumber: this.user.phoneNumber
       })
       .then(() => {
-        // Account created, redirect to home
-        this.$state.go('main');
+        // Account created, redirect to admin basic
+        //todo - redirect to create event
+        this.$state.go('admin');
       })
       .catch(err => {
         err = err.data;
