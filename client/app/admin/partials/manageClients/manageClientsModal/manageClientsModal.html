@@ -3,21 +3,21 @@
     <tab heading="Manage User">
       <h2 class="page-header">Client information:</h2>
       <container>
-        <form class = "form" name="form" ng-submit="submit()" novalidate>
+        <form class = "form" name="form" ng-submit="submit(username, email, phoneNumber)" novalidate>
           <div class="form-group">
-            <label for="clientName">Client name</label>
-            <input type="text" class="form-control" ng-model="username" id="clientName" value={{username}}>
+            <label for="username">Client name</label>
+            <input type="text" class="form-control" name="username" ng-model="username" placeholder={{username}}>
           </div>
           <div class="form-group">
-            <label for="clientEmail">Client email</label>
-            <input type="text" class="form-control" ng-model="email" id="clientEmail" value={{email}}>
+            <label for="email">Client email</label>
+            <input type="text" class="form-control" name="email" ng-model="email" placeholder={{email}}>
           </div>
           <div class="form-group">
-            <label for="clientPhone">Client phone number</label>
-            <input type="text" class="form-control" ng-model="phoneNumber" id="clientPhone" value={{phoneNumber}}>
+            <label for="phoneNumber">Client phone number</label>
+            <input type="text" class="form-control" name="phoneNumber" ng-model="phoneNumber" placeholder={{phoneNumber}}>
           </div>
           <div>
-            <button type="submit" id="submit" class="btn btn-default" ng-click="submit()">Save Changes</button>
+            <button type="submit" id="submit" class="btn btn-default">Save Changes</button>
           </div>
         </form>
 
