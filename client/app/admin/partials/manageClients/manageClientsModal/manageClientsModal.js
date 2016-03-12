@@ -6,7 +6,7 @@
        .state('manageClientsModal', {
          url: '/manageClientsModal',
          templateUrl: 'app/admin/partials/manageClients/manageClientsModal/manageClientsModal.html',
-         controller: 'ManageClientsModalCtrl'
+         controller: 'ManageClientsModalCtrl',
          controllerAs: 'mc',
          authenticate: 'admin'
        });
