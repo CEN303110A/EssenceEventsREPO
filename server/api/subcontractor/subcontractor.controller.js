@@ -16,7 +16,12 @@ export function index(req, res) {
 export function create(req, res) {
   console.log('reached');
   var newSubcontractor = new Subcontractor(req.body);
-  newSubcontractor.saveAsync()
-    .then(res.send())
-    .catch(validationError(res));
+  newSubcontractor.saveAsync(function(err) {
+    if (err) {
+      throw err;
+      res.status(400).send(err);
+      return;
+    }
+    res.send();
+  });
 }
