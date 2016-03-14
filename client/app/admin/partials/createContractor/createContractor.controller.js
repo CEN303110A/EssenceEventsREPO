@@ -4,13 +4,12 @@ angular.module('essenceEventsRepoApp.admin')
       var contractor = {
         name: $scope.name,
 	link: $scope.link
-      }
-      $scope.error = $scope.name + $scope.link;
+      };
       Subcontractors.create(contractor)
         .then(function(response) {
-	  $state.error = 'success';
+	  $scope.error = 'Subcontractor successfully added';
         }, function(error) {
-	  $scope.error = 'No';
+	  $scope.error = "Error: Check that name doesn't already exist";
       });
     };
 
