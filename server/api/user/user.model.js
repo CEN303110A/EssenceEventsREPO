@@ -16,7 +16,10 @@ var UserSchema = new Schema({
   },
   password: String,
   provider: String,
-  salt: String
+  salt: String,
+  phoneNumber: String,
+  events: [Schema.Types.ObjectId]
+
 });
 
 /**
@@ -85,6 +88,13 @@ var validatePresenceOf = function(value) {
   return value && value.length;
 };
 
+UserSchema
+  .path('phoneNumber')
+  .validate(function(phoneNumber){
+    //TODO validate
+    return phoneNumber.length;
+
+  }, 'you need a valid phone number');
 /**
  * Pre-save hook
  */

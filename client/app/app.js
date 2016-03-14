@@ -9,7 +9,10 @@ angular.module('essenceEventsRepoApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'uiGmapgoogle-maps'
+  // 'api-check',
+  // 'angular-formly'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

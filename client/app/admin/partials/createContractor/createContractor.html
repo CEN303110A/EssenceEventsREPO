@@ -1,0 +1,30 @@
+<div class="container" ng-controller="CreateContractorCtrl">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>CREATE NEW CONTRACTOR</h1>
+    </div>
+    <div class="col-sm-12">
+      <form name="listingForm" class="form-horizontal" ng-submit="submit()">
+        <fieldset>
+          <div class="form-group" show-errors>
+            <label for="name">Name</label>
+            <input name="name" type="name" ng-model="name" id="name" class="form-control" required>
+          </div>
+          <div class="form-group" show-errors>
+            <label for="link">Link</label>
+            <input name="link" type="link" ng-model="link" id="link" class="form-control">
+          </div>
+          <div ng-show="error" class="text-danger">
+            <strong ng-bind="error"></strong>
+          </div>
+	  <div>
+            <button class="btn btn-inverse btn-lg btn-register" type="submit">
+              Create Account
+  	    </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <hr>
+</div>
