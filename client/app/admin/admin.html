@@ -1,9 +1,10 @@
 <div class = "container-fluid">
-  <div id="wrapper" class="" controller="AdminController">
+  <div id="wrapper" class="" controller="AdminController" ng-init="initScope()">
+
 
     <!-- Sidebar -->
     <adminnav></adminnav>
-    
+
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
@@ -18,7 +19,9 @@
           </div>
         </div>
       </div> -->
-      <div ui-view></div>
+      <container>
+        <div ui-view></div>
+      </container>
     </div>
     <!-- /#page-content-wrapper -->
 

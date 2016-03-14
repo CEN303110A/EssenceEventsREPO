@@ -10,8 +10,18 @@ class NavbarController {
     },
     {
       'title': 'Services',
-      'state': 'services',
-      'hasDropDown' : false
+      'state': '',
+      'hasDropDown' : true,
+      'sublinks' : [
+        {
+          'title': 'Plans',
+          'state': 'services'
+        },
+        {
+          'title': 'Rentals',
+          'state': 'services'
+        }
+      ]
     },
     {
       'title': 'Testimonials',
