@@ -40,12 +40,6 @@ p.intro{
 	line-height: 24px;
 	font-family: 'Open Sans', sans-serif;
 }
-a{ color: pink;}
-a:hover,
-a:focus{
-	text-decoration: none;
-	color: pink;
-}
 
 .section-title hr{
 	border-color: pink;
