@@ -20,25 +20,20 @@ angular.module('essenceEventsRepoApp.admin')
       };
 
       //createEvent
-<<<<<<< HEAD
       $scope.createEvent = function()
       {
         $modalInstance.close();
         $state.go('admin.createEvent', {userID : user._id, usersName : user.name});
-=======
-      $scope.createEvent = function() {
-	$modalInstance.close();
-        $state.go('admin.createEvent', {userID : user._id});
->>>>>>> 3d603bacc4891664e9d6702d75e54d3e4b479ccd
       };
 
-      $scope.getEvents = function() {
-	Events.getByUser(user._id)
-	  .then(function(response) {
-	    $scope.events = response.data;
-	  }, function(err) {
+      $scope.getEvents = function()
+      {
+    	Events.getByUser(user._id)
+    	  .then(function(response) {
+    	    $scope.events = response.data;
+	       }, function(err) {
 	    //do something
-	});
+	   });
       };
 
   }]);
