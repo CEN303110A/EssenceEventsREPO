@@ -5,8 +5,8 @@ angular.module('essenceEventsRepoApp.admin').factory('Subcontractors', ['$http',
         return $http.get('http://localhost:8080/api/subcontractors');
       },
 
-      create: function(contractor) {
-	return $http.post('http://localhost:8080/api/subcontractors', contractor);
+      create: function(subcontractor) {
+	return $http.post('http://localhost:8080/api/events', subcontractor);
       }
     };
     return methods;

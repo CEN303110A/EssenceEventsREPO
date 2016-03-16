@@ -15,7 +15,14 @@ router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);
 */
 
-router.get('/', controller.index);
+router.get('/', controller.findAll);
+router.get('/user/:userId', controller.findAllByUser);
+router.get('/:id', controller.findOneById);
 router.post('/', controller.create);
+router.put('/', controller.update);
+router.delete('/:id', controller.remove);
+
+router.param('id', controller.eventById);
+router.param('userId', controller.eventsByUserId);
 
 export default router;
