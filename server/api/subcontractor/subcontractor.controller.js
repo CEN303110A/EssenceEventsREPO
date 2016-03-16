@@ -5,7 +5,7 @@ import passport from 'passport';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
 
-export function index(req, res) {
+export function getAll(req, res) {
   Subcontractor.findAsync({}, function(err, subcontractors) {
     if (err) {
       throw err;
@@ -14,6 +14,10 @@ export function index(req, res) {
     }
     res.send(subcontractors);
   });
+}
+
+export function getOne(req, res) {
+  res.send(req.subcontractor);
 }
 
 export function create(req, res) {
@@ -31,5 +35,42 @@ export function create(req, res) {
     }
     else
       res.status(400).send(err);
+  });
+}
+
+export function update(req, res) {
+  Subcontractor.update({_id: req.body._id}, req.body, function(err) {
+    if (err) {
+      res.status(400).send(err);
+      throw err;
+    }
+    else {
+      res.send('Update successful');
+    }
+  });
+}
+
+export function remove(req, res) {
+  Subcontractor.remove({_id: req.subcontractor._id}, function(err) {
+    if (err) {
+      res.status(400).send(err);
+      throw err;
+    }
+    else {
+      res.send('Deletion successful');
+    }
+  });
+}
+
+export function findId(req, res, next, id) {
+  Subcontractor.findById(id, function(err, subcontractor) {
+    if (err) {
+      res.status(400).send(err);
+      throw err;
+    }
+    else {
+      req.subcontractor = subcontractor;
+      next();
+    }
   });
 }
