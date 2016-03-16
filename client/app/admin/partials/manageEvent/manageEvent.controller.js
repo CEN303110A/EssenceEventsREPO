@@ -13,7 +13,8 @@ angular.module('essenceEventsRepoApp.admin')
     $scope.remove = function(id) {
       var event = {
 	_id: id,
-	name: "new name",
+	userId: "56e9ccf1ba261f8c05e4992a",
+	name: "change",
         description: "A party of sorts",
 	date: "today sometime " + new Date()
       };

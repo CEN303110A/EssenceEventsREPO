@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-  .controller('ManageClientsModalCtrl', ['$scope', '$state', '$modalInstance', 'user', function ($scope, $state, $modalInstance, user)
+  .controller('ManageClientsModalCtrl', ['$scope', '$state', '$modalInstance', 'user', 'Events', function ($scope, $state, $modalInstance, user, Events)
   {
       $scope.username = user.name;
       $scope.email = user.email;
@@ -23,6 +23,15 @@ angular.module('essenceEventsRepoApp.admin')
       $scope.createEvent = function() {
 	$modalInstance.close();
         $state.go('admin.createEvent', {userID : user._id});
+      };
+
+      $scope.getEvents = function() {
+	Events.getByUser(user._id)
+	  .then(function(response) {
+	    $scope.events = response.data;
+	  }, function(err) {
+	    //do something
+	});
       };
 
   }]);
