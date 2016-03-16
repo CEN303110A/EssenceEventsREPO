@@ -26,12 +26,13 @@ angular.module('essenceEventsRepoApp.admin')
         $state.go('admin.createEvent', {userID : user._id, usersName : user.name});
       };
 
-      $scope.getEvents = function()
-      {
-    	Events.getByUser(user._id)
-    	  .then(function(response) {
-    	    $scope.events = response.data;
-	       }, function(err) {
+      $scope.getEvents = function() {
+	$scope.events = null;
+	Events.getByUser(user._id)
+	  .then(function(response) {
+	    if (response.data.length > 0)
+	      $scope.events = response.data;
+	  }, function(err) {
 	    //do something
 	   });
       };
