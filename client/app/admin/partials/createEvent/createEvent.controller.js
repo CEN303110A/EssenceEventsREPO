@@ -38,4 +38,12 @@ angular.module('essenceEventsRepoApp.admin')
         $scope.thingsToDo.push({task : $scope.todoInput})
         $scope.todoInput = '';
       }
+
+      //deletes item from todo list
+      $scope.delete = function(index)
+      {
+        $scope.thingsToDo.splice(index, 1);
+        console.log("Delete called : index - " , index);
+      }
+
   });

@@ -62,13 +62,13 @@
                   </tr>
                 </thead>
 
-                <tbody ng-repeat = "item in thingsToDo">
+                <tbody ng-repeat ="item in thingsToDo">
                   <tr>
                     <td>{{item.task}}</td>
-                    <td><button class = "btn btn-danger">Remove</button></td>
+                    <td><button class="btn btn-danger" ng-click="delete(item.$index)">Remove</button></td>
                   </tr>
                 </tbody>
-                
+
               </table>
             </container>
 
