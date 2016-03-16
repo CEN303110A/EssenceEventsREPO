@@ -23,7 +23,7 @@ angular.module('essenceEventsRepoApp.admin')
       $scope.createEvent = function()
       {
         $modalInstance.close();
-        $state.go('admin.createEvent', {userID : user._id});
+        $state.go('admin.createEvent', {userID : user._id, usersName : user.name});
       };
 
   }]);

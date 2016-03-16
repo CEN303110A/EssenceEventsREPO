@@ -5,7 +5,10 @@ angular.module('essenceEventsRepoApp.admin')
     $stateProvider
       .state('admin.createEvent', {
         url: '/createEvent/',
-        params: {userID: 'undefined'},
+        params: {
+          userID: 'undefined',
+          usersName: 'undefined'
+        },
         templateUrl: 'app/admin/partials/createEvent/createEvent.html',
         controller: 'CreateEventCtrl',
         authenticate: 'admin'
