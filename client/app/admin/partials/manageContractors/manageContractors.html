@@ -1,1 +1,19 @@
-<div>This is the manageContractors view.</div>
+<div ng-init="getSubcontractors()">
+  <h1 class="page-header">Manage existing clients.</h1>
+
+  <table class="table table-hover">
+      <tr>
+        <td>Name</td>
+        <td>Phone Number</td>
+        <td>Email</td>
+        <td></td>
+      </tr>
+
+      <tr ng-repeat="subcontractor in subcontractors">
+          <td>{{subcontractor.name}}</td>
+          <td>{{subcontractor.link}}</td>
+          <td>{{subcontractor._id}}</td>
+          <td><button type="button" class="btn btn-md btn-default" ng-click="remove(subcontractor._id)">Manage</button></td>
+      </tr>
+  </table>
+</div>

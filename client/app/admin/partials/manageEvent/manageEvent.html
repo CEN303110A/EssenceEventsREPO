@@ -1,4 +1,19 @@
-<div>This is the manageEvent view.</div>
+<div ng-init="getEvents()">
+  <h1 class="page-header">Manage existing clients.</h1>
 
-<p>Budget</p>
-<p>To do list</p>
+  <table class="table table-hover">
+      <tr>
+        <td>Name</td>
+        <td>Phone Number</td>
+        <td>Email</td>
+        <td></td>
+      </tr>
+
+      <tr ng-repeat="event in events">
+          <td>{{event.name}}</td>
+          <td>{{event.description}}</td>
+          <td>{{event.date}}</td>
+          <td><button type="button" class="btn btn-md btn-default" ng-click="remove(event._id)">Manage</button></td>
+      </tr>
+  </table>
+</div>

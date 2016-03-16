@@ -25,15 +25,20 @@
       </container>
     </tab>
 
-    <tab heading="Manage Events">
+    <tab heading="Manage Events" ng-init="getEvents()">
       <h2 class="page-header">Client events:</h2>
       <button class="btn btn-lg btn-block btn-success" ng-click="createEvent()">Create Event</button>
       <table class="table table-hover">
         <tr>
-          <td>Name</td>
-          <td>Venue</td>
-          <td>Budget</td>
+          <th>Name</th>
+          <th>Venue</th>
+          <th>Budget</th>
         </tr>
+	<tr ng-repeat="event in events">
+	  <td>{{event.name}}</td>
+	  <td>{{event.venue}}</td>
+	  <td>{{event.date}}</td>
+	</tr>
       </table>
     </tab>
   </tabset>
