@@ -34,7 +34,7 @@ angular.module('essenceEventsRepoApp.admin')
 	      $scope.events = response.data;
 	  }, function(err) {
 	    //do something
-	});
+	   });
       };
 
   }]);
