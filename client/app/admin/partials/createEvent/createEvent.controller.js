@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-  .controller('CreateEventCtrl', function ($scope, $stateParams, $state) {
+  .controller('CreateEventCtrl', ['Events', '$scope', '$stateParams', '$state', function (Events, $scope, $stateParams, $state) {
 
       // $scope.message = 'Hello';
 
@@ -25,25 +25,51 @@ angular.module('essenceEventsRepoApp.admin')
       };
 
       $scope.thingsToDo = [];
+      $scope.budget = [];
 
-      $scope.hasItems = function()
+      $scope.hasItems = function(arr)
       {
-        return ($scope.thingsToDo.length > 0);
-        // return !($scope.thingsToDo);
-      }
+        return (arr.length > 0);
+      };
 
       //adds item into todo list
-      $scope.add = function()
+      $scope.addToDo = function()
       {
-        $scope.thingsToDo.push({task : $scope.todoInput})
+	if ($scope.todoInput)
+          $scope.thingsToDo.push($scope.todoInput);
         $scope.todoInput = '';
+      };
+
+      $scope.addBudget = function()
+      {
+	if ($scope.budgetItem && $scope.itemCost)
+	  $scope.budget.push({title: $scope.budgetItem, amount: $scope.itemCost});
+	$scope.budgetItem = null;
+	$scope.itemCost = null;
       }
 
       //deletes item from todo list
-      $scope.delete = function(index)
+      $scope.delete = function(arr, index)
       {
-        $scope.thingsToDo.splice(index, 1);
-        console.log("Delete called : index - " , index);
-      }
+        arr.splice(index, 1);
+      };
 
-  });
+      $scope.submit = function() {
+	var event = {
+	  name: $scope.eventName,
+	  date: $scope.dt,
+	  location: $scope.venue,
+	  userId: $stateParams.userID,
+	  toDoList: $scope.thingsToDo,
+	  budgetGoal: $scope.budgetGoal,
+	  budget: $scope.budget
+        };
+	Events.create(event)
+	  .then(function(response) {
+	    $state.go('admin.manageEvent');
+	  }, function(err) {
+	    //do something
+	});
+      };
+
+}]);

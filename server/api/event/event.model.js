@@ -7,7 +7,7 @@ var eventSchema = new Schema({
     type: String
   },
   date: {
-    type: String
+    type: Date
   },
   description: {
     type: String
@@ -18,6 +18,8 @@ var eventSchema = new Schema({
   location: {
     type: String
   },
+  budgetGoal: Number,
+  toDoList: [String],
   guests: [{
     name: String,
     email: String,
