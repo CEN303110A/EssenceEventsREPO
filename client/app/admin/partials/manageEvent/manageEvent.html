@@ -4,15 +4,15 @@
   <table class="table table-hover">
       <tr>
         <td>Name</td>
-        <td>Phone Number</td>
-        <td>Email</td>
+        <td>Venue</td>
+        <td>Date</td>
         <td></td>
       </tr>
 
       <tr ng-repeat="event in events">
           <td>{{event.name}}</td>
-          <td>{{event.description}}</td>
-          <td>{{event.date}}</td>
+          <td>{{event.location}}</td>
+          <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
           <td><button type="button" class="btn btn-md btn-default" ng-click="remove(event._id)">Manage</button></td>
       </tr>
   </table>

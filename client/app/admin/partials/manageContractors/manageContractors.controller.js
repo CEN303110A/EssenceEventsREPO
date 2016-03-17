@@ -9,7 +9,7 @@ angular.module('essenceEventsRepoApp.admin')
         }, function(err) {
 	  //do something
       });
-    }
+    };
     $scope.remove = function(id) {
       var subcontractor = {
 	_id: id,
@@ -22,5 +22,17 @@ angular.module('essenceEventsRepoApp.admin')
 	}, function(err) {
 	  //do something
       });
-    }
-}]);
+    };
+}])
+  .filter('url', function() {
+    return function(link) {
+      var result;
+      var httpStart = "http://";
+      var httpsStart = "https://";
+      if (link.startsWith(httpStart) || link.startsWith(httpsStart))
+	result = link;
+      else
+	result = httpStart + link;
+      return result;
+    };
+});
