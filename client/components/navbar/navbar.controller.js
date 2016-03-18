@@ -73,8 +73,11 @@ class NavbarController {
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
+    this.curUsr = this.getCurrentUser();
+    //this.$state.go('customer', {userID: this.curUsr._id, userName: this.curUsr.name})
     this.state = $state;
     this.scope = $scope;
+    this.navigate();
   }
 }
 
