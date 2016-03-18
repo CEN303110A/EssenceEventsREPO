@@ -28,6 +28,7 @@
       <link rel="stylesheet" href="app/admin/partials/manageClients/manageClientsModal/manageClientsModal.css">
       <link rel="stylesheet" href="app/admin/partials/manageContractors/manageContractors.css">
       <link rel="stylesheet" href="app/admin/partials/manageEvent/manageEvent.css">
+      <link rel="stylesheet" href="app/admin/partials/manageEvent/manageEventModal/manageEventModal.css">
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/celebrations/celebrations.css">
       <link rel="stylesheet" href="app/corporate/corporate.css">
@@ -40,6 +41,7 @@
       <link rel="stylesheet" href="components/font-awesome-4.5.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="components/footer/footer.css">
       <link rel="stylesheet" href="components/modal/modal.css">
+      <link rel="stylesheet" href="components/navbar/navbar.css">
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
@@ -76,10 +78,10 @@
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-      <script src="bower_components/lodash/lodash.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
-      <script src="bower_components/angular-formly/dist/formly.js"></script>
+      <script src="bower_components/api-check/dist/api-check.js"></script>
       <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
       <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
       <!-- endbower -->
@@ -90,11 +92,12 @@
       <script src="app/admin/admin.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/app.constant.js"></script>
+      <script src="app/admin/partials/test/test.js"></script>
       <script src="app/account/settings/settings.controller.js"></script>
       <script src="app/admin/admin.controller.js"></script>
       <script src="app/aboutus/aboutus.controller.js"></script>
       <script src="app/admin/admin.router.js"></script>
+      <script src="app/admin/factories/event.factory.js"></script>
       <script src="app/admin/factories/subcontractor.factory.js"></script>
       <script src="app/admin/partials/adminContent/adminContent.directive.js"></script>
       <script src="app/admin/partials/adminNav/adminNav.directive.js"></script>
@@ -110,17 +113,20 @@
       <script src="app/admin/partials/manageContractors/manageContractors.js"></script>
       <script src="app/admin/partials/manageEvent/manageEvent.controller.js"></script>
       <script src="app/admin/partials/manageEvent/manageEvent.js"></script>
+      <script src="app/admin/partials/manageEvent/manageEventModal/manageEventModal.controller.js"></script>
+      <script src="app/admin/partials/manageEvent/manageEventModal/manageEventModal.js"></script>
       <script src="app/admin/partials/signup/signup.controller.js"></script>
       <script src="app/admin/partials/signup/signup.js"></script>
       <script src="app/admin/partials/test/test.controller.js"></script>
-      <script src="app/admin/partials/test/test.js"></script>
       <script src="app/aboutus/aboutus.js"></script>
+      <script src="app/app.constant.js"></script>
       <script src="app/celebrations/celebrations.controller.js"></script>
       <script src="app/celebrations/celebrations.js"></script>
       <script src="app/corporate/corporate.controller.js"></script>
       <script src="app/corporate/corporate.js"></script>
       <script src="app/links/links.controller.js"></script>
       <script src="app/links/links.js"></script>
+      <script src="app/links/linksFactory.js"></script>
       <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
       <script src="app/reservations/reservations.controller.js"></script>

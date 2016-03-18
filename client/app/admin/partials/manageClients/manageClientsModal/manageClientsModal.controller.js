@@ -1,12 +1,40 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-  .controller('ManageClientsModalCtrl', function ($scope, $modalInstance, user)
+  .controller('ManageClientsModalCtrl', ['$scope', '$state', '$modalInstance', 'user', 'Events', function ($scope, $state, $modalInstance, user, Events)
   {
-    $scope.username = user.name;
-    $scope.phoneNumber = user.phoneNumber;
-    $scope.email = user.email;
+      $scope.username = user.name;
+      $scope.email = user.email;
+      $scope.phoneNumber = user.phoneNumber;
 
+      //submit function
+      $scope.submit = function(username, email, phoneNumber) {
 
-    console.log(user);
-  });
+          user.name = username;
+          user.email = email;
+          user.phoneNumber = phoneNumber;
+          user.$save();
+          console.log(user);
+
+          $modalInstance.close();
+      };
+
+      //createEvent
+      $scope.createEvent = function()
+      {
+        $modalInstance.close();
+        $state.go('admin.createEvent', {userID : user._id, usersName : user.name});
+      };
+
+      $scope.getEvents = function() {
+	$scope.events = null;
+	Events.getByUser(user._id)
+	  .then(function(response) {
+	    if (response.data.length > 0)
+	      $scope.events = response.data;
+	  }, function(err) {
+	    //do something
+	   });
+      };
+
+  }]);

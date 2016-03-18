@@ -1,1 +1,44 @@
-<div>This is the links view.</div>
+<div class="container" ng-controller="LinksCtrl">
+  <h2 class="text-center">Photography</h2>
+  <div class="row" ng-repeat="link in links" ng-show="link.type == 'Photography'">
+    <p class="col-md-3">
+      <a target="_target" href="{{link.site}}">
+        <img src="{{link.img}}" class="linkImg">
+      </a>
+    </p>
+    <p class="col-md-6 text-center">
+      {{link.name}}<br />
+      <a target="_target" ng-href="{{link.site}}">{{link.site}}</a><br />
+      {{link.phoneNumber}}<br />
+      <br />
+    </p>
+  </div>
+  <h2 class="text-center">Rental Chair Covers and Sashes</h2>
+  <div class="row" ng-repeat="link in links" ng-show="link.type == 'Rental Chair Covers and Sashes'">
+    <p class="col-md-3">
+      <a target="_target" href="{{link.site}}">
+        <img src="{{link.img}}" class="linkImg">
+      </a>
+    </p>
+    <p class="col-md-6 text-center">
+      {{link.name}}<br />
+      <a target="_target" ng-href="{{link.site}}">{{link.site}}</a><br />
+      {{link.phoneNumber}}<br />
+      <br />
+    </p>
+</div>
+  <h2 class="text-center">Invitations</h2>
+  <div class="row" ng-repeat="link in links" ng-show="link.type == 'Invitations'">
+    <p class="col-md-3">
+      <a target="_target" href="{{link.site}}">
+        <img src="{{link.img}}" class="linkImg">
+      </a>
+    </p>
+    <p class="col-md-6 text-center">
+      {{link.name}}<br />
+      <a target="_target" ng-href="{{link.site}}">{{link.site}}</a><br />
+      {{link.phoneNumber}}<br />
+      <br />
+    </p>
+  </div>
+</div>

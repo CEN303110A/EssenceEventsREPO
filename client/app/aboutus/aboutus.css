@@ -40,12 +40,6 @@ p.intro{
 	line-height: 24px;
 	font-family: 'Open Sans', sans-serif;
 }
-a{ color: pink;}
-a:hover,
-a:focus{
-	text-decoration: none;
-	color: pink;
-}
 
 .section-title hr{
 	border-color: pink;
@@ -85,4 +79,10 @@ ul.about-list li{
 }
 ul.about-list li span{
 	margin-right: 10px;
+}
+
+.photobanner {
+	height: 233px;
+	width: 3550px;
+	margin-bottom: -200px;
 }

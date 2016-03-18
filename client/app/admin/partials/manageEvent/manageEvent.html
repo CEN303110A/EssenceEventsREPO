@@ -1,4 +1,19 @@
-<div>This is the manageEvent view.</div>
+<div ng-init="getEvents()">
+  <h1 class="page-header">Manage Events</h1>
 
-<p>Budget</p>
-<p>To do list</p>
+  <table class="table table-hover">
+      <tr>
+        <td>Name</td>
+        <td>Venue</td>
+        <td>Date</td>
+        <td></td>
+      </tr>
+
+      <tr ng-repeat="event in events">
+          <td>{{event.name}}</td>
+          <td>{{event.location}}</td>
+          <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
+          <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>
+      </tr>
+  </table>
+</div>

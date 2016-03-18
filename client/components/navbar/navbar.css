@@ -1,0 +1,22 @@
+.fa {
+  color:grey;
+}
+.fa-facebook-official:hover, .fa-facebook-official:focus{
+    color: #3b5998;
+    text-decoration: none;
+}
+.fa-pinterest-square:hover, .fa-pinterest-square:focus {
+    color: #c92228;
+    text-decoration: none;
+}
+.fa-instagram:hover, .fa-instagram:focus {
+    color: #CD853F;
+    text-decoration: none;
+}
+.fa-linkedin-square:hover, .fa-linkedin-square:focus {
+  color:#0077B5;
+  text-decoration: none;
+}
+.fa {
+  padding: 5px;
+}
