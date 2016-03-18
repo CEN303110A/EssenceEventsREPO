@@ -62,10 +62,19 @@ class NavbarController {
   isCollapsed = true;
   //end-non-standard
 
-  constructor(Auth) {
+   navigate(){
+
+    var curUsr = this.getCurrentUser();
+    //console.log(curUsr);
+    this.state.go('customer', {userID: curUsr._id, userName: curUsr.name});
+  }
+
+  constructor(Auth, $state, $scope) {
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
+    this.state = $state;
+    this.scope = $scope;
   }
 }
 
