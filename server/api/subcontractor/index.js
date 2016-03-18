@@ -15,7 +15,12 @@ router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);
 */
 
-router.get('/', controller.index);
+router.get('/', controller.getAll);
+router.get('/:id', controller.getOne);
 router.post('/', controller.create);
+router.put('/', controller.update);
+router.delete('/:id', controller.remove);
+
+router.param('id', controller.findId);
 
 export default router;

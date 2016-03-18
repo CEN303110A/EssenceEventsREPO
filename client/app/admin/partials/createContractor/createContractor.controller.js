@@ -1,17 +1,15 @@
-'use strict';
-
 angular.module('essenceEventsRepoApp.admin')
-  .controller('CreateContractorCtrl', function ($scope) {
+  .controller('CreateContractorCtrl', ['$scope', 'Subcontractors', function ($scope, Subcontractors) {
     $scope.submit = function() {
       var contractor = {
         name: $scope.name,
 	link: $scope.link
-      }
+      };
       Subcontractors.create(contractor)
         .then(function(response) {
-	  $state.error = 'success';
+	  $scope.error = 'Subcontractor successfully added';
         }, function(error) {
-	  $scope.error = 'No';
+	  $scope.error = "Error: Check that name doesn't already exist";
       });
     };
 
@@ -23,4 +21,4 @@ angular.module('essenceEventsRepoApp.admin')
 	  $scope.error = 'Aint nothin';
       });
     };
-});
+}]);
