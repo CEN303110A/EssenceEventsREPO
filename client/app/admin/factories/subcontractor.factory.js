@@ -1,24 +1,24 @@
-angular.module('essenceEventsRepoApp.admin').factory('Subcontractors', ['$http',
-  function($http) {
+angular.module('essenceEventsRepoApp.admin').factory('Subcontractors', ['$http', '$location',
+  function($http, $location) {
     var methods = {
       getAll: function() {
-        return $http.get('http://localhost:9000/api/subcontractors');
+        return $http.get('http://' + $location.host() + ':' + $location.port() + '/api/subcontractors');
       },
 
       getOne: function(id) {
-	return $http.get('http://localhost:9000/api/subcontractors/' + id);
+	return $http.get('http://' + $location.host() + ':' + $location.port() + '/api/subcontractors/' + id);
       },
 
       create: function(subcontractor) {
-	return $http.post('http://localhost:9000/api/subcontractors', subcontractor);
+	return $http.post('http://' + $location.host() + ':' + $location.port() + '/api/subcontractors', subcontractor);
       },
 
       update: function(subcontractor) {
-	return $http.put('http://localhost:9000/api/subcontractors', subcontractor);
+	return $http.put('http://' + $location.host() + ':' + $location.port() + '/api/subcontractors', subcontractor);
       },
 
       remove: function(id) {
-	return $http.delete('http://localhost:9000/api/subcontractors/' + id);
+	return $http.delete('http://' + $location.host() + ':' + $location.port() + '/api/subcontractors/' + id);
       }
     };
     return methods;
