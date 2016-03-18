@@ -77,7 +77,7 @@ class NavbarController {
     //this.$state.go('customer', {userID: this.curUsr._id, userName: this.curUsr.name})
     this.state = $state;
     this.scope = $scope;
-    this.navigate();
+    //this.navigate();
   }
 }
 
