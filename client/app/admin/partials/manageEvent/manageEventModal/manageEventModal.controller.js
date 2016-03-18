@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-  .controller('ManageEventModalCtrl', ['$scope', '$state', '$modalInstance', 'event', 'Events', function ($scope, $state, $modalInstance, event, Events)
+  .controller('ManageEventModalCtrl', ['$scope', '$state', '$q', '$modalInstance', 'event', 'Events', 'Subcontractors', function ($scope, $state, $q, $modalInstance, event, Events, Subcontractors)
   {
       $scope.event = JSON.parse(JSON.stringify(event));
+      $scope.event.subcons = [];
       $scope.currentCost = 0;
       for (var i = 0; i < $scope.event.budget.length; i++)
 	$scope.currentCost = $scope.currentCost + $scope.event.budget[i].amount;
@@ -12,6 +13,36 @@ angular.module('essenceEventsRepoApp.admin')
         $event.preventDefault();
         $event.stopPropagation();
         $scope.opened = true;
+      };
+
+      $scope.getContractors = function() {
+	Subcontractors.getAll()
+	  .then(function(response) {
+	    $scope.subcontractors = response.data;
+	  }, function(err) {
+	    //do something
+	});
+      };
+
+      $scope.getEventSubcons = function() {
+	var promises = $scope.event.subcontractors.map(function(subcon) {
+	  return Subcontractors.getOne(subcon);
+	});
+	$q.all(promises)
+	  .then(function(response) {
+	    response.forEach(function(r) {
+	      $scope.event.subcons.push(r.data);
+	    });
+	  }, function(err) {
+	    //do something
+	});
+      };
+
+      $scope.addSubcontractor = function(contractor) {
+	if ($scope.event.subcontractors.indexOf(contractor._id) === -1) {
+	  $scope.event.subcons.push(contractor);
+	  $scope.event.subcontractors.push(contractor._id);
+	}
       };
 
       $scope.hasItems = function(arr)
@@ -43,6 +74,11 @@ angular.module('essenceEventsRepoApp.admin')
       {
 	$scope.currentCost = $scope.currentCost - $scope.event.budget[index].amount;
         $scope.event.budget.splice(index, 1);
+      };
+
+      $scope.deleteSubcon = function(index) {
+	$scope.event.subcontractors.splice($scope.event.subcontractors.indexOf($scope.event.subcons[index]._id), 1);
+	$scope.event.subcons.splice(index, 1);
       };
 
       $scope.submit = function() {
