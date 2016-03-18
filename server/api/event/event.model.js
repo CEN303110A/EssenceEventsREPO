@@ -2,6 +2,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var eventSchema = new Schema({
+  userId: String,
   name: {
     type: String
   },
@@ -17,6 +18,8 @@ var eventSchema = new Schema({
   location: {
     type: String
   },
+  budgetGoal: Number,
+  toDoList: [String],
   guests: [{
     name: String,
     email: String,
@@ -28,7 +31,7 @@ var eventSchema = new Schema({
     title: String,
     amount: Number
   }],
-  subcontractors: [{type: mongoose.Schema.Types.ObjectId, ref: 'Subcontractor'}]
+  subcontractors: [String]
 });
 
 var Event = mongoose.model('Event', eventSchema);
