@@ -3,7 +3,7 @@
 angular.module('essenceEventsRepoApp.admin')
   .controller('ManageEventModalCtrl', ['$scope', '$state', '$modalInstance', 'event', 'Events', function ($scope, $state, $modalInstance, event, Events)
   {
-      $scope.event = event;
+      $scope.event = JSON.parse(JSON.stringify(event));
       $scope.currentCost = 0;
       for (var i = 0; i < $scope.event.budget.length; i++)
 	$scope.currentCost = $scope.currentCost + $scope.event.budget[i].amount;
@@ -28,7 +28,6 @@ angular.module('essenceEventsRepoApp.admin')
 
       $scope.addBudget = function(item, cost)
       {
-	console.log(item, cost);
 	if (item && cost) {
 	  $scope.event.budget.push({title: item, amount: cost});
 	  $scope.currentCost = $scope.currentCost + cost;
@@ -45,23 +44,15 @@ angular.module('essenceEventsRepoApp.admin')
 	$scope.currentCost = $scope.currentCost - $scope.event.budget[index].amount;
         $scope.event.budget.splice(index, 1);
       };
-/*
+
       $scope.submit = function() {
-	var event = {
-	  name: $scope.eventName,
-	  date: $scope.dt,
-	  location: $scope.venue,
-	  userId: $stateParams.userID,
-	  toDoList: $scope.thingsToDo,
-	  budgetGoal: $scope.budgetGoal,
-	  budget: $scope.budget
-        };
-	Events.create(event)
+	console.log($scope.event);
+	Events.update($scope.event)
 	  .then(function(response) {
-	    $state.go('admin.manageEvent');
+	    $modalInstance.close();
+	    $state.reload();
 	  }, function(err) {
-	    //do something
+	    console.log(err);
 	});
       };
-*/
 }]);

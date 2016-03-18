@@ -8,14 +8,14 @@
           <!-- Div to input the event name -->
           <div class="form-group row col-md-12" show-errors>
             <label for="eventName">Event Name:</label>
-            <input name="eventName" type="eventName" ng-model="eventName" id="eventName" class="form-control" required>
+            <input name="eventName" type="eventName" ng-model="event.name" id="eventName" class="form-control" required>
           </div>
 
           <!-- Div to input the date -->
           <div class="form-group row col-md-12" show-errors>
             <label for="dateOfEvent">Date:</label>
             <div class = "input-group">
-              <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="dt" is-open="opened"  datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+              <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="event.date" is-open="opened" picker-options="dateOptions" ng-required="true" close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -25,7 +25,7 @@
           <!-- Div to input then venue  -->
           <div class="form-group row col-md-12" show-errors>
             <label for="venue">Venue:</label>
-            <input name="venue" type="venue" ng-model="venue" id="venue" class="form-control" required>
+            <input name="venue" type="venue" ng-model="event.location" id="venue" class="form-control" required>
           </div>
 
           <!-- Div to input the goal budget -->
@@ -33,7 +33,7 @@
             <label for="budgetGoal">BudgetGoal:</label>
             <div class="input-group">
               <div class="input-group-addon">$</div>
-              <input type="number" min="0" ng-model="budgetGoal" name="budgetGoal" class="form-control" id="exampleInputAmount" placeholder="Amount">
+              <input type="number" min="0" ng-model="event.budgetGoal" name="budgetGoal" class="form-control" id="exampleInputAmount">
             </div>
           </div>
 	</form>
@@ -59,14 +59,14 @@
             <thead>
               <tr>
                 <td><b>Task</b></td>
-                <td></td>
+                <td style="text-align:right"></td>
               </tr>
             </thead>
 
             <tbody ng-repeat ="item in event.toDoList">
               <tr>
                 <td>{{item}}</td>
-                <td><button type="button" class="btn btn-danger" ng-click="deleteToDo($index)">Remove</button></td>
+                <td style="text-align:right"><button type="button" class="btn btn-danger" ng-click="deleteToDo($index)">Remove</button></td>
                </tr>
             </tbody>
 
@@ -100,7 +100,7 @@
               <tr>
                 <td><b>Expenditure</b></td>
 		<td><b>Price</b></td>
-                <td></td>
+                <td style="text-align:right"></td>
               </tr>
             </thead>
 
@@ -108,7 +108,7 @@
               <tr>
                 <td>{{item.title}}</td>
 		<td>{{item.amount}}</td>
-                <td><button type="button" class="btn btn-danger" ng-click="deleteBudget($index)">Remove</button></td>
+                <td style="text-align:right"><button type="button" class="btn btn-danger" ng-click="deleteBudget($index)">Remove</button></td>
                </tr>
             </tbody>
 
@@ -117,4 +117,7 @@
       </div>
     </tab>
   </tabset>
+  <div class="modal-footer" style="text-align:center">
+    <button class="btn btn-default" ng-click="submit()">Save Changes</button>
+  </div>
 </div>
