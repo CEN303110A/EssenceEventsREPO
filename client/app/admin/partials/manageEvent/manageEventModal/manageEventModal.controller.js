@@ -45,6 +45,15 @@ angular.module('essenceEventsRepoApp.admin')
 	}
       };
 
+      $scope.addGuest = function(name, email, phoneNumber, partySize) {
+	if(name && email)
+	  $scope.event.guests.push({name: name, email: email, phoneNumber: phoneNumber, partySize: partySize, accepted: false});
+      };
+
+      $scope.deleteGuest = function(index) {
+	$scope.event.guests.splice(index, 1);
+      };
+
       $scope.hasItems = function(arr)
       {
         return (arr.length > 0);

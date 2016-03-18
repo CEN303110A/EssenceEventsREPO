@@ -119,16 +119,16 @@
     <tab heading="Subcontractors" ng-init="getContractors();getEventSubcons()">
       <h2 class="modal-header">Event Subcontractors:</h2>
       <div class="modal-body">
-	<div class="row">
+	<form class="row" name="formsss">
 	  <div class="col-md-11">
 	    <label for="addSubcon">Add Subcontractor:</label>
-	    <select class="form-control" ng-model="addSubcon" ng-options="subcontractor as subcontractor.name for subcontractor in subcontractors | orderBy: 'name'"></select>
+	    <select type="select" class="form-control" ng-model="addSubcon" ng-options="subcontractor as subcontractor.name for subcontractor in subcontractors | orderBy: 'name'"></select>
 	  </div>
           <div class="col-md-1">
 	    <label for="button">&zwnj;</label>
-            <button class="btn btn-success" ng-click="addSubcontractor(addSubcon)">+</button>
-          </div>  
-	</div>
+            <button type="submit" class="btn btn-success" ng-click="addSubcontractor(addSubcon)">+</button>
+          </div>
+	</form>
         <div class="row">
           <table class = "col-md-12 table table-hover" ng-show="hasItems(event.subcons)">
             <thead>
