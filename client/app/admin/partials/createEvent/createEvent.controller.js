@@ -36,13 +36,24 @@ angular.module('essenceEventsRepoApp.admin')
   ];
   $scope.updateFreeCash = function()
   {
-    if($scope.currCost)
+    if ($scope.budgetGoal < $scope.currCost) {
+      $scope.mybudgetGoalStyle = {
+        "border-color" : "red",
+        "border-width": "3px",
+        "border-style": "groove"
+      }
+      $scope.budgetGoal = $scope.freeCash + $scope.currCost;
+    }
+    else if($scope.currCost) {
       $scope.freeCash = $scope.budgetGoal-$scope.currCost;
-    else
+      $scope.mybudgetGoalStyle = {};
+      $scope.changeFreeCashArr();
+    }
+    else {
       $scope.freeCash = $scope.budgetGoal
-    // if($scope.budget.length>1)
-    //   $scope.freeCash = $scope.budgetGoal - $scope.sum()
-    $scope.changeFreeCashArr();
+      $scope.changeFreeCashArr();
+      $scope.mybudgetGoalStyle = {};
+    }
   }
   // $scope.addBudgetGoal = function()
   // {
@@ -77,13 +88,13 @@ angular.module('essenceEventsRepoApp.admin')
       $scope.budget.push({title: $scope.budgetItem, amount: $scope.itemCost});
       $scope.freeCash = $scope.freeCash - $scope.itemCost;
       $scope.currCost += $scope.itemCost;
-      $scope.myStyle = {}
+      $scope.myBudgetStyle = {}
       $scope.changeFreeCashArr();
       $scope.budgetItem = null;
       $scope.itemCost = null;
     }
     else {
-      $scope.myStyle = {
+      $scope.myBudgetStyle = {
         "border-color" : "red",
         "border-width": "3px",
         "border-style": "groove"
