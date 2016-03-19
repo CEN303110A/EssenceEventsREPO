@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-  .controller('ManageContractorsCtrl', ['$scope', '$state', 'Subcontractors', function ($scope, $state, Subcontractors) {
+  .controller('ManageContractorsCtrl', ['$scope', '$state', '$modal', 'Subcontractors', function ($scope, $state, $modal, Subcontractors) {
     $scope.getSubcontractors = function() {
       Subcontractors.getAll()
         .then(function(response) {
@@ -10,17 +10,17 @@ angular.module('essenceEventsRepoApp.admin')
 	  //do something
       });
     };
-    $scope.remove = function(id) {
-      var subcontractor = {
-	_id: id,
-	name: "Don't ask",
-	link: 'no'
-      };
-      Subcontractors.update(subcontractor)
-        .then(function(response) {
-	  $state.reload();
-	}, function(err) {
-	  //do something
+    $scope.openModal = function(subcontractor) {
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'app/admin/partials/manageContractors/manageContractorModal/manageContractorModal.html',
+        controller: 'ManageContractorModalCtrl',
+        resolve: {
+          subcontractor: function()
+          {
+            return subcontractor;
+          }
+        }
       });
     };
 }])
