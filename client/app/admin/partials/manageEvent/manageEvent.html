@@ -2,18 +2,22 @@
   <h1 class="page-header">Manage Events</h1>
 
   <table class="table table-hover">
+    <thead>
       <tr>
-        <td>Name</td>
-        <td>Venue</td>
-        <td>Date</td>
+        <td><b>Name</b></td>
+        <td><b>Venue</b></td>
+        <td><b>Date</b></td>
         <td></td>
       </tr>
+    </thead>
 
+    <tbody>
       <tr ng-repeat="event in events">
           <td>{{event.name}}</td>
           <td>{{event.location}}</td>
           <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
           <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>
       </tr>
+    </tbody>
   </table>
 </div>

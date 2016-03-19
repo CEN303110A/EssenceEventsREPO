@@ -14,6 +14,8 @@
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css" />
+      <link rel="stylesheet" href="bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -26,12 +28,15 @@
       <link rel="stylesheet" href="app/admin/partials/createEvent/createEvent.css">
       <link rel="stylesheet" href="app/admin/partials/manageClients/manageClients.css">
       <link rel="stylesheet" href="app/admin/partials/manageClients/manageClientsModal/manageClientsModal.css">
+      <link rel="stylesheet" href="app/admin/partials/manageContractors/manageContractorModal/manageContractorModal.css">
       <link rel="stylesheet" href="app/admin/partials/manageContractors/manageContractors.css">
       <link rel="stylesheet" href="app/admin/partials/manageEvent/manageEvent.css">
       <link rel="stylesheet" href="app/admin/partials/manageEvent/manageEventModal/manageEventModal.css">
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/celebrations/celebrations.css">
       <link rel="stylesheet" href="app/corporate/corporate.css">
+      <link rel="stylesheet" href="app/customer/customer.css">
+      <link rel="stylesheet" href="app/customer/myEvents/myEvents.css">
       <link rel="stylesheet" href="app/links/links.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/rentals/rentals.css">
@@ -82,9 +87,11 @@
       <script src="bower_components/lodash/lodash.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
-      <script src="bower_components/api-check/dist/api-check.js"></script>
-      <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
-      <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+      <script src="bower_components/d3/d3.js"></script>
+      <script src="bower_components/nvd3/build/nv.d3.js"></script>
+      <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+      <script src="bower_components/moment/moment.js"></script>
+      <script src="bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js(.tmp) app/app.js -->
@@ -110,6 +117,8 @@
       <script src="app/admin/partials/manageClients/manageClients.js"></script>
       <script src="app/admin/partials/manageClients/manageClientsModal/manageClientsModal.controller.js"></script>
       <script src="app/admin/partials/manageClients/manageClientsModal/manageClientsModal.js"></script>
+      <script src="app/admin/partials/manageContractors/manageContractorModal/manageContractorModal.controller.js"></script>
+      <script src="app/admin/partials/manageContractors/manageContractorModal/manageContractorModal.js"></script>
       <script src="app/admin/partials/manageContractors/manageContractors.controller.js"></script>
       <script src="app/admin/partials/manageContractors/manageContractors.js"></script>
       <script src="app/admin/partials/manageEvent/manageEvent.controller.js"></script>
@@ -125,6 +134,10 @@
       <script src="app/celebrations/celebrations.js"></script>
       <script src="app/corporate/corporate.controller.js"></script>
       <script src="app/corporate/corporate.js"></script>
+      <script src="app/customer/customer.controller.js"></script>
+      <script src="app/customer/customer.js"></script>
+      <script src="app/customer/myEvents/myEvents.controller.js"></script>
+      <script src="app/customer/myEvents/myEvents.js"></script>
       <script src="app/links/links.controller.js"></script>
       <script src="app/links/links.js"></script>
       <script src="app/links/linksFactory.js"></script>

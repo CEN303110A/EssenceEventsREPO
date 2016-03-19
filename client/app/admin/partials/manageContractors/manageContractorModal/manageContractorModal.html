@@ -1,0 +1,16 @@
+<div>
+  <h2 class="modal-header">Manage Subcontractor:</h2>
+  <div class="modal-body row">
+    <div class="form-group row col-md-12" show-errors>
+      <label for="subconName">Name:</label>
+      <input name="subconName" ng-model="subcontractor.name" id="subconName" class="form-control">
+    </div>
+    <div class="form-group row col-md-12" show-errors>
+      <label for="subconLink">Link:</label>
+      <input name="subconLink" ng-model="subcontractor.link" id="subconLink" class="form-control">
+    </div>
+  </div>
+  <div class="modal-footer" style="text-align: center">
+    <button class="btn btn-default" ng-click="submit()">Save Changes</button>
+  </div>
+</div>
