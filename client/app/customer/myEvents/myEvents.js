@@ -5,7 +5,11 @@ angular.module('essenceEventsRepoApp')
     $stateProvider
       .state('myEvents', {
         url: '/myEvents',
+        params: {
+          eventt: ["-"]
+        },
         templateUrl: 'app/customer/myEvents/myEvents.html',
-        controller: 'MyEventsCtrl'
+        controller: 'MyEventsCtrl',
+        controllerAs: 'myEv'
       });
   });

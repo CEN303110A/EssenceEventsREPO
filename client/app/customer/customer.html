@@ -17,7 +17,7 @@
         <td>{{event.name}}</td>
         <td>{{event.location}}</td>
         <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
-        <td> <a ui-sref="myEvents"> Details</a></td>
+        <td> <a ui-sref="myEvents" ng-click="navigate(event)"> Details</a></td>
       </tr>
     </tbody>
   </table>

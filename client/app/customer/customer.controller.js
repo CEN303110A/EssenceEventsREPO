@@ -21,7 +21,7 @@ $scope.getEvents = function() {
   Events.getByUser($scope.id)
   .then(function(response) {
     $scope.events = response.data;
-    console.log($scope.events);
+    //console.log($scope.events);
   }, function(err) {
     //do something
     console.log(err);
@@ -30,5 +30,13 @@ $scope.getEvents = function() {
 
 $scope.openEvent = function(id){
   console.log("Event  : " + id);
+}
+
+$scope.navigate = function(eevent){
+
+  console.log("here in navigate");
+  console.log(eevent);
+  $state.go('myEvents' {eventt: eevent});
+
 }
 }]);
