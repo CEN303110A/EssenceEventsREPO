@@ -8,9 +8,8 @@ import jwt from 'jsonwebtoken';
 export function getAll(req, res) {
   Subcontractor.findAsync({}, function(err, subcontractors) {
     if (err) {
-      throw err;
       res.status(400).send(err);
-      return;
+      throw err;
     }
     res.send(subcontractors);
   });
@@ -26,9 +25,8 @@ export function create(req, res) {
     if (response.length === 0) {
       newSubcontractor.saveAsync(function(err) {
         if (err) {
-          throw err;
           res.status(400).send(err);
-          return;
+          throw err;
         }
         res.send('success');
       });

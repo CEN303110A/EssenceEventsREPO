@@ -36,7 +36,8 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.addToDo = function()
   {
     if ($scope.todoInput)
-    $scope.thingsToDo.push($scope.todoInput);
+    $scope.thingsToDo.push({task: $scope.todoInput, date: $scope.todoDate});
+    $scope.todoDate = '';
     $scope.todoInput = '';
   };
 
