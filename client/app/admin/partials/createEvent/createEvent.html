@@ -35,7 +35,7 @@
           <label for="budgetGoal">BudgetGoal:</label>
           <div class="input-group">
             <div class="input-group-addon">$</div>
-            <input type="number" min="0" ng-model="budgetGoal" name="budgetGoal" class="form-control" id="exampleInputAmount" placeholder="Amount">
+            <input type="number" min="0" ng-blur = "updateFreeCash()" ng-model="budgetGoal" name="budgetGoal" class="form-control" id="exampleInputAmount" placeholder="Amount">
           </div>
         </div>
 
@@ -44,11 +44,11 @@
           <row>
             <div id ="budget" class="col-md-7">
               <label for="budgetItem">Item:</label>
-              <input type="text" ng-model="budgetItem" class="form-control" ng-keyup="$event.keyCode == 13 && addBudget()">
+              <input type="text" ng-model="budgetItem" class="form-control" ng-style="myStyle" ng-keyup="$event.keyCode == 13 && addBudget()">
             </div>
             <div id ="budget" class="col-md-4">
               <label for="amount">Cost:</label>
-              <input type="number" ng-model="itemCost" class="form-control" ng-keyup="$event.keyCode == 13 && addBudget()">
+              <input type="number" ng-model="itemCost" class="form-control" ng-style="myStyle" ng-keyup="$event.keyCode == 13 && addBudget()" >
             </div>
             <div class="col-md-1">
               <label for="button">&zwnj;</label>
@@ -58,7 +58,7 @@
 
           <!-- display table of budget -->
           <container>
-            <table class = "col-md-12 table table-hover" ng-show="hasItems(budget)">
+            <table class = "col-md-12 table table-hover" ng-show="budgetHasItems(budget)">
               <thead>
                 <tr>
                   <td><b>Expenditure:</b></td>
@@ -68,7 +68,7 @@
                 </tr>
               </thead>
 
-              <tbody ng-repeat ="item in budget">
+              <tbody ng-repeat ="item in budget" ng-if ="$index>0">
                 <tr>
                   <td>{{item.title}}</td>
                   <td>{{item.amount}}</td>
@@ -78,7 +78,7 @@
 
             </table>
           </container>
-
+          <nvd3 options="options" data="budget" ng-if="hasItems(budget)"></nvd3>
         </div>
 
 
@@ -108,7 +108,7 @@
               <tbody ng-repeat ="item in thingsToDo">
                 <tr>
                   <td>{{item}}</td>
-                  <td><button type="button" class="btn btn-danger" ng-click="delete(thingsToDo, $index)">Remove</button></td>
+                  <td><button type="button" class="btn btn-danger" ng-click="deletethingsToDo(thingsToDo, $index)">Remove</button></td>
                 </tr>
               </tbody>
 
@@ -129,4 +129,3 @@
   <!-- </div> -->
   <hr>
 </div>
-<nvd3 options="options" data="budget" ng-if="hasItems(budget)"></nvd3>

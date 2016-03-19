@@ -14,7 +14,7 @@
       <tr ng-repeat="subcontractor in subcontractors">
           <td>{{subcontractor.name}}</td>
           <td><a ng-href="{{subcontractor.link|url}}" target="_blank">{{subcontractor.link}}</a></td>
-          <td><button type="button" class="btn btn-md btn-default" ng-click="remove(subcontractor._id)">Manage</button></td>
+          <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(subcontractor)">Manage</button></td>
       </tr>
     </tbody>
   </table>
