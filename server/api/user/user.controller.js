@@ -121,8 +121,7 @@ export function updateUser(req, res, next) {
           .catch(validationError(res));
         }
     );
-
-  };
+  }
 
 /**
  * Get my info

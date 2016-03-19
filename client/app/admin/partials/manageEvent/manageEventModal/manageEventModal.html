@@ -76,7 +76,7 @@
             <tbody ng-repeat ="item in event.toDoList">
               <tr>
                 <td>{{item.todo}}</td>
-		<td>{{item.by | date:'MM/dd/yyyy'}}</td>
+		<td>{{item.by | date:'fullDate'}}</td>
                 <td style="text-align:right"><button type="button" class="btn btn-danger" ng-click="deleteToDo($index)">Remove</button></td>
                </tr>
             </tbody>

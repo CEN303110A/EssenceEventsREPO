@@ -16,12 +16,13 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.clientName = $stateParams.usersName;
   console.log($stateParams);
 
-  //set up date
-  $scope.dt = new Date();
-  $scope.open = function($event) {
+  //set up date for event
+  $scope.eventDate = new Date();
+  $scope.openEventDate = function($event) {
+    console.log('in here');
     $event.preventDefault();
     $event.stopPropagation();
-    $scope.opened = true;
+    $scope.eventDateOpened = true;
   };
 
   // $scope.freeCash;
@@ -36,13 +37,24 @@ angular.module('essenceEventsRepoApp.admin')
   ];
   $scope.updateFreeCash = function()
   {
-    if($scope.currCost)
+    if ($scope.budgetGoal < $scope.currCost) {
+      $scope.mybudgetGoalStyle = {
+        "border-color" : "red",
+        "border-width": "3px",
+        "border-style": "groove"
+      }
+      $scope.budgetGoal = $scope.freeCash + $scope.currCost;
+    }
+    else if($scope.currCost) {
       $scope.freeCash = $scope.budgetGoal-$scope.currCost;
-    else
+      $scope.mybudgetGoalStyle = {};
+      $scope.changeFreeCashArr();
+    }
+    else {
       $scope.freeCash = $scope.budgetGoal
-    // if($scope.budget.length>1)
-    //   $scope.freeCash = $scope.budgetGoal - $scope.sum()
-    $scope.changeFreeCashArr();
+      $scope.changeFreeCashArr();
+      $scope.mybudgetGoalStyle = {};
+    }
   }
   // $scope.addBudgetGoal = function()
   // {
@@ -51,8 +63,8 @@ angular.module('essenceEventsRepoApp.admin')
   // }
   $scope.changeFreeCashArr = function()
   {
-      $scope.budget[0] = ({title: "Free Cash", amount: $scope.freeCash});
-      console.log("you good fam");
+    $scope.budget[0] = ({title: "Free Cash", amount: $scope.freeCash});
+    console.log("you good fam");
   }
 
   $scope.hasItems = function(arr)
@@ -77,13 +89,13 @@ angular.module('essenceEventsRepoApp.admin')
       $scope.budget.push({title: $scope.budgetItem, amount: $scope.itemCost});
       $scope.freeCash = $scope.freeCash - $scope.itemCost;
       $scope.currCost += $scope.itemCost;
-      $scope.myStyle = {}
+      $scope.myBudgetStyle = {}
       $scope.changeFreeCashArr();
       $scope.budgetItem = null;
       $scope.itemCost = null;
     }
     else {
-      $scope.myStyle = {
+      $scope.myBudgetStyle = {
         "border-color" : "red",
         "border-width": "3px",
         "border-style": "groove"
@@ -115,35 +127,51 @@ angular.module('essenceEventsRepoApp.admin')
     }
   };
 
+
   //adds item into todo list
+
+  //set up date for event
+  $scope.todoDate = new Date();
+  $scope.opentodoDate = function($event) {
+    console.log('in here');
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.todoDateOpened = true;
+  };
+
   $scope.addToDo = function()
   {
     if ($scope.todoInput)
-    $scope.thingsToDo.push($scope.todoInput);
+    $scope.thingsToDo.push({todo: $scope.todoInput, by: $scope.todoDate});
+    $scope.todoDate = '';
     $scope.todoInput = '';
   };
-//deletes item from todo list
-$scope.deletethingsToDo = function(arr, index)
-{
-  arr.splice(index,1);
-}
 
-$scope.submit = function() {
-  var event = {
-    name: $scope.eventName,
-    date: $scope.dt,
-    location: $scope.venue,
-    userId: $stateParams.userID,
-    toDoList: $scope.thingsToDo,
-    budgetGoal: $scope.budgetGoal,
-    budget: $scope.budget
+
+  //deletes item from todo list
+  $scope.deletethingsToDo = function(arr, index)
+  {
+    arr.splice(index,1);
+  }
+
+
+
+  $scope.submit = function() {
+    var event = {
+      name: $scope.eventName,
+      date: $scope.eventDate,
+      location: $scope.venue,
+      userId: $stateParams.userID,
+      toDoList: $scope.thingsToDo,
+      budgetGoal: $scope.budgetGoal,
+      budget: $scope.budget
+    };
+    Events.create(event)
+    .then(function(response) {
+      $state.go('admin.manageEvent');
+    }, function(err) {
+      //do something
+    });
   };
-  Events.create(event)
-  .then(function(response) {
-    $state.go('admin.manageEvent');
-  }, function(err) {
-    //do something
-  });
-};
 
 }]);

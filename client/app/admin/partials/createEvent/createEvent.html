@@ -17,9 +17,9 @@
         <div class="form-group row col-md-8" show-errors>
           <label for="dateOfEvent">Date:</label>
           <div class = "input-group">
-            <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="dt" is-open="opened"  datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+            <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="eventDate" is-open="eventDateOpened"  datepicker-options="dateOptions" ng-required="true" close-text="Close" />
             <span class="input-group-btn">
-              <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              <button type="button" class="btn btn-default" ng-click="openEventDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
           </div>
         </div>
@@ -35,20 +35,20 @@
           <label for="budgetGoal">BudgetGoal:</label>
           <div class="input-group">
             <div class="input-group-addon">$</div>
-            <input type="number" min="0" ng-blur = "updateFreeCash()" ng-model="budgetGoal" name="budgetGoal" class="form-control" id="exampleInputAmount" placeholder="Amount">
+            <input type="number" min="0" ng-blur = "updateFreeCash()" ng-model="budgetGoal" ng-style="mybudgetGoalStyle" name="budgetGoal" class="form-control" id="exampleInputAmount" placeholder="Amount">
           </div>
         </div>
 
         <!-- Budget -->
-        <div class="form-group row col-md-12" show-errors>
+        <div class="form-group row" show-errors>
           <row>
             <div id ="budget" class="col-md-7">
               <label for="budgetItem">Item:</label>
-              <input type="text" ng-model="budgetItem" class="form-control" ng-style="myStyle" ng-keyup="$event.keyCode == 13 && addBudget()">
+              <input type="text" ng-model="budgetItem" class="form-control" ng-style="myBudgetStyle" ng-keyup="$event.keyCode == 13 && addBudget()">
             </div>
             <div id ="budget" class="col-md-4">
               <label for="amount">Cost:</label>
-              <input type="number" ng-model="itemCost" class="form-control" ng-style="myStyle" ng-keyup="$event.keyCode == 13 && addBudget()" >
+              <input type="number" ng-model="itemCost" class="form-control" ng-style="myBudgetStyle" ng-keyup="$event.keyCode == 13 && addBudget()" >
             </div>
             <div class="col-md-1">
               <label for="button">&zwnj;</label>
@@ -75,21 +75,29 @@
                   <td><button type="button" class="btn btn-danger" ng-click="delete(budget, $index)">Remove</button></td>
                 </tr>
               </tbody>
-
             </table>
           </container>
-          <nvd3 options="options" data="budget" ng-if="hasItems(budget)"></nvd3>
+          <nvd3 options="options" data="budget" ng-if="budgetHasItems(budget)"></nvd3>
         </div>
 
-
         <!-- To do list -->
-        <div class="form-group row col-md-12" show-errors>
-          <label for="todo">To do list:</label>
+        <div class="form-group row" show-errors>
           <row>
-            <div id ="todo" class="col-md-11">
-              <input type="text" ng-model="todoInput" class="form-control" ng-keyup="$event.keyCode == 13 && addToDo()">
+            <div id ="todo" class="col-md-6">
+              <label for="todo">Task:</label>
+              <input type="text" placeholder = "Task" ng-model="todoInput" class="form-control" ng-keyup="$event.keyCode == 13 && addToDo()">
+            </div>
+            <div id ="date" class="col-md-5">
+              <label for="date">Date:</label>
+              <div class = "input-group">
+                <input type="text" class="form-control" id="date" datepicker-popup="fullDate" ng-model="todoDate" is-open="todoDateOpened"  datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-keyup="$event.keyCode == 13 && addToDo()"/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="opentodoDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </div>
             </div>
             <div class="col-md-1">
+              <label for="button">&zwnj;</label>
               <button type="button" class="btn btn-success" ng-click="addToDo()">+</button>
             </div>
           </row>
@@ -100,14 +108,15 @@
               <thead>
                 <tr>
                   <td><b>Task</b></td>
+                  <td><b>Date</b></td>
                   <td></td>
-
                 </tr>
               </thead>
 
               <tbody ng-repeat ="item in thingsToDo">
                 <tr>
-                  <td>{{item}}</td>
+                  <td>{{item.todo}}</td>
+                  <td>{{item.by | date:"fullDate"}}</td>
                   <td><button type="button" class="btn btn-danger" ng-click="deletethingsToDo(thingsToDo, $index)">Remove</button></td>
                 </tr>
               </tbody>

@@ -15,6 +15,7 @@
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css" />
+      <link rel="stylesheet" href="bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -27,6 +28,7 @@
       <link rel="stylesheet" href="app/admin/partials/createEvent/createEvent.css">
       <link rel="stylesheet" href="app/admin/partials/manageClients/manageClients.css">
       <link rel="stylesheet" href="app/admin/partials/manageClients/manageClientsModal/manageClientsModal.css">
+      <link rel="stylesheet" href="app/admin/partials/manageContractors/manageContractorModal/manageContractorModal.css">
       <link rel="stylesheet" href="app/admin/partials/manageContractors/manageContractors.css">
       <link rel="stylesheet" href="app/admin/partials/manageEvent/manageEvent.css">
       <link rel="stylesheet" href="app/admin/partials/manageEvent/manageEventModal/manageEventModal.css">
@@ -87,6 +89,8 @@
       <script src="bower_components/d3/d3.js"></script>
       <script src="bower_components/nvd3/build/nv.d3.js"></script>
       <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+      <script src="bower_components/moment/moment.js"></script>
+      <script src="bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js(.tmp) app/app.js -->
@@ -95,7 +99,7 @@
       <script src="app/admin/admin.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/celebrations/celebrations.controller.js"></script>
+      <script src="app/admin/partials/signup/signup.js"></script>
       <script src="app/account/settings/settings.controller.js"></script>
       <script src="app/admin/admin.controller.js"></script>
       <script src="app/aboutus/aboutus.controller.js"></script>
@@ -112,6 +116,8 @@
       <script src="app/admin/partials/manageClients/manageClients.js"></script>
       <script src="app/admin/partials/manageClients/manageClientsModal/manageClientsModal.controller.js"></script>
       <script src="app/admin/partials/manageClients/manageClientsModal/manageClientsModal.js"></script>
+      <script src="app/admin/partials/manageContractors/manageContractorModal/manageContractorModal.controller.js"></script>
+      <script src="app/admin/partials/manageContractors/manageContractorModal/manageContractorModal.js"></script>
       <script src="app/admin/partials/manageContractors/manageContractors.controller.js"></script>
       <script src="app/admin/partials/manageContractors/manageContractors.js"></script>
       <script src="app/admin/partials/manageEvent/manageEvent.controller.js"></script>
