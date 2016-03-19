@@ -1,129 +1,132 @@
 <div class="container">
   <!-- <div class="row"> -->
-    <div class="page-header">
-      <h1>Create new event for <i>{{clientName}}</i></h1>
+  <div class="page-header">
+    <h1>Create new event for <i>{{clientName}}</i></h1>
+  </div>
+  <section>
+    <div>
+      <form class="form-horizontal col-md-8" name="form">
+
+        <!-- Div to input the event name -->
+        <div class="form-group row col-md-12" show-errors>
+          <label for="eventName">Event Name:</label>
+          <input name="eventName" type="eventName" ng-model="eventName" id="eventName" class="form-control" required>
+        </div>
+
+        <!-- Div to input the date -->
+        <div class="form-group row col-md-8" show-errors>
+          <label for="dateOfEvent">Date:</label>
+          <div class = "input-group">
+            <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="dt" is-open="opened"  datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </div>
+        </div>
+
+        <!-- Div to input then venue  -->
+        <div class="form-group row col-md-12" show-errors>
+          <label for="venue">Venue:</label>
+          <input name="venue" type="venue" ng-model="venue" id="venue" class="form-control" required>
+        </div>
+
+        <!-- Div to input the goal budget -->
+        <div class="form-group row col-md-12" show-errors>
+          <label for="budgetGoal">BudgetGoal:</label>
+          <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="number" min="0" ng-model="budgetGoal" name="budgetGoal" class="form-control" id="exampleInputAmount" placeholder="Amount">
+          </div>
+        </div>
+
+        <!-- Budget -->
+        <div class="form-group row col-md-12" show-errors>
+          <row>
+            <div id ="budget" class="col-md-7">
+              <label for="budgetItem">Item:</label>
+              <input type="text" ng-model="budgetItem" class="form-control" ng-keyup="$event.keyCode == 13 && addBudget()">
+            </div>
+            <div id ="budget" class="col-md-4">
+              <label for="amount">Cost:</label>
+              <input type="number" ng-model="itemCost" class="form-control" ng-keyup="$event.keyCode == 13 && addBudget()">
+            </div>
+            <div class="col-md-1">
+              <label for="button">&zwnj;</label>
+              <button type="button" class="btn btn-success" ng-click="addBudget()">+</button>
+            </div>
+          </row>
+
+          <!-- display table of budget -->
+          <container>
+            <table class = "col-md-12 table table-hover" ng-show="hasItems(budget)">
+              <thead>
+                <tr>
+                  <td><b>Expenditure:</b></td>
+                  <td><b>Price:</b></td>
+                  <td></td>
+
+                </tr>
+              </thead>
+
+              <tbody ng-repeat ="item in budget">
+                <tr>
+                  <td>{{item.title}}</td>
+                  <td>{{item.amount}}</td>
+                  <td><button type="button" class="btn btn-danger" ng-click="delete(budget, $index)">Remove</button></td>
+                </tr>
+              </tbody>
+
+            </table>
+          </container>
+
+        </div>
+
+
+        <!-- To do list -->
+        <div class="form-group row col-md-12" show-errors>
+          <label for="todo">To do list:</label>
+          <row>
+            <div id ="todo" class="col-md-11">
+              <input type="text" ng-model="todoInput" class="form-control" ng-keyup="$event.keyCode == 13 && addToDo()">
+            </div>
+            <div class="col-md-1">
+              <button type="button" class="btn btn-success" ng-click="addToDo()">+</button>
+            </div>
+          </row>
+
+          <!-- display table of todolist -->
+          <container>
+            <table class = "col-md-12 table table-hover" ng-show="hasItems(thingsToDo)">
+              <thead>
+                <tr>
+                  <td><b>Task</b></td>
+                  <td></td>
+
+                </tr>
+              </thead>
+
+              <tbody ng-repeat ="item in thingsToDo">
+                <tr>
+                  <td>{{item}}</td>
+                  <td><button type="button" class="btn btn-danger" ng-click="delete(thingsToDo, $index)">Remove</button></td>
+                </tr>
+              </tbody>
+
+            </table>
+          </container>
+
+        </div>
+
+
+        <!-- Submit button -->
+        <div class="form-group row col-md-12">
+          <button type="button" class="btn btn-default" ng-click="submit()">Submit</button>
+        </div>
+
+      </form>
     </div>
-    <section>
-      <div>
-        <form class="form-horizontal col-md-8" name="form">
-
-          <!-- Div to input the event name -->
-          <div class="form-group row col-md-12" show-errors>
-            <label for="eventName">Event Name:</label>
-            <input name="eventName" type="eventName" ng-model="eventName" id="eventName" class="form-control" required>
-          </div>
-
-          <!-- Div to input the date -->
-          <div class="form-group row col-md-8" show-errors>
-            <label for="dateOfEvent">Date:</label>
-            <div class = "input-group">
-              <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="dt" is-open="opened"  datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </div>
-          </div>
-
-          <!-- Div to input then venue  -->
-          <div class="form-group row col-md-12" show-errors>
-            <label for="venue">Venue:</label>
-            <input name="venue" type="venue" ng-model="venue" id="venue" class="form-control" required>
-          </div>
-
-          <!-- Div to input the goal budget -->
-          <div class="form-group row col-md-12" show-errors>
-            <label for="budgetGoal">BudgetGoal:</label>
-            <div class="input-group">
-              <div class="input-group-addon">$</div>
-              <input type="number" min="0" ng-model="budgetGoal" name="budgetGoal" class="form-control" id="exampleInputAmount" placeholder="Amount">
-            </div>
-          </div>
-
-          <!-- To do list -->
-          <div class="form-group row col-md-12" show-errors>
-            <label for="todo">To do list:</label>
-            <row>
-              <div id ="todo" class="col-md-11">
-                  <input type="text" ng-model="todoInput" class="form-control" ng-keyup="$event.keyCode == 13 && addToDo()">
-              </div>
-              <div class="col-md-1">
-                  <button type="button" class="btn btn-success" ng-click="addToDo()">+</button>
-              </div>
-            </row>
-
-            <!-- display table of todolist -->
-            <container>
-              <table class = "col-md-12 table table-hover" ng-show="hasItems(thingsToDo)">
-                <thead>
-                  <tr>
-                    <td><b>Task</b></td>
-                    <td></td>
-
-                  </tr>
-                </thead>
-
-                <tbody ng-repeat ="item in thingsToDo">
-                  <tr>
-                    <td>{{item}}</td>
-                    <td><button type="button" class="btn btn-danger" ng-click="delete(thingsToDo, $index)">Remove</button></td>
-                  </tr>
-                </tbody>
-
-              </table>
-            </container>
-
-          </div>
-
-          <!-- Budget -->
-          <div class="form-group row col-md-12" show-errors>
-            <row>
-              <div id ="budget" class="col-md-7">
-                  <label for="budgetItem">Item:</label>
-                  <input type="text" ng-model="budgetItem" class="form-control" ng-keyup="$event.keyCode == 13 && addBudget()">
-              </div>
-              <div id ="budget" class="col-md-4">
-		  <label for="amount">Cost:</label>
-                  <input type="number" ng-model="itemCost" class="form-control" ng-keyup="$event.keyCode == 13 && addBudget()">
-              </div>
-              <div class="col-md-1">
-		<label for="button">&zwnj;</label>
-                  <button type="button" class="btn btn-success" ng-click="addBudget()">+</button>
-              </div>
-            </row>
-
-            <!-- display table of budget -->
-            <container>
-              <table class = "col-md-12 table table-hover" ng-show="hasItems(budget)">
-                <thead>
-                  <tr>
-                    <td><b>Expenditure:</b></td>
-		    <td><b>Price:</b></td>
-                    <td></td>
-
-                  </tr>
-                </thead>
-
-                <tbody ng-repeat ="item in budget">
-                  <tr>
-                    <td>{{item.title}}</td>
-		    <td>{{item.amount}}</td>
-                    <td><button type="button" class="btn btn-danger" ng-click="delete(budget, $index)">Remove</button></td>
-                  </tr>
-                </tbody>
-
-              </table>
-            </container>
-
-          </div>
-
-	  <!-- Submit button -->
-	  <div class="form-group row col-md-12">
-	    <button type="button" class="btn btn-default" ng-click="submit()">Submit</button>
-	  </div>
-
-        </form>
-      </div>
   </section>
   <!-- </div> -->
   <hr>
 </div>
+<nvd3 options="options" data="budget" ng-if="hasItems(budget)"></nvd3>

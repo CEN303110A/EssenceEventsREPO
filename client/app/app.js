@@ -10,9 +10,7 @@ angular.module('essenceEventsRepoApp', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  'uiGmapgoogle-maps'
-  // 'api-check',
-  // 'angular-formly'
+  'nvd3'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
