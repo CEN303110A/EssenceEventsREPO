@@ -7,7 +7,9 @@ angular.module('essenceEventsRepoApp')
         url: '/customer',
         params: {
           userID: 'undefined',
-          userName: 'undefined'
+          userName: 'undefined',
+          events: ['=']
+
         },
         templateUrl: 'app/customer/customer.html',
         controller: 'CustomerCtrl',

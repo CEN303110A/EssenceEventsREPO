@@ -5,6 +5,8 @@ angular.module('essenceEventsRepoApp')
   $scope.message = 'Hello';
   $scope.clientName = $stateParams.userName;
   $scope.id = $stateParams.userID;
+  $scope.events = $stateParams.events;
+  console.log($scope.events);
   //  console.log("userid: " + $scope.id);
   //  console.log("username: " + $scope.clientName);
   /*
@@ -17,15 +19,9 @@ $scope.getEvents = function(){
 }; */
 
 $scope.getEvents = function() {
-  //console.log("Get events called" );
-  Events.getByUser($scope.id)
-  .then(function(response) {
-    $scope.events = response.data;
-    //console.log($scope.events);
-  }, function(err) {
-    //do something
-    console.log(err);
-  });
+
+  
+
 };
 
 $scope.openEvent = function(id){
