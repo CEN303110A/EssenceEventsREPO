@@ -24,37 +24,81 @@ angular.module('essenceEventsRepoApp.admin')
     $scope.opened = true;
   };
 
+  // $scope.freeCash;
+  $scope.currCost = 0;
+  $scope.myStyle='';
   $scope.thingsToDo = [];
-  $scope.budget = [];
+  $scope.budget = [
+    {
+      title: "Free Cash",
+      amount: $scope.freeCash
+    }
+  ];
+  $scope.updateFreeCash = function()
+  {
+    if($scope.currCost)
+      $scope.freeCash = $scope.budgetGoal-$scope.currCost;
+    else
+      $scope.freeCash = $scope.budgetGoal
+    // if($scope.budget.length>1)
+    //   $scope.freeCash = $scope.budgetGoal - $scope.sum()
+    $scope.changeFreeCashArr();
+  }
+  // $scope.addBudgetGoal = function()
+  // {
+  //   if($scope.budgetGoal && $scope.budget.length == 0 )
+  //   $scope.budget.push({title: "Free Cash", amount: $scope.freeCash});
+  // }
+  $scope.changeFreeCashArr = function()
+  {
+      $scope.budget[0] = ({title: "Free Cash", amount: $scope.freeCash});
+      console.log("you good fam");
+  }
 
   $scope.hasItems = function(arr)
   {
     return (arr.length > 0);
   };
-
-  //adds item into todo list
-  $scope.addToDo = function()
+  $scope.budgetHasItems = function(arr)
   {
-    if ($scope.todoInput)
-    $scope.thingsToDo.push($scope.todoInput);
-    $scope.todoInput = '';
+    return (arr.length > 1);
   };
+  $scope.delete = function(arr, index)
+  {
+    $scope.freeCash = $scope.freeCash + $scope.budget[index].amount;
+    $scope.changeFreeCashArr();
+    $scope.currCost -=$scope.budget[index].amount;
 
+    arr.splice(index, 1);
+  };
   $scope.addBudget = function()
   {
-    if ($scope.budgetItem && $scope.itemCost)
-    $scope.budget.push({title: $scope.budgetItem, amount: $scope.itemCost});
-    $scope.budgetItem = null;
-    $scope.itemCost = null;
+    if ($scope.budgetItem && $scope.itemCost && $scope.freeCash >= $scope.itemCost) {
+      $scope.budget.push({title: $scope.budgetItem, amount: $scope.itemCost});
+      $scope.freeCash = $scope.freeCash - $scope.itemCost;
+      $scope.currCost += $scope.itemCost;
+      $scope.myStyle = {}
+      $scope.changeFreeCashArr();
+      $scope.budgetItem = null;
+      $scope.itemCost = null;
+    }
+    else {
+      $scope.myStyle = {
+        "border-color" : "red",
+        "border-width": "3px",
+        "border-style": "groove"
+      }
+      alert("Invalid input");
+    }
+    // $scope.budgetItem = null;
+    // $scope.itemCost = null;
   }
   // Pi chart for budget
   $scope.options = {
     chart: {
       type: 'pieChart',
       height: 500,
-      x: function(d){
-        console.log(d);
-        return d.title;},
+      x: function(d){return d.title;},
       y: function(d){return d.amount;},
       showLabels: true,
       duration: 500,
@@ -71,43 +115,18 @@ angular.module('essenceEventsRepoApp.admin')
     }
   };
 
-  $scope.data = [
-    {
-      key: "One",
-      y: 5
-    },
-    {
-      key: "Two",
-      y: 2
-    },
-    {
-      key: "Three",
-      y: 9
-    },
-    {
-      key: "Four",
-      y: 7
-    },
-    {
-      key: "Five",
-      y: 4
-    },
-    {
-      key: "Six",
-      y: 3
-    },
-    {
-      key: "Seven",
-      y: 20
-    }
-  ];
-
-
+  //adds item into todo list
+  $scope.addToDo = function()
+  {
+    if ($scope.todoInput)
+    $scope.thingsToDo.push($scope.todoInput);
+    $scope.todoInput = '';
+  };
 //deletes item from todo list
-$scope.delete = function(arr, index)
+$scope.deletethingsToDo = function(arr, index)
 {
-  arr.splice(index, 1);
-};
+  arr.splice(index,1);
+}
 
 $scope.submit = function() {
   var event = {
