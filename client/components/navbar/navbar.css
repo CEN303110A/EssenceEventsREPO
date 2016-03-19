@@ -1,5 +1,7 @@
 .fa {
   color:grey;
+  padding: 5px;
+  padding-top:12px;
 }
 .fa-facebook-official:hover, .fa-facebook-official:focus{
     color: #3b5998;
@@ -16,7 +18,4 @@
 .fa-linkedin-square:hover, .fa-linkedin-square:focus {
   color:#0077B5;
   text-decoration: none;
-}
-.fa {
-  padding: 5px;
 }
