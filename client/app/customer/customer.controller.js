@@ -36,7 +36,7 @@ $scope.navigate = function(eevent){
 
   console.log("here in navigate");
   console.log(eevent);
-  $state.go('myEvents' {eventt: eevent});
+  $state.go('myEvents' ,{eventt: eevent});
 
 }
 }]);
