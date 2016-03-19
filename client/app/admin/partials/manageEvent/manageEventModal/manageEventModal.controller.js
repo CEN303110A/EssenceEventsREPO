@@ -60,10 +60,10 @@ angular.module('essenceEventsRepoApp.admin')
       };
 
       //adds item into todo list
-      $scope.addToDo = function(todo)
+      $scope.addToDo = function(todo, dueDate)
       {
-	if (todo)
-          $scope.event.toDoList.push(todo);
+	if (todo && dueDate)
+          $scope.event.toDoList.push({todo: todo, by: dueDate});
       };
 
       $scope.addBudget = function(item, cost)

@@ -19,7 +19,10 @@ var eventSchema = new Schema({
     type: String
   },
   budgetGoal: Number,
-  toDoList: [String],
+  toDoList: [{
+    todo: String,
+    by: Date
+  }],
   guests: [{
     name: String,
     email: String,
