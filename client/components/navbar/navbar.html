@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav">
         <span ng-repeat-start="item in nav.menu"></span>
         <li ng-if="item.hasDropDown" dropdown ui-sref-active="active">
-            <a  dropdown-toggle>{{item.title}}<b class="caret"></b></a>
+            <a  dropdown-toggle href="#">{{item.title}}<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li ng-repeat="subItem in $parent.item.sublinks">
                 <a ui-sref="{{subItem.state}}">{{subItem.title}}</a>
