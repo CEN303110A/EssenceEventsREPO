@@ -1,6 +1,6 @@
 <div ng-controller="MyEventsCtrl" ng-init="initialize()">
 
-
-  This is the myEvents view.
-
+  <h1> Event: {{ev_name}} </h1>
+  <h3> Date: {{ev_date.substring(5,10) + '-' + ev_date.substring(0,4)}}</h3>
+  <h3> Location: {{ev_loc}}</h3>
 </div>
