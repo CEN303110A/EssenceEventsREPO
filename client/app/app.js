@@ -10,11 +10,14 @@ angular.module('essenceEventsRepoApp', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  'nvd3'
+  'nvd3',
+  'mwl.calendar'
 ])
-  .config(function($urlRouterProvider, $locationProvider) {
+  .config(function($urlRouterProvider, $locationProvider, calendarConfig) {
     $urlRouterProvider
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
+
+    calendarConfig.displayAllMonthEvents = true;
   });

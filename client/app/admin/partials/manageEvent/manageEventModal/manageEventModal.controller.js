@@ -13,8 +13,6 @@ angular.module('essenceEventsRepoApp.admin')
   //this is for Basic Info
   $scope.datePicker = {opened: false, scheduleDateOpened: false};
   $scope.open = function($event) {
-    console.log($scope);
-    console.log($event);
     $event.preventDefault();
     $event.stopPropagation();
     $scope.datePicker.opened = true;
