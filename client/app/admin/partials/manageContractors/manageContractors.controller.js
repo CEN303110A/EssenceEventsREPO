@@ -23,18 +23,6 @@ angular.module('essenceEventsRepoApp.admin')
         }
       });
     };
-    $scope.calendarView = 'month';
-    $scope.calendarDate = new Date(2013,1,1);
-    $scope.list = [
-  {
-    title: 'Do something on the todo list', // The title of the event
-    startsAt: new Date(2013,1,1), // A javascript date object for when the event starts
-  },
-  {
-    title: 'Do something else', // The title of the event
-    startsAt: new Date(2013,0,31), // A javascript date object for when the event starts
-  }
-    ];
 }])
   .filter('url', function() {
     return function(link) {
