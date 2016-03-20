@@ -11,21 +11,23 @@ angular.module('essenceEventsRepoApp.admin')
 
 
   //this is for Basic Info
+  $scope.datePicker = {opened: false, scheduleDateOpened: false};
   $scope.open = function($event) {
+    console.log($scope);
     console.log($event);
     $event.preventDefault();
     $event.stopPropagation();
-    $scope.opened = true;
+    $scope.datePicker.opened = true;
   };
 
 
   //used for Schedule Tab,
-  $scope.newDueDate = new Date();
   $scope.scheduleDateOpen = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
-    $scope.scheduleDateopened = true;
+    $scope.datePicker.scheduleDateOpened = true;
   };
+
 
   //adds item into todo list
   $scope.addToDo = function(todo, dueDate)

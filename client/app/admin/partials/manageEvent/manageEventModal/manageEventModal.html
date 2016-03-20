@@ -1,4 +1,4 @@
-<div>
+<div ng-click="resetPicker()">
   <tabset justified="true">
     <tab heading="Basic Info">
       <h2 class="modal-header">Client information:</h2>
@@ -15,7 +15,7 @@
           <div class="form-group row col-md-12" show-errors>
             <label for="dateOfEvent">Date:</label>
             <div class = "input-group">
-              <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="event.date" is-open="opened" picker-options="dateOptions" ng-required="true" close-text="Close" />
+              <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="event.date" is-open="datePicker.opened" picker-options="dateOptions" ng-required="true" close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -51,7 +51,7 @@
           <div class="form-group row col-md-4" show-errors>
             <label for="dateOfEvent">Date:</label>
             <div class = "input-group">
-              <input type="text" class="form-control" id="eventDate" datepicker-popup="fullDate" ng-model="newDueDate" is-open="scheduleDateopened" picker-options="dateOptions" close-text="Close" />
+              <input type="text" class="form-control" id="eventDate" datepicker-popup="fullDate" ng-model="newDueDate" is-open="datePicker.scheduleDateOpened" picker-options="dateOptions" close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="scheduleDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
