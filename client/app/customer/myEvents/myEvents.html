@@ -4,6 +4,27 @@
   <h3> Date: {{ev_date.substring(5,10) + '-' + ev_date.substring(0,4)}}</h3>
   <h3> Location: {{ev_loc}}</h3>
   <!--Your budget-->
-  <h3 align="center">Your Budget</h3>
-  <nvd3 options="options" data="ev_budget"></nvd3>
+  <div class = "col-md-6">
+    <h3 align="center">Your Budget</h3>
+    <nvd3 options="options" data="ev_budget"></nvd3>
+  </div>
+  <!-- display table of todolist -->
+  <container class = "col-md-6">
+    <table class = "table table-hover">
+      <thead>
+        <tr>
+          <td><b>Task</b></td>
+          <td><b>Date</b></td>
+          <td></td>
+        </tr>
+      </thead>
+
+      <tbody ng-repeat ="item in ev_toDoList" ng-show="hasItems(ev_toDoList)">
+        <tr>
+          <td>{{item.todo}}</td>
+          <td>{{item.by | date:"fullDate"}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </container>
 </div>

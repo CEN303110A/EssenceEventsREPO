@@ -13,8 +13,10 @@ angular.module('essenceEventsRepoApp')
     $scope.ev_date = the_event.date;
     $scope.ev_loc  = the_event.location;
     $scope.ev_budget = the_event.budget;
-    console.log(the_event);
-    console.log($scope.ev_budget);
+    $scope.ev_toDoList = the_event.toDoList;
+    // console.log(the_event);
+    // console.log($scope.ev_budget);
+    console.log($scope.ev_toDoList)
   }
     // Pi chart for budget
     $scope.options = {
@@ -37,4 +39,11 @@ angular.module('essenceEventsRepoApp')
         }
       }
     };
+
+    //Todo list
+    $scope.hasItems = function(arr)
+    {
+      return (arr.length > 0);
+    };
+
 }]);
