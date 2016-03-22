@@ -37,7 +37,7 @@
             <th>Venue</th>
             <th>Budget</th>
           </tr>
-          <tr ng-repeat="event in events">
+          <tr ng-repeat="event in events" ng-click="manageEvent(event)">
             <td>{{event.name}}</td>
             <td>{{event.location}}</td>
             <td>{{event.budgetGoal}}</td>

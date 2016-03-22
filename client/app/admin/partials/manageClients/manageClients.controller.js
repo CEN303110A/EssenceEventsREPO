@@ -4,7 +4,7 @@
   class ManageClientsCtrl{
 
       //pass dependencies through constructor
-      constructor(User, $modal, $scope) {
+      constructor(User, $modal, $scope, $state) {
         // Use the User $resource to fetch all users
         this.alldata = User.query();
         this.modalService = $modal;
@@ -23,9 +23,6 @@
             }
           }
         });
-
-
-
       }
 
       delete(user) {

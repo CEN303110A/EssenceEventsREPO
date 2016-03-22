@@ -1,23 +1,13 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp')
-.controller('MyEventsCtrl',  ['$scope' , '$stateParams', function ($scope, $stateParams) {
+.controller('MyEventsCtrl',  ['$scope' , '$stateParams', '$state', function ($scope, $stateParams, $state) {
   $scope.message = 'Hello';
 
+  if ($stateParams.eventt[0])
+    $state.go('customer');
+  $scope.ev = $stateParams.eventt;
 
-  $scope.initialize = function(){
-
-    $scope.ev = $stateParams.eventt;
-    let the_event = $scope.ev;
-    $scope.ev_name = the_event.name;
-    $scope.ev_date = the_event.date;
-    $scope.ev_loc  = the_event.location;
-    $scope.ev_budget = the_event.budget;
-    $scope.ev_toDoList = the_event.toDoList;
-    // console.log(the_event);
-    // console.log($scope.ev_budget);
-    console.log($scope.ev_toDoList)
-  }
     // Pi chart for budget
     $scope.options = {
       chart: {

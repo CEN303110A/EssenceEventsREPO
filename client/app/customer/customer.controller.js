@@ -7,7 +7,7 @@ var getUser = function() {
   if (!$scope.curUser._id)
     setTimeout(getUser, 100);
   else {
-    $scope.clientName = $scope.name;
+    $scope.clientName = $scope.curUser.name;
     $scope.id = $scope.curUser._id;
   }
 };
