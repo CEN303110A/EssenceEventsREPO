@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal" method="post">
+                <legend class="text-center header">Need To Rent Something?</legend>
+                <div class="form-group">
+                    <div class="col-md-12 text-center">
+                        <a href="reservations">
+                            <button type="contact_us" class="btn btn-primary btn-lg">Contact Us</button>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-12">
+            <div ng-controller="RentalsCtrl">
+                <div style="height: 700px">
+                    <carousel interval="myInterval">
+                        <slide ng-repeat="slide in slides" active="slide.active">
+                            <img ng-src="{{slide.image}}" style="margin:auto;" height="400px" width="400px">
+                            <div class="carousel-caption">
+                                <p>{{slide.text}}</p>
+                            </div>
+                        </slide>
+                    </carousel>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

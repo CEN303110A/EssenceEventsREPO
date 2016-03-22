@@ -18,7 +18,7 @@ class NavbarController {
         },
         {
           'title': 'Rentals',
-          'state': 'services'
+          'state': 'rentals'
         }
       ]
     },
