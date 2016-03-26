@@ -1,5 +1,5 @@
 angular.module('essenceEventsRepoApp.admin')
-  .controller('CreateContractorCtrl', ['$scope', 'Subcontractors', function ($scope, Subcontractors) {
+  .controller('CreateContractorCtrl', ['$scope', '$state', 'Subcontractors', function ($scope, $state, Subcontractors) {
     $scope.submit = function() {
       var contractor = {
         name: $scope.name,
@@ -7,7 +7,7 @@ angular.module('essenceEventsRepoApp.admin')
       };
       Subcontractors.create(contractor)
         .then(function(response) {
-	  $scope.error = 'Subcontractor successfully added';
+	  $state.go('admin.manageContractors');
         }, function(error) {
 	  $scope.error = "Error: Check that name doesn't already exist";
       });
