@@ -53,7 +53,6 @@ export function create(req, res, next) {
  */
 export function show(req, res, next) {
   var userId = req.params.id;
-
   User.findByIdAsync(userId)
     .then(user => {
       if (!user) {

@@ -178,6 +178,10 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
      */
     getToken() {
       return $cookies.get('token');
+    },
+
+    getById(id) {
+      return $http.get('http://localhost:8080/api/users/' + id);
     }
   };
 

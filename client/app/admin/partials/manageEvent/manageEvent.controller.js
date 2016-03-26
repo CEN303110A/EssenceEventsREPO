@@ -6,13 +6,13 @@ angular.module('essenceEventsRepoApp.admin')
       Events.getAll()
 	.then(function(response) {
 	  $scope.events = response.data;
-	  var promises = [];
-	  for (var i = 0; i < $scope.events.length; i++)
-	    promises.push(Auth.getById($scope.events[i].userId));
-	  $q.all(promises).then(function(res) {
-	    console.log(res);
-	  }, function(err) {
-	    //do something
+	  $scope.events.forEach(function(event) {
+	    Auth.getById(event.userId)
+	      .then(function(response) {
+		event.userName = response.data.name;
+	      }, function(err) {
+		//do something
+	    });
 	  });
 	}, function(error) {
 	  //do something
