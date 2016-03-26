@@ -5,6 +5,7 @@
     <thead>
       <tr>
         <td><b>Name</b></td>
+	<td><b>User</b></td>
         <td><b>Venue</b></td>
         <td><b>Date</b></td>
         <td></td>
@@ -14,6 +15,7 @@
     <tbody>
       <tr ng-repeat="event in events">
           <td>{{event.name}}</td>
+	  <td>{{event.userName}}</td>
           <td>{{event.location}}</td>
           <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
           <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>

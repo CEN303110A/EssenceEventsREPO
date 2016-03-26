@@ -6,6 +6,8 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.username = user.name;
   $scope.email = user.email;
   $scope.phoneNumber = user.phoneNumber;
+  $scope.deleteHTML = false;
+
 
   //submit function
   $scope.submit = function(username, email, phoneNumber) {
@@ -14,8 +16,6 @@ angular.module('essenceEventsRepoApp.admin')
     user.email = email;
     user.phoneNumber = phoneNumber;
     user.$save();
-    console.log(user);
-
     $modalInstance.close();
   };
 
@@ -53,10 +53,27 @@ angular.module('essenceEventsRepoApp.admin')
     });
   };
 
+  //implementing delete within modal
+  // $scope.deleteUser = function()
+  // {
+  //   $modalInstance.close();
+  //   $state.go('admin.deleteUserPage', {userID : user._id, usersName : user.name})
+  // }
 
-  $scope.deleteUser = function()
+  //logic for delete user page
+  $scope.toggleDeleteUser = function()
   {
+    $scope.deleteHTML = !($scope.deleteHTML);
+  }
+
+  $scope.refreshDeleteUserHTML = function()
+  {
+    $scope.deleteHTML = false;
+  }
+
+  $scope.deleteUser = function() {
     $modalInstance.close();
-    $state.go('admin.deleteUserPage', {userID : user._id, usersName : user.name})
+    user.$remove();
+    $state.reload();
   }
 }]);
