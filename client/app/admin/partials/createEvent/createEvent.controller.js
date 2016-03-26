@@ -17,6 +17,7 @@ angular.module('essenceEventsRepoApp.admin')
 
   //set up date for event
   $scope.eventDate = new Date();
+  $scope.eventDate.setHours(0,0,0,0);
   $scope.openEventDate = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
@@ -155,6 +156,7 @@ angular.module('essenceEventsRepoApp.admin')
 
 
   $scope.submit = function() {
+    $scope.eventDate.setHours(0,0,0,0);
     var event = {
       name: $scope.eventName,
       date: $scope.eventDate,

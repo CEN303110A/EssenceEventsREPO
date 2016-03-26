@@ -104,7 +104,6 @@ angular.module('essenceEventsRepoApp.admin')
   };
 
   $scope.submit = function() {
-    console.log($scope.event);
     Events.update($scope.event)
     .then(function(response) {
       $modalInstance.close();
