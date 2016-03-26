@@ -1,7 +1,8 @@
 <div ng-init="getEvents()">
   <h1 class="page-header">Manage Events</h1>
-
-  <h2>Current Events</h2>
+<tabset>
+<tab heading="Current Events">
+  <h2><br>Current Events</h2>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -23,8 +24,10 @@
       </tr>
     </tbody>
   </table>
+</tab>
 
-  <h2>Past Events</h2>
+<tab heading="Past Events">
+  <h2><br>Past Events</h2>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -46,4 +49,6 @@
       </tr>
     </tbody>
   </table>
+</tab>
+</tabset>
 </div>
