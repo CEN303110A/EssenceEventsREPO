@@ -11,7 +11,7 @@
       </thead>
 
       <tbody>
-        <tr ng-repeat="user in mc.alldata">
+        <tr ng-repeat="user in mc.alldata | filter: 'user'">
             <td>{{user.name}}</td>
             <td>{{user.phoneNumber}}</td>
             <td>{{user.email}}</td>
