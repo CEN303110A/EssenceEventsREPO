@@ -16,20 +16,6 @@ ul {
     margin: 0;
 }
 
-a {
-    transition: color 0.2s ease-in-out;
-    -moz-transition: color 0.2s ease-in-out;
-    -webkit-transition: color 0.2s ease-in-out;
-    -o-transition: color 0.2s ease-in-out;
-}
-
-a:hover {
-    color: #444;
-}
-
-a, a:hover {
-    text-decoration: none;
-}
 
 i {
 	font-size: 1.1em;
@@ -112,49 +98,6 @@ p strong {
 	text-transform: uppercase;
 }
 
-.image-text {
-	margin-right: 10px;
-}
-
-a.main-button, input[type="submit"] {
-    display: inline-block;
-    text-decoration: none;
-    color: #fff;
-    font-size: 12px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -o-border-radius: 3px;
-    transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-}
-
-a.main-button:hover, input[type="submit"]:hover {
-	background: #444;
-	color: #fff;
-}
-
-a.main-button i {
-	font-size: 1.2em;
-}
-
-input[type="submit"] {
-	border: none;
-}
-
-.tooltip .tooltip-inner {
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -o-border-radius: 2px;
-}
-
 #content {
 	padding: 60px 0;
 }
@@ -162,9 +105,6 @@ input[type="submit"] {
 #content.full-sections {
 	padding: 0;
 }
-
-
-
 
 .project {
     padding-top: 30px;
@@ -174,66 +114,15 @@ input[type="submit"] {
 	margin-bottom: 50px;
 }
 
-.project-slider {
-	position: relative;
-}
-
-.project-slider img {
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -o-border-radius: 4px;
-}
-
-.project-slider .thumb-overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -o-border-radius: 4px;
-	background-color: rgba(0,0,0,0);
-	transition: all 0.4s ease-in-out;
-	-moz-transition: all 0.4s ease-in-out;
-	-webkit-transition: all 0.4s ease-in-out;
-	-o-transition: all 0.4s ease-in-out;
-}
-
-.project-slider:hover .thumb-overlay {
-	background: rgba(255,255,255,0.5);
-}
-
-.project-slider .thumb-overlay i {
-	font-size: 3em;
-	color: rgba(0,0,0,0);
-	position: absolute;
-	left: 50%;
-	top: 42%;
-	margin-left: -27px;
-	margin-top: -19px;
-	transition: all 0.4s ease-in-out;
-	-moz-transition: all 0.4s ease-in-out;
-	-webkit-transition: all 0.4s ease-in-out;
-	-o-transition: all 0.4s ease-in-out;
-}
-
-.project-slider:hover .thumb-overlay i {
-	top: 50%;
-	color: #444;
-}
-
 .project-content h4 {
 	margin-bottom: 12px;
 	padding-bottom: 8px;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid pink;
 }
 
 .project-content h4 span {
 	padding-bottom: 8px;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid pink;
 }
 
 .project-content p, .project-content ul {
@@ -242,16 +131,4 @@ input[type="submit"] {
 
 .project-content ul li {
 	margin-bottom: 5px;
-}
-
-
-.recent-projects h4.title {
-	margin-bottom: 16px;
-	padding-bottom: 8px;
-	border-bottom: 1px solid #eee;
-}
-
-.recent-projects h4.title span {
-	padding-bottom: 8px;
-	border-bottom: 1px solid;
 }
