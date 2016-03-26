@@ -1,6 +1,7 @@
 <div ng-init="getEvents()">
   <h1 class="page-header">Manage Events</h1>
 
+  <h2>Current Events</h2>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -13,7 +14,30 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat="event in events">
+      <tr ng-repeat="event in events | filter: filterCurrent()">
+          <td>{{event.name}}</td>
+	  <td>{{event.userName || '----'}}</td>
+          <td>{{event.location}}</td>
+          <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
+          <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Past Events</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td><b>Name</b></td>
+	<td><b>User</b></td>
+        <td><b>Venue</b></td>
+        <td><b>Date</b></td>
+        <td></td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="event in events | filter: filterPast()">
           <td>{{event.name}}</td>
 	  <td>{{event.userName || '----'}}</td>
           <td>{{event.location}}</td>

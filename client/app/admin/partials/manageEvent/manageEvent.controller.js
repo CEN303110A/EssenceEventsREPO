@@ -2,6 +2,16 @@
 
 angular.module('essenceEventsRepoApp.admin')
   .controller('ManageEventCtrl', ['$scope', '$state', '$modal', '$q', 'Events', 'Auth', function ($scope, $state, $modal, $q, Events, Auth) {
+    $scope.filterPast = function() {
+      return function(item) {
+	return (new Date(item.date) < new Date());
+      };
+    };
+    $scope.filterCurrent = function() {
+      return function(item) {
+	return (new Date(item.date) > new Date());
+      };
+    };
     $scope.getEvents = function() {
       Events.getAll()
 	.then(function(response) {
