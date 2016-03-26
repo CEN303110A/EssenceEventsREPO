@@ -11,7 +11,8 @@ angular.module('essenceEventsRepoApp', [
   'ui.bootstrap',
   'validation.match',
   'nvd3',
-  'mwl.calendar'
+  'mwl.calendar',
+  'uiGmapgoogle-maps'
 ])
   .config(function($urlRouterProvider, $locationProvider, calendarConfig) {
     $urlRouterProvider
