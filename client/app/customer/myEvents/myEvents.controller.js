@@ -36,4 +36,10 @@ angular.module('essenceEventsRepoApp')
       return (arr.length > 0);
     };
 
+    //Calendar stuff
+    $scope.calendarView = 'month';
+    $scope.calendarDate = new Date();
+    $scope.todo = [];
+    for (var i = 0; i < $scope.ev.toDoList.length; i++)
+      $scope.todo.push({title: $scope.ev.toDoList[i].todo, type: 'info', startsAt: $scope.ev.toDoList[i].by});
 }]);

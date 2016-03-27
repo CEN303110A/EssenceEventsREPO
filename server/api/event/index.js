@@ -21,6 +21,7 @@ router.get('/:id', controller.findOneById);
 router.post('/', controller.create);
 router.put('/', controller.update);
 router.delete('/:id', controller.remove);
+router.delete('/user/:userId', controller.removeUser);
 
 router.param('id', controller.eventById);
 router.param('userId', controller.eventsByUserId);

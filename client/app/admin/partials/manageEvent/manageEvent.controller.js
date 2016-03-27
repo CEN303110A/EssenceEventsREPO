@@ -4,12 +4,14 @@ angular.module('essenceEventsRepoApp.admin')
   .controller('ManageEventCtrl', ['$scope', '$state', '$modal', '$q', 'Events', 'Auth', function ($scope, $state, $modal, $q, Events, Auth) {
     $scope.filterPast = function() {
       return function(item) {
-	return (new Date(item.date) < new Date());
+	var date = new Date();
+	return (new Date(item.date) < date.setHours(date.getHours()-5));
       };
     };
     $scope.filterCurrent = function() {
       return function(item) {
-	return (new Date(item.date) > new Date());
+	var date = new Date();
+	return (new Date(item.date) > date.setHours(date.getHours()-5));
       };
     };
     $scope.getEvents = function() {

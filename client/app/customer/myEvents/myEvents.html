@@ -27,4 +27,14 @@
       </tbody>
     </table>
   </container>
+  <div class="col-md-6">
+    <div class="container" style="text-align: center">
+      <h2>{{calendarDate | date: 'MMMM yyyy'}}</h2>
+      <button class="btn btn-primary" mwl-date-modifier date="calendarDate" decrement="calendarView">Prev Month</button>
+      <button class="btn btn-primary" mwl-date-modifier date="calendarDate" set-to-today>Today</button>
+      <button class="btn btn-primary" mwl-date-modifier date="calendarDate" increment="calendarView">Next Month</button>
+    </div>
+    <mwl-calendar view="calendarView" view-date="calendarDate" events="todo" view-title="calendarTitle">
+    </mwl-calendar>
+  </div>
 </div>
