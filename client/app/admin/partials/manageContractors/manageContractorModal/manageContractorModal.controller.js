@@ -6,12 +6,13 @@ angular.module('essenceEventsRepoApp.admin')
       $scope.subcontractor = JSON.parse(JSON.stringify(subcontractor));
 
       $scope.submit = function() {
-	Subcontractors.update($scope.subcontractor)
-	  .then(function(response) {
-	    $modalInstance.close();
-	    $state.reload();
-	  }, function(err) {
-	    //do something
-	});
+        if ($scope.subcontractor.name)
+	  Subcontractors.update($scope.subcontractor)
+	    .then(function(response) {
+	      $modalInstance.close();
+	      $state.reload();
+	    }, function(err) {
+	      //do something
+	  });
       };
 }]);

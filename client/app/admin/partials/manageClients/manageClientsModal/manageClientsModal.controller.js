@@ -11,12 +11,15 @@ angular.module('essenceEventsRepoApp.admin')
 
   //submit function
   $scope.submit = function(username, email, phoneNumber) {
-
-    user.name = username;
-    user.email = email;
-    user.phoneNumber = phoneNumber;
-    user.$save();
-    $modalInstance.close();
+    if (username && email) {
+      user.name = username;
+      user.email = email;
+      user.phoneNumber = phoneNumber;
+      user.$save().then(function () {
+        $modalInstance.close();
+	$state.reload();
+      });
+    }
   };
 
   //createEvent

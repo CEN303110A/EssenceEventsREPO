@@ -17,9 +17,7 @@ var UserSchema = new Schema({
   password: String,
   provider: String,
   salt: String,
-  phoneNumber: String,
-  events: [Schema.Types.ObjectId]
-
+  phoneNumber: String
 });
 
 /**

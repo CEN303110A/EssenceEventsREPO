@@ -99,28 +99,21 @@ export function changePassword(req, res, next) {
 }
 
 export function updateUser(req, res, next) {
-
-  console.log(req);
-  var userId = req.user._id;
+  var userId = String(req.body._id);
   var newEmail = String(req.body.email);
   var newName = String(req.body.name);
   var newphoneNumber = String(req.body.phoneNumber);
 
-  // var newPass = String(req.body.newPassword);
-  //
-  User.findByIdAsync(userId)
-    .then(user => {
-          user.email = newEmail;
-          user.name= newName;
-          user.phoneNumber = newphoneNumber;
-          return user.saveAsync()
-          .then(() => {
-            res.status(204).end();
-          })
-          .catch(validationError(res));
-        }
-    );
-  }
+  User.findOneAndUpdate({_id: userId}, {email: newEmail, name: newName, phoneNumber: newphoneNumber}, function (err) {
+    if (err) {
+      throw err;
+      res.status(400).end();
+    }
+    else {
+      res.send('did it');
+    }
+  });
+}
 
 /**
  * Get my info
