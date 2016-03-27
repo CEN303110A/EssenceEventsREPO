@@ -9,17 +9,16 @@
     <nvd3 options="options" data="ev.budget"></nvd3>
   </div>
   <!-- display table of todolist -->
-  <container class = "col-md-6">
+  <container class = "col-md-6 hoverSort" ng-init="sortTodo='task'">
     <table class = "table table-hover">
       <thead>
         <tr>
-          <td><b>Task</b></td>
-          <td><b>Date</b></td>
-          <td></td>
+          <th ng-click="sortTodo='todo'"><b>Task</b></td>
+          <th ng-click="sortTodo='by'"><b>Date</b></td>
         </tr>
       </thead>
 
-      <tbody ng-repeat ="item in ev.toDoList" ng-show="hasItems(ev.toDoList)">
+      <tbody ng-repeat ="item in ev.toDoList | orderBy: sortTodo" ng-show="hasItems(ev.toDoList)">
         <tr>
           <td>{{item.todo}}</td>
           <td>{{item.by | date:"fullDate"}}</td>
@@ -37,4 +36,26 @@
     <mwl-calendar view="calendarView" view-date="calendarDate" events="todo" view-title="calendarTitle">
     </mwl-calendar>
   </div>
+  <container class = "col-md-6" ng-init="sortGuest='name'">
+    <h2 style="text-align:center">Guest List</h2>
+    <table class = "table table-hover hoverSort">
+      <thead>
+        <tr>
+          <th ng-click="sortGuest='name'"><b>Name</b></td>
+          <th ng-click="sortGuest='email'"><b>Email</b></td>
+          <th ng-click="sortGuest='phoneNumber'"><b>Phone Number</b></td>
+          <th ng-click="sortGuest='partySize'"><b>Party Size</b></td>
+        </tr>
+      </thead>
+
+      <tbody ng-repeat ="item in ev.guests | orderBy: sortGuest" ng-show="hasItems(ev.guests)">
+        <tr>
+          <td>{{item.name}}</td>
+          <td>{{item.email}}</td>
+	  <td>{{item.phoneNumber}}</td>
+	  <td>{{item.partySize}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </container>
 </div>

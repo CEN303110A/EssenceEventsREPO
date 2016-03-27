@@ -119,12 +119,13 @@ angular.module('essenceEventsRepoApp.admin')
   };
 
   $scope.submit = function() {
-    Events.update($scope.event)
-    .then(function(response) {
-      $modalInstance.close();
-      $state.reload();
-    }, function(err) {
-      console.log(err);
-    });
+    if ($scope.event.name && $scope.event.date)
+      Events.update($scope.event)
+        .then(function(response) {
+          $modalInstance.close();
+          $state.reload();
+        }, function(err) {
+          console.log(err);
+      });
   };
 }]);
