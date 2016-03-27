@@ -43,7 +43,7 @@
     <tab heading="Schedule">
       <h2 class="modal-header">Schedule:</h2>
       <div class="modal-body">
-        <form class="row" name="formss">
+        <form class="row" name="$parent.hello">
           <div id="budget" class="col-md-7">
             <label for="todoInput">Item:</label>
             <input type="text" name="todoInput" ng-model="todoInput" class="form-control">
@@ -51,7 +51,7 @@
           <div class="form-group row col-md-4" show-errors>
             <label for="dateOfEvent">Date:</label>
             <div class = "input-group">
-              <input type="text" class="form-control" id="eventDate" datepicker-popup="fullDate" ng-model="newDueDate" is-open="datePicker.scheduleDateOpened" picker-options="dateOptions" close-text="Close" />
+              <input type="text" class="form-control" id="eventDate" datepicker-popup="fullDate" ng-model="newDueDate" is-open="datePicker.scheduleDateOpened" picker-options="dateOptions" close-text="Close">
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="scheduleDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -59,7 +59,7 @@
           </div>
           <div class="col-md-1">
             <label for="button">&zwnj;</label>
-            <button class="btn btn-success" ng-click="addToDo(todoInput, newDueDate);todoInput=null;newDueDate=null">+</button>
+            <button type="submit" class="btn btn-success" ng-click="addToDo(todoInput,newDueDate) ? todoInput = newDueDate = null : null">+</button>
           </div>
         </form>
 
@@ -101,7 +101,7 @@
           </div>
           <div class="col-md-1">
             <label for="button">&zwnj;</label>
-            <button class="btn btn-success" ng-click="addBudget(budgetItem, itemCost);budgetItem=null;itemCost=null">+</button>
+            <button class="btn btn-success" ng-click="addBudget(budgetItem, itemCost) ? budgetItem=itemCost=null : null">+</button>
           </div>
         </form>
 
@@ -130,14 +130,14 @@
     <tab heading="Subcontractors" ng-init="getContractors();getEventSubcons()">
       <h2 class="modal-header">Event Subcontractors:</h2>
       <div class="modal-body">
-        <form class="row" name="formsss">
+        <form class="row" name="formssss">
           <div class="col-md-11">
             <label for="addSubcon">Add Subcontractor:</label>
             <select type="select" class="form-control" ng-model="addSubcon" ng-options="subcontractor as subcontractor.name for subcontractor in subcontractors | orderBy: 'name'"></select>
           </div>
           <div class="col-md-1">
             <label for="button">&zwnj;</label>
-            <button type="submit" class="btn btn-success" ng-click="addSubcontractor(addSubcon)">+</button>
+            <button type="submit" class="btn btn-success" ng-click="addSubcontractor(addSubcon) ? addSubcon = null : null">+</button>
           </div>
         </form>
         <div class="row">
@@ -184,7 +184,7 @@
           </div>
           <div class="col-md-1">
             <label for="button">&zwnj;</label>
-            <button class="btn btn-success" ng-click="addGuest(guestName,guestEmail,guestPhone,guestSize);guestName=null;guestEmail=null;guestPhone=null;guestSize=null">+</button>
+            <button class="btn btn-success" ng-click="addGuest(guestName,guestEmail,guestPhone,guestSize) ? guestName=guestEmail=guestPhone=guestSize=null : null">+</button>
           </div>
         </form>
 

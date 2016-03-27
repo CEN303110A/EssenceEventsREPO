@@ -28,10 +28,14 @@ angular.module('essenceEventsRepoApp.admin')
 
 
   //adds item into todo list
-  $scope.addToDo = function(todo, dueDate)
+  $scope.addToDo = function(todo, date)
   {
-    if (todo && dueDate)
-    $scope.event.toDoList.push({todo: todo, by: dueDate});
+    if (todo && date) {
+      $scope.event.toDoList.push({todo: todo, by: date});
+      return 1;
+    }
+    else
+      return 0;
   };
 
 
@@ -59,15 +63,23 @@ angular.module('essenceEventsRepoApp.admin')
   };
 
   $scope.addSubcontractor = function(contractor) {
-    if ($scope.event.subcontractors.indexOf(contractor._id) === -1) {
-      $scope.event.subcons.push(contractor);
-      $scope.event.subcontractors.push(contractor._id);
-    }
+    if (contractor)
+      if ($scope.event.subcontractors.indexOf(contractor._id) === -1) {
+        $scope.event.subcons.push(contractor);
+        $scope.event.subcontractors.push(contractor._id);
+	return 1;
+      }
+    else
+      return 0;
   };
 
   $scope.addGuest = function(name, email, phoneNumber, partySize) {
-    if(name && email)
-    $scope.event.guests.push({name: name, email: email, phoneNumber: phoneNumber, partySize: partySize, accepted: false});
+    if(name && email) {
+      $scope.event.guests.push({name: name, email: email, phoneNumber: phoneNumber, partySize: partySize, accepted: false});
+      return 1;
+    }
+    else
+      return 0;
   };
 
   $scope.deleteGuest = function(index) {
@@ -84,7 +96,10 @@ angular.module('essenceEventsRepoApp.admin')
     if (item && cost) {
       $scope.event.budget.push({title: item, amount: cost});
       $scope.currentCost = $scope.currentCost + cost;
+      return 1;
     }
+    else
+      return 0;
   }
 
   //deletes item from todo list

@@ -155,7 +155,7 @@ angular.module('essenceEventsRepoApp.admin')
 
 
   $scope.submit = function() {
-    $scope.eventDate.setHours(19,59,59,9999);
+    $scope.eventDate.setHours(19,50,0,0);
     var event = {
       name: $scope.eventName,
       date: $scope.eventDate,
