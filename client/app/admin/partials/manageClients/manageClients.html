@@ -1,18 +1,18 @@
-<div class="container">  
+<div class="container" ng-init="sort='name'">  
   <h1 class="page-header">Manage existing clients</h1>
 
   <table class="table table-hover">
       <thead>
         <tr>
-          <td><b>Name</b></td>
-          <td><b>Phone Number</b></td>
-          <td><b>Email</b></td>
+          <td ng-click="sort='name'"><b>Name</b></td>
+          <td ng-click="sort='phoneNumber'"><b>Phone Number</b></td>
+          <td ng-click="sort='email'"><b>Email</b></td>
           <td></td>
         </tr>
       </thead>
 
       <tbody>
-        <tr ng-repeat="user in mc.alldata | filter: 'user'">
+        <tr ng-repeat="user in mc.alldata | filter: 'user' | orderBy: sort">
             <td>{{user.name}}</td>
             <td>{{user.phoneNumber}}</td>
             <td>{{user.email}}</td>

@@ -1,20 +1,20 @@
-<div ng-init="getEvents()">
+<div ng-init="getEvents(); sort='date'">
 <tabset>
 <tab heading="Current Events">
   <h1 class="page-header">Current Events</h2>
   <table class="table table-hover">
     <thead>
       <tr>
-        <td><b>Name</b></td>
-	<td><b>User</b></td>
-        <td><b>Venue</b></td>
-        <td><b>Date</b></td>
+        <td ng-click="sort='name'"><b>Name</b></td>
+	<td ng-click="sort='userName'"><b>User</b></td>
+        <td ng-click="sort='location'"><b>Venue</b></td>
+        <td ng-click="sort='date'"><b>Date</b></td>
         <td></td>
       </tr>
     </thead>
 
     <tbody>
-      <tr ng-repeat="event in events | filter: filterCurrent()">
+      <tr ng-repeat="event in events | filter: filterCurrent() | orderBy: sort">
           <td>{{event.name}}</td>
 	  <td>{{event.userName || '----'}}</td>
           <td>{{event.location}}</td>
