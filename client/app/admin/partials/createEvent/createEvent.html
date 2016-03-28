@@ -5,7 +5,7 @@
   </div>
   <section>
     <div>
-      <form class="form-horizontal col-md-8" name="form">
+      <form class="form-horizontal novalidate col-md-8" name="form">
 
         <!-- Div to input the event name -->
         <div class="form-group row col-md-12" show-errors>
@@ -27,7 +27,7 @@
         <!-- Div to input then venue  -->
         <div class="form-group row col-md-12" show-errors>
           <label for="venue">Venue:</label>
-          <input name="venue" type="venue" ng-model="venue" id="venue" class="form-control" required>
+          <input name="venue" type="venue" ng-model="venue" id="venue" class="form-control">
         </div>
 
         <!-- Div to input the goal budget -->
@@ -129,7 +129,7 @@
 
         <!-- Submit button -->
         <div class="form-group row col-md-12">
-          <button type="button" class="btn btn-default" ng-click="submit()">Submit</button>
+          <button type="button" class="btn btn-default" ng-click="submit()" ng-disabled="form.$invalid">Submit</button>
         </div>
 
       </form>
