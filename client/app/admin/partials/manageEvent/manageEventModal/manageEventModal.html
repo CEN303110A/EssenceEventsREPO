@@ -67,9 +67,9 @@
           <table class = "col-md-12 table table-hover" ng-show="hasItems(event.toDoList)">
             <thead>
               <tr>
-                <th><b>Task</b></td>
-                <th><b>Date due:</b></td>
-                <th style="text-align:right"></td>
+                <th><b>Task</b></th>
+                <th><b>Date due:</b></th>
+                <th style="text-align:right"></th>
               </tr>
             </thead>
 
@@ -109,9 +109,9 @@
           <table class = "col-md-12 table table-hover" ng-show="hasItems(event.budget)">
             <thead>
               <tr>
-                <th><b>Expenditure</b></td>
-                <th><b>Price</b></td>
-                <th style="text-align:right"></td>
+                <th><b>Expenditure</b></th>
+                <th><b>Price</b></th>
+                <th style="text-align:right"></th>
               </tr>
             </thead>
 
@@ -144,9 +144,9 @@
           <table class = "col-md-12 table table-hover" ng-show="hasItems(event.subcons)">
             <thead>
               <tr>
-                <th><b>Name</b></td>
-                <th><b>Link</b></td>
-                <th style="text-align:right"></td>
+                <th><b>Name</b></th>
+                <th><b>Link</b></th>
+                <th style="text-align:right"></th>
               </tr>
             </thead>
 
@@ -189,14 +189,15 @@
         </form>
 
         <div class="row">
-          <table class = "col-md-12 table table-hover" ng-show="hasItems(event.guests)">
+          <table class = "col-md-12 table table-hover" ng-show="hasItems(event.guests)" style="word-wrap: break-word">
             <thead>
               <tr>
-                <th><b>Name</b></td>
-                <th><b>Email</b></td>
-                <th><b>Phone Number</b></td>
-                <th><b>Party Size</b></td>
-                <th style="text-align:right"></td>
+                <th><b>Name</b></th>
+                <th><b>Email</b></th>
+                <th><b>Phone Number</b></th>
+                <th><b>Party Size</b></th>
+		<th><b>Accepted</b></th>
+                <th style="text-align:right"></th>
               </tr>
             </thead>
 
@@ -206,6 +207,7 @@
                 <td>{{item.email}}</td>
                 <td>{{item.phoneNumber}}</td>
                 <td>{{item.partySize}}</td>
+		<td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted($index)"></span></td>
                 <td style="text-align:right"><button type="button" class="btn btn-danger" ng-click="deleteGuest($index)">Remove</button></td>
               </tr>
             </tbody>

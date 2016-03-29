@@ -86,6 +86,10 @@ angular.module('essenceEventsRepoApp.admin')
     $scope.event.guests.splice(index, 1);
   };
 
+  $scope.changeAccepted = function(index) {
+    $scope.event.guests[index].accepted = !$scope.event.guests[index].accepted;
+  };
+
   $scope.hasItems = function(arr)
   {
     return (arr.length > 0);

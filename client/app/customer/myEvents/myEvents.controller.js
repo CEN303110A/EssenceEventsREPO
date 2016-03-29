@@ -41,5 +41,5 @@ angular.module('essenceEventsRepoApp')
     $scope.calendarDate = new Date();
     $scope.todo = [];
     for (var i = 0; i < $scope.ev.toDoList.length; i++)
-      $scope.todo.push({title: $scope.ev.toDoList[i].todo, type: 'info', startsAt: $scope.ev.toDoList[i].by});
+      $scope.todo.push({title: $scope.ev.toDoList[i].todo, type: 'info', startsAt: new Date($scope.ev.toDoList[i].by)});
 }]);

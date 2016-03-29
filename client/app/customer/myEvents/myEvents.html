@@ -13,8 +13,8 @@
     <table class = "table table-hover">
       <thead>
         <tr>
-          <th ng-click="sortTodo='todo'"><b>Task</b></td>
-          <th ng-click="sortTodo='by'"><b>Date</b></td>
+          <th ng-click="sortTodo='todo'"><b>Task</b></th>
+          <th ng-click="sortTodo='by'"><b>Date</b></th>
         </tr>
       </thead>
 
@@ -41,10 +41,11 @@
     <table class = "table table-hover hoverSort">
       <thead>
         <tr>
-          <th ng-click="sortGuest='name'"><b>Name</b></td>
-          <th ng-click="sortGuest='email'"><b>Email</b></td>
-          <th ng-click="sortGuest='phoneNumber'"><b>Phone Number</b></td>
-          <th ng-click="sortGuest='partySize'"><b>Party Size</b></td>
+          <th ng-click="sortGuest='name'"><b>Name</b></th>
+          <th ng-click="sortGuest='email'"><b>Email</b></th>
+          <th ng-click="sortGuest='phoneNumber'"><b>Phone Number</b></th>
+          <th ng-click="sortGuest='partySize'"><b>Party Size</b></th>
+	  <th ng-click="sortGuest='accepted'"><b>Accepted</b></th>
         </tr>
       </thead>
 
@@ -54,6 +55,7 @@
           <td>{{item.email}}</td>
 	  <td>{{item.phoneNumber}}</td>
 	  <td>{{item.partySize}}</td>
+	  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td>
         </tr>
       </tbody>
     </table>
