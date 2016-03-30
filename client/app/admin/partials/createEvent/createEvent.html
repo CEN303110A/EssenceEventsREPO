@@ -17,7 +17,7 @@
         <div class="form-group row col-md-8" show-errors>
           <label for="dateOfEvent">Date:</label>
           <div class = "input-group">
-            <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="eventDate" is-open="eventDateOpened"  datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+            <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="eventDate" is-open="eventDateOpened"  datepicker-options="dateOptions" close-text="Close" />
             <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="openEventDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
@@ -90,7 +90,7 @@
             <div id ="date" class="col-md-5">
               <label for="date">Date:</label>
               <div class = "input-group">
-                <input type="text" class="form-control" id="date" datepicker-popup="fullDate" ng-model="todoDate" is-open="todoDateOpened"  datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-keyup="$event.keyCode == 13 && addToDo()"/>
+                <input type="text" class="form-control" id="date" datepicker-popup="fullDate" ng-model="todoDate" is-open="todoDateOpened"  datepicker-options="dateOptions" close-text="Close" ng-keyup="$event.keyCode == 13 && addToDo()"/>
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="opentodoDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
