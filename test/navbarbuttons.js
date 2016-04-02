@@ -1,11 +1,7 @@
 var elements = require('./elements.js');
 
-describe('Essence Events', function() {
+describe('Nav Bar Buttons', function() {
   browser.get('http://localhost:9000/');
-
-  it('should have title', function() {
-    expect(browser.getTitle()).toEqual('');
-  });
 
   it('should login as admin', function() {
     var email = 'admin@example.com';
