@@ -6,7 +6,7 @@
       </a>
     </li>
     <li ng-repeat="function in admin.Functions">
-      <a ui-sref="{{function.state}}">{{function.title}}</a>
+      <a ui-sref="{{function.state}}" id="{{function.title}}">{{function.title}}</a>
     </li>
   </ul>
 </div>
