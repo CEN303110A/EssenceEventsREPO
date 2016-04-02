@@ -1,6 +1,10 @@
-<div class="row" ng-init="sort='name'">  
+<div class="row" ng-init="sort='name'">
   <h1 class="page-header">Manage existing clients</h1>
-
+  <div class = "form-group col-md-12">
+    <div class="col-md-5">
+      <input type="text" class="form-control" placeholder="Search here..." ng-model="searchClients"></input>
+    </div>
+  </div>
   <table class="table table-hover hoverSort">
       <thead>
         <tr>
@@ -10,9 +14,8 @@
           <th></td>
         </tr>
       </thead>
-
       <tbody>
-        <tr ng-repeat="user in mc.alldata | filter: 'user' | orderBy: sort">
+        <tr ng-repeat="user in mc.alldata | filter: 'user' | filter: searchClients | orderBy: sort">
             <td>{{user.name}}</td>
             <td>{{user.phoneNumber}}</td>
             <td>{{user.email}}</td>
