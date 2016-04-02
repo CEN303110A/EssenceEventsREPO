@@ -59,6 +59,21 @@ export function remove(req, res) {
   });
 }
 
+export function removeUser(req, res) {
+  if (req.events.length > 0)
+    Event.find({userId: req.events[0].userId})
+      .remove(function (err) {
+	if (err) {
+	  throw err;
+	  res.status(400).end();
+	}
+	else
+	  res.send('did it');
+    });
+  else
+    res.status(400).end();
+}
+
 export function eventById(req, res, next, id) {
   Event.findById(id, function(err, event) {
     if (err) {

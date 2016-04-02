@@ -8,6 +8,6 @@
           templateUrl: 'app/admin/partials/manageClients/manageClientsModal/manageEventModal.html',
           controller: 'ManageEventModalCtrl',
           controllerAs: 'mancli',
-         authenticate: 'admin'
+          authenticate: 'admin',
         });
     });

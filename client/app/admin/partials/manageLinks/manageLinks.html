@@ -1,0 +1,61 @@
+<div class="row" ng-init="getLinks(); sort='name'">
+<h1 class="page-header">MANAGE LINKS</h1>
+<tabset>
+<tab heading="Links">
+  <br>
+  <table class="table table-hover hoverSort">
+    <thead>
+      <tr>
+        <th ng-click="sort='name'"><b>Name</b></th>
+	<th ng-click="sort='phoneNumber'"><b>Phone Number</b></th>
+        <th ng-click="sort='url'"><b>Link</b></th>
+	<th><b>Photo</b></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="link in links | orderBy: sort">
+          <td>{{link.name}}</td>
+	  <td>{{link.phoneNumber || '----'}}</td>
+          <td><a ng-href="{{link.url|url}}" target="_blank">{{link.url}}</a></td>
+	  <td><img ng-src="{{link.photo}}" height="150" width="150"></img></td>
+          <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(link)">Manage</button></td>
+      </tr>
+    </tbody>
+  </table>
+</tab>
+
+<tab heading="New Link">
+  <br>
+  <form name="listingForm" class="form-horizontal col-md-8">
+    <fieldset>
+      <div class="form-group" show-errors>
+        <label for="name">Name</label>
+        <input name="name" type="name" ng-model="name" id="name" class="form-control" required>
+      </div>
+      <div class="form-group" show-errors>
+        <label for="link">Link</label>
+        <input name="link" type="link" ng-model="link" id="link" class="form-control">
+      </div>
+      <div class="form-group" show-errors>
+	<label for="link">Phone Number</label>
+	<input name="phoneNumber" type="phoneNumber" ng-model="phoneNumber" id="phoneNumber" class="form-control">
+      </div>
+      <div class="form-group" show-errors>
+	<label for="link">Image Url</label>
+	<input name="imageUrl" type="imageUrl" ng-model="imageUrl" id="imageUrl" class="form-control">
+      </div>
+      <div ng-show="error" class="text-danger">
+        <strong ng-bind="error"></strong>
+      </div>
+      <div><br>
+        <button class="btn btn-inverse btn-lg btn-register" type="submit" ng-click="listingForm.$valid && submit(name, link, phoneNumber, imageUrl)">
+          Create Link
+  	</button>
+      </div>
+    </fieldset>
+  </form>
+</tab>
+</tabset>
+</div>

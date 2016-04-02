@@ -14,12 +14,10 @@ angular.module('essenceEventsRepoApp.admin')
 
   //used to display the user you are talking to
   $scope.clientName = $stateParams.usersName;
-  console.log($stateParams);
 
   //set up date for event
   $scope.eventDate = new Date();
   $scope.openEventDate = function($event) {
-    console.log('in here');
     $event.preventDefault();
     $event.stopPropagation();
     $scope.eventDateOpened = true;
@@ -157,6 +155,7 @@ angular.module('essenceEventsRepoApp.admin')
 
 
   $scope.submit = function() {
+    $scope.eventDate.setHours(19,50,0,0);
     var event = {
       name: $scope.eventName,
       date: $scope.eventDate,

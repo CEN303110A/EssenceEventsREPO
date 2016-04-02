@@ -35,6 +35,11 @@ class AdminController {
       'title': 'Manage Contractors',
       'description': 'Manage existing contractors',
       'state': 'admin.manageContractors',
+    },
+    {
+      'title': 'Manage Links',
+      'description': 'Manage Public Links Page',
+      'state': 'admin.manageLinks',
     }
   ];
 

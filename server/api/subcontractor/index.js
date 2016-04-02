@@ -17,9 +17,9 @@ router.post('/', auth.hasRole('admin'), controller.create);
 
 router.get('/', controller.getAll);
 router.get('/:id', controller.getOne);
-router.post('/', controller.create);
-router.put('/', controller.update);
-router.delete('/:id', controller.remove);
+router.post('/', auth.hasRole('admin'), controller.create);
+router.put('/', auth.hasRole('admin'), controller.update);
+router.delete('/:id', auth.hasRole('admin'), controller.remove);
 
 router.param('id', controller.findId);
 

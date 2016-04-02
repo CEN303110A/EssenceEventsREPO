@@ -23,6 +23,10 @@ angular.module('essenceEventsRepoApp').factory('Events', ['$http', '$location',
 
       remove: function(id) {
 	return $http.delete('http://' + $location.host() + ':' + $location.port() + '/api/events/' + id);
+      },
+
+      removeUser: function(userId) {
+	return $http.delete('http://' + $location.host() + ':' + $location.port() + '/api/events/user/' + userId);
       }
     };
     return methods;
