@@ -1,4 +1,4 @@
-<div>
+<div ng-if="hideDeleteTab">
   <h2 class="modal-header">Manage Subcontractor:</h2>
   <div class="modal-body row">
     <div class="form-group row col-md-12" show-errors>
@@ -10,7 +10,23 @@
       <input name="subconLink" ng-model="subcontractor.link" id="subconLink" class="form-control">
     </div>
   </div>
-  <div class="modal-footer" style="text-align: center">
+  <div class="modal-footer" style="text-align:left">
     <button class="btn btn-default" ng-click="submit()">Save Changes</button>
+    <button class = "btn btn-danger" ng-click="showDeleteTabFunc()">Delete Event</button>
+  </div>
+</div>
+<div  ng-if="!hideDeleteTab">
+  <h2 class = "modal-header text-center">
+    Are you sure you want to delete {{subcontractor.name}}?
+  </h2>
+  <div class = "modal-body row">
+    <container>
+      <div class = "col-md-6">
+        <button class = "btn btn-block btn-danger" ng-click="hideDeleteTabFunc()">No</button>
+      </div>
+      <div class = "col-md-6">
+        <button class = "btn btn-block btn-success" ng-click="deleteSubcontractor()">Yes</button>
+      </div>
+    </container>
   </div>
 </div>

@@ -7,7 +7,7 @@
       constructor(User, $modal, $scope, $state) {
         // Use the User $resource to fetch all users
         this.alldata = User.query();
-	this.modalService = $modal;
+	      this.modalService = $modal;
       }
 
       openModal(user){

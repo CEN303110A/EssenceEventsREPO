@@ -1,7 +1,7 @@
 <div ng-click="resetPicker()">
   <tabset justified="true">
-    <tab heading="Basic Info">
-      <h2 class="modal-header">Client information:</h2>
+    <tab heading="Basic Info" ng-if="hideDeleteTab">
+      <h2 class="modal-header">Event information:</h2>
       <div class="modal-body">
         <form class="row" name="form">
 
@@ -40,7 +40,7 @@
       </div>
     </tab>
 
-    <tab heading="Schedule">
+    <tab heading="Schedule" ng-if="hideDeleteTab">
       <h2 class="modal-header">Schedule:</h2>
       <div class="modal-body">
         <form class="row" name="$parent.hello">
@@ -86,7 +86,7 @@
       </div>
     </tab>
 
-    <tab heading="Budget">
+    <tab heading="Budget" ng-if="hideDeleteTab">
       <h2 class="modal-header">Event Budget:</h2>
       <h4 style="text-align:center">Cost: {{currentCost}} Goal: {{event.budgetGoal}}</h4>
       <div class="modal-body">
@@ -127,7 +127,8 @@
         </div>
       </div>
     </tab>
-    <tab heading="Subcontractors" ng-init="getContractors();getEventSubcons()">
+
+    <tab heading="Subcontractors" ng-if="hideDeleteTab" ng-init="getContractors();getEventSubcons()">
       <h2 class="modal-header">Event Subcontractors:</h2>
       <div class="modal-body">
         <form class="row" name="formssss">
@@ -162,7 +163,7 @@
         </div>
       </div>
     </tab>
-    <tab heading="Guests">
+    <tab heading="Guests" ng-if="hideDeleteTab">
       <h2 class="modal-header">Guest List:</h2>
       <div class="modal-body">
         <form class="row" name="formssss">
@@ -196,7 +197,7 @@
                 <th><b>Email</b></th>
                 <th><b>Phone Number</b></th>
                 <th><b>Party Size</b></th>
-		<th><b>Accepted</b></th>
+                <th><b>Accepted</b></th>
                 <th style="text-align:right"></th>
               </tr>
             </thead>
@@ -207,7 +208,7 @@
                 <td>{{item.email}}</td>
                 <td>{{item.phoneNumber}}</td>
                 <td>{{item.partySize}}</td>
-		<td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted($index)"></span></td>
+                <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeAccepted($index)"></span></td>
                 <td style="text-align:right"><button type="button" class="btn btn-danger" ng-click="deleteGuest($index)">Remove</button></td>
               </tr>
             </tbody>
@@ -216,8 +217,27 @@
         </div>
       </div>
     </tab>
+
+    <div ng-if="!hideDeleteTab">
+      <h2 class = "modal-header text-center">
+        Are you sure you want to delete {{event.name}} for {{event.userName}}?
+      </h2>
+      <div class = "modal-body row">
+        <container>
+          <div class = "col-md-6">
+            <button class = "btn btn-block btn-danger" ng-click="hideDeleteTabFunc()">No</button>
+          </div>
+          <div class = "col-md-6">
+            <button class = "btn btn-block btn-success" ng-click="deleteEvent()">Yes</button>
+          </div>
+        </container>
+      </div>
+    </div>
+
   </tabset>
-  <div class="modal-footer" style="text-align:center">
-    <button class="btn btn-default" ng-click="submit()">Save Changes</button>
+
+  <div class="modal-footer" style="text-align:left" ng-if="hideDeleteTab">
+    <button class="btn btn-default"  ng-click="submit()">Save Changes</button>
+    <button class = "btn btn-danger" ng-click="showDeleteTabFunc()">Delete Event</button>
   </div>
 </div>
