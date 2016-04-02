@@ -15,6 +15,11 @@ angular.module('essenceEventsRepoApp.admin')
   //used to display the user you are talking to
   $scope.clientName = $stateParams.usersName;
 
+  //datePickerOptions
+  $scope.dateOptions =
+
+
+
   //set up date for event
   $scope.eventDate = new Date();
   $scope.openEventDate = function($event) {
@@ -22,6 +27,7 @@ angular.module('essenceEventsRepoApp.admin')
     $event.stopPropagation();
     $scope.eventDateOpened = true;
   };
+
 
   // $scope.freeCash;
   $scope.currCost = 0;
@@ -131,7 +137,6 @@ angular.module('essenceEventsRepoApp.admin')
   //set up date for event
   $scope.todoDate = new Date();
   $scope.opentodoDate = function($event) {
-    console.log('in here');
     $event.preventDefault();
     $event.stopPropagation();
     $scope.todoDateOpened = true;
@@ -155,8 +160,7 @@ angular.module('essenceEventsRepoApp.admin')
 
 
   $scope.submit = function() {
-    $scope.eventDate.setHours(19,50,0,0);
-    var event = {
+      var event = {
       name: $scope.eventName,
       date: $scope.eventDate,
       location: $scope.venue,
