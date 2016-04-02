@@ -17,6 +17,7 @@ var elements = {
   //admin nav
   manageClientButton: element(by.id('Manage Client')),
   //Manage Client
+  searchInput: element(by.model('searchClients')),
   allClients: element.all(by.repeater('user in mc.alldata')),
   firstClientName: element.all(by.binding('user.name')).first(),
   firstClientPhoneNumber: element.all(by.binding('user.phoneNumber')).first(),

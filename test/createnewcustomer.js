@@ -30,15 +30,19 @@ describe('Create New Customer', function() {
     elements.customerConfirmPasswordInput.sendKeys(password);
     elements.customerPhoneNumberInput.sendKeys(phone);
     elements.createAccountButton.click();
+    elements.searchInput.sendKeys(name);
 
     expect(elements.allClients.count()).toEqual(1);
     expect(elements.firstClientName.getText()).toEqual(name);
   });
 
   it('should delete new customer', function() {
+    var name = 'robot customer';
+    
     elements.firstManageButton.click();
     elements.modalDeleteButton.click();
     elements.modalYesButton.click();
+    elements.searchInput.sendKeys(name);
 
     expect(elements.allClients.count()).toEqual(0);
   });
