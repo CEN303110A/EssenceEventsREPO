@@ -15,12 +15,13 @@ router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);
 */
 
-router.get('/', controller.findAll);
-router.get('/user/:userId', controller.findAllByUser);
-router.get('/:id', controller.findOneById);
-router.post('/', controller.create);
-router.put('/', controller.update);
-router.delete('/:id', controller.remove);
+router.get('/', auth.hasRole('admin'), controller.findAll);
+router.get('/user/:userId', auth.isAuthenticated(), controller.findAllByUser);
+router.get('/:id', auth.isAuthenticated(), controller.findOneById);
+router.post('/', auth.hasRole('admin'), controller.create);
+router.put('/', auth.hasRole('admin'), controller.update);
+router.delete('/:id', auth.hasRole('admin'), controller.remove);
+router.delete('/user/:userId', auth.hasRole('admin'), controller.removeUser);
 
 router.param('id', controller.eventById);
 router.param('userId', controller.eventsByUserId);

@@ -1,21 +1,28 @@
-<div ng-init="getSubcontractors()">
+<div class="row" ng-init="getSubcontractors(); sort='name'">
   <h1 class="page-header">Manage Contractors</h1>
 
-  <table class="table table-hover">
+  <div class = "form-group col-md-12">
+    <div class="col-md-5">
+      <input type="text" class="form-control" placeholder="Search here..." ng-model="searchClients"></input>
+    </div>
+  </div>
+
+  <table class="table table-hover hoverSort">
     <thead>
       <tr>
-        <td>Name</td>
-        <td>Link</td>
-        <td></td>
+        <th ng-click="sort='name'">Name</td>
+        <th ng-click="sort='link'">Link</td>
+        <th></td>
       </tr>
     </thead>
 
     <tbody>
-      <tr ng-repeat="subcontractor in subcontractors">
+      <tr ng-repeat="subcontractor in subcontractors | filter: searchClients |orderBy: sort">
           <td>{{subcontractor.name}}</td>
           <td><a ng-href="{{subcontractor.link|url}}" target="_blank">{{subcontractor.link}}</a></td>
           <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(subcontractor)">Manage</button></td>
       </tr>
     </tbody>
   </table>
+
 </div>

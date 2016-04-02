@@ -9,20 +9,53 @@
     <nvd3 options="options" data="ev.budget"></nvd3>
   </div>
   <!-- display table of todolist -->
-  <container class = "col-md-6">
+  <container class = "col-md-6 hoverSort" ng-init="sortTodo='task'">
     <table class = "table table-hover">
       <thead>
         <tr>
-          <td><b>Task</b></td>
-          <td><b>Date</b></td>
-          <td></td>
+          <th ng-click="sortTodo='todo'"><b>Task</b></th>
+          <th ng-click="sortTodo='by'"><b>Date</b></th>
         </tr>
       </thead>
 
-      <tbody ng-repeat ="item in ev.toDoList" ng-show="hasItems(ev.toDoList)">
+      <tbody ng-repeat ="item in ev.toDoList | orderBy: sortTodo" ng-show="hasItems(ev.toDoList)">
         <tr>
           <td>{{item.todo}}</td>
-          <td>{{item.by | date:"fullDate"}}</td>
+          <td>{{item.by | date:'EEEE, MMMM d, y @h:mm a'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </container>
+  <div class="col-md-6">
+    <div class="container" style="text-align: center">
+      <h2>{{calendarDate | date: 'MMMM yyyy'}}</h2>
+      <button class="btn btn-primary" mwl-date-modifier date="calendarDate" decrement="calendarView">Prev Month</button>
+      <button class="btn btn-primary" mwl-date-modifier date="calendarDate" set-to-today>Today</button>
+      <button class="btn btn-primary" mwl-date-modifier date="calendarDate" increment="calendarView">Next Month</button>
+    </div>
+    <mwl-calendar view="calendarView" view-date="calendarDate" events="todo" view-title="calendarTitle">
+    </mwl-calendar>
+  </div>
+  <container class = "col-md-6" ng-init="sortGuest='name'">
+    <h2 style="text-align:center">Guest List</h2>
+    <table class = "table table-hover hoverSort">
+      <thead>
+        <tr>
+          <th ng-click="sortGuest='name'"><b>Name</b></th>
+          <th ng-click="sortGuest='email'"><b>Email</b></th>
+          <th ng-click="sortGuest='phoneNumber'"><b>Phone Number</b></th>
+          <th ng-click="sortGuest='partySize'"><b>Party Size</b></th>
+	  <th ng-click="sortGuest='accepted'"><b>Accepted</b></th>
+        </tr>
+      </thead>
+
+      <tbody ng-repeat ="item in ev.guests | orderBy: sortGuest" ng-show="hasItems(ev.guests)">
+        <tr>
+          <td>{{item.name}}</td>
+          <td>{{item.email}}</td>
+	  <td>{{item.phoneNumber}}</td>
+	  <td>{{item.partySize}}</td>
+	  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td>
         </tr>
       </tbody>
     </table>

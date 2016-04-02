@@ -26,13 +26,17 @@ angular.module('essenceEventsRepoApp.admin')
 }])
   .filter('url', function() {
     return function(link) {
-      var result;
-      var httpStart = "http://";
-      var httpsStart = "https://";
-      if (link.startsWith(httpStart) || link.startsWith(httpsStart))
-	result = link;
+      if (link) {
+        var result;
+        var httpStart = "http://";
+        var httpsStart = "https://";
+        if (link.startsWith(httpStart) || link.startsWith(httpsStart))
+	  result = link;
+        else
+	  result = httpStart + link;
+        return result;
+      }
       else
-	result = httpStart + link;
-      return result;
+	return link;
     };
 });

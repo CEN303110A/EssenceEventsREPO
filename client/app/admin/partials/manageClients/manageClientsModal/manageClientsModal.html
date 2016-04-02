@@ -1,33 +1,53 @@
- <div>
+<div>
   <tabset justified="true">
     <tab heading="Manage User">
-      <h2 class="modal-header">Client information:</h2>
-      <div class="modal-body">
-        <container>
-          <form class = "form" name="form" ng-submit="submit(username, email, phoneNumber)" novalidate>
-            <div class="form-group">
-              <label for="username">Client name</label>
-              <input type="text" class="form-control" name="username" ng-model="username" placeholder={{username}}>
-            </div>
-            <div class="form-group">
-              <label for="email">Client email</label>
-              <input type="text" class="form-control" name="email" ng-model="email" placeholder={{email}}>
-            </div>
-            <div class="form-group">
-              <label for="phoneNumber">Client phone number</label>
-              <input type="text" class="form-control" name="phoneNumber" ng-model="phoneNumber" placeholder={{phoneNumber}}>
-            </div>
-            <div>
-              <button type="submit" id="submit" class="btn btn-default">Save Changes</button>
-            </div>
-          </form>
 
-          <!-- <button type="button" class="btn btn-md btn-default" ng-click=mc.openModal(user)>Manage</button> -->
-        </container>
+      <div ng-if="!(deleteHTML)">
+        <h2 class="modal-header">Client information:</h2>
+        <div class="modal-body">
+          <container>
+            <form class = "form" name="form" ng-submit="submit(username, email, phoneNumber)" novalidate>
+              <div class="form-group">
+                <label for="username">Client name</label>
+                <input type="text" class="form-control" name="username" ng-model="username" placeholder={{username}}>
+              </div>
+              <div class="form-group">
+                <label for="email">Client email</label>
+                <input type="text" class="form-control" name="email" ng-model="email" placeholder={{email}}>
+              </div>
+              <div class="form-group">
+                <label for="phoneNumber">Client phone number</label>
+                <input type="text" class="form-control" name="phoneNumber" ng-model="phoneNumber" placeholder={{phoneNumber}}>
+              </div>
+              <div>
+                <button type="submit" id="submit" class="btn btn-default">Save Changes</button>
+                <button id="delete" class="btn btn-danger" ng-click="toggleDeleteUser()">Delete</button>
+              </div>
+            </form>
+
+            <!-- <button type="button" class="btn btn-md btn-default" ng-click=mc.openModal(user)>Manage</button> -->
+          </container>
+        </div>
+      </div>
+
+      <div ng-if="deleteHTML">
+        <h2 class = "modal-header text-center">
+          Are you sure you want to delete {{username}}?
+        </h2>
+        <div class = "modal-body row">
+          <container>
+            <div class = "col-md-6">
+              <button class = "btn btn-block btn-danger" ng-click="toggleDeleteUser()">No</button>
+            </div>
+            <div class = "col-md-6">
+              <button class = "btn btn-block btn-success" ng-click="deleteUser()">Yes</button>
+            </div>
+          </container>
+        </div>
       </div>
     </tab>
 
-    <tab heading="Manage Events" ng-init="getEvents()">
+    <tab heading="Manage Events" ng-init="getEvents()" ng-click="refreshDeleteUserHTML()">
       <h2 class="modal-header">Client events:</h2>
       <div class="modal-body">
         <button class="btn btn-lg btn-block btn-success" ng-click="createEvent()">Create Event</button>

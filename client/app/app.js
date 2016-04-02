@@ -11,11 +11,14 @@ angular.module('essenceEventsRepoApp', [
   'ui.bootstrap',
   'validation.match',
   'nvd3',
+  'mwl.calendar',
   'uiGmapgoogle-maps'
 ])
-  .config(function($urlRouterProvider, $locationProvider) {
+  .config(function($urlRouterProvider, $locationProvider, calendarConfig) {
     $urlRouterProvider
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
+
+    calendarConfig.displayAllMonthEvents = true;
   });

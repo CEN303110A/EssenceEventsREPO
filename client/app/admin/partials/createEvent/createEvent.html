@@ -1,11 +1,11 @@
-<div class="container">
+<div class="row container">
   <!-- <div class="row"> -->
   <div class="page-header">
     <h1>Create new event for <i>{{clientName}}</i></h1>
   </div>
   <section>
     <div>
-      <form class="form-horizontal col-md-8" name="form">
+      <form class="form-horizontal novalidate col-md-8" name="form">
 
         <!-- Div to input the event name -->
         <div class="form-group row col-md-12" show-errors>
@@ -14,20 +14,23 @@
         </div>
 
         <!-- Div to input the date -->
-        <div class="form-group row col-md-8" show-errors>
+        <div class="form-group row col-md-6" show-errors>
           <label for="dateOfEvent">Date:</label>
           <div class = "input-group">
-            <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="eventDate" is-open="eventDateOpened"  datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+            <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="eventDate" is-open="eventDateOpened"  datepicker-options="dateOptions" close-text="Close" />
             <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="openEventDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
           </div>
         </div>
+        <div class = "form-group col-md-6">
+          <timepicker ng-model="eventDate" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+        </div>
 
         <!-- Div to input then venue  -->
         <div class="form-group row col-md-12" show-errors>
           <label for="venue">Venue:</label>
-          <input name="venue" type="venue" ng-model="venue" id="venue" class="form-control" required>
+          <input name="venue" type="venue" ng-model="venue" id="venue" class="form-control">
         </div>
 
         <!-- Div to input the goal budget -->
@@ -83,18 +86,21 @@
         <!-- To do list -->
         <div class="form-group row" show-errors>
           <row>
-            <div id ="todo" class="col-md-6">
+            <div id ="todo" class="col-md-4">
               <label for="todo">Task:</label>
               <input type="text" placeholder = "Task" ng-model="todoInput" class="form-control" ng-keyup="$event.keyCode == 13 && addToDo()">
             </div>
-            <div id ="date" class="col-md-5">
+            <div id ="date" class="col-md-4">
               <label for="date">Date:</label>
               <div class = "input-group">
-                <input type="text" class="form-control" id="date" datepicker-popup="fullDate" ng-model="todoDate" is-open="todoDateOpened"  datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-keyup="$event.keyCode == 13 && addToDo()"/>
+                <input type="text" class="form-control" id="date" datepicker-popup="fullDate" ng-model="todoDate" is-open="todoDateOpened"  datepicker-options="dateOptions" close-text="Close" ng-keyup="$event.keyCode == 13 && addToDo()"/>
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-default" ng-click="opentodoDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
               </div>
+            </div>
+            <div class="col-md-3">
+              <timepicker ng-model="todoDate" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
             </div>
             <div class="col-md-1">
               <label for="button">&zwnj;</label>
@@ -116,7 +122,7 @@
               <tbody ng-repeat ="item in thingsToDo">
                 <tr>
                   <td>{{item.todo}}</td>
-                  <td>{{item.by | date:"fullDate"}}</td>
+                  <td>{{item.by | date:'EEEE, MMMM d, y @h:mm a'}}</td>
                   <td><button type="button" class="btn btn-danger" ng-click="deletethingsToDo(thingsToDo, $index)">Remove</button></td>
                 </tr>
               </tbody>
@@ -129,7 +135,7 @@
 
         <!-- Submit button -->
         <div class="form-group row col-md-12">
-          <button type="button" class="btn btn-default" ng-click="submit()">Submit</button>
+          <button type="button" class="btn btn-default" ng-click="submit()" ng-disabled="form.$invalid">Submit</button>
         </div>
 
       </form>
