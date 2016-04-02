@@ -30,5 +30,16 @@ describe('Create New Customer', function() {
     elements.customerConfirmPasswordInput.sendKeys(password);
     elements.customerPhoneNumberInput.sendKeys(phone);
     elements.createAccountButton.click();
+
+    expect(elements.allClients.count()).toEqual(1);
+    expect(elements.firstClientName.getText()).toEqual(name);
+  });
+
+  it('should delete new customer', function() {
+    elements.firstManageButton.click();
+    elements.modalDeleteButton.click();
+    elements.modalYesButton.click();
+
+    expect(elements.allClients.count()).toEqual(0);
   });
 });
