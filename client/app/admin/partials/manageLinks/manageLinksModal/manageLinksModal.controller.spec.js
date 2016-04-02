@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: ManageLinksCtrl', function () {
+describe('Controller: ManageLinksModalCtrl', function () {
 
   // load the controller's module
   beforeEach(module('essenceEventsRepoApp'));
 
-  var ManageLinksCtrl, scope;
+  var ManageLinksModalCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    ManageLinksCtrl = $controller('ManageLinksCtrl', {
+    ManageLinksModalCtrl = $controller('ManageLinksModalCtrl', {
       $scope: scope
     });
   }));

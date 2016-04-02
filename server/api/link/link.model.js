@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
 var eventSchema = new Schema({
   name: String,
   url: String,
-  phoneNumber: String
+  phoneNumber: String,
+  photo: String
 });
 
 var Link = mongoose.model('Link', eventSchema);
