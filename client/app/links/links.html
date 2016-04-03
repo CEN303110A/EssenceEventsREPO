@@ -1,44 +1,16 @@
-<div class="container" ng-controller="LinksCtrl">
-  <h2 class="text-center">Photography</h2>
-  <div class="row" ng-repeat="link in links" ng-show="link.type == 'Photography'">
-    <p class="col-md-3">
-      <a target="_target" href="{{link.site}}">
-        <img src="{{link.img}}" class="linkImg">
-      </a>
-    </p>
-    <p class="col-md-6 text-center">
-      {{link.name}}<br />
-      <a target="_target" ng-href="{{link.site}}">{{link.site}}</a><br />
-      {{link.phoneNumber}}<br />
-      <br />
-    </p>
-  </div>
-  <h2 class="text-center">Rental Chair Covers and Sashes</h2>
-  <div class="row" ng-repeat="link in links" ng-show="link.type == 'Rental Chair Covers and Sashes'">
-    <p class="col-md-3">
-      <a target="_target" href="{{link.site}}">
-        <img src="{{link.img}}" class="linkImg">
-      </a>
-    </p>
-    <p class="col-md-6 text-center">
-      {{link.name}}<br />
-      <a target="_target" ng-href="{{link.site}}">{{link.site}}</a><br />
-      {{link.phoneNumber}}<br />
-      <br />
-    </p>
-</div>
-  <h2 class="text-center">Invitations</h2>
-  <div class="row" ng-repeat="link in links" ng-show="link.type == 'Invitations'">
-    <p class="col-md-3">
-      <a target="_target" href="{{link.site}}">
-        <img src="{{link.img}}" class="linkImg">
-      </a>
-    </p>
-    <p class="col-md-6 text-center">
-      {{link.name}}<br />
-      <a target="_target" ng-href="{{link.site}}">{{link.site}}</a><br />
-      {{link.phoneNumber}}<br />
-      <br />
-    </p>
+<div class="container" ng-controller="LinksCtrl" ng-init="getLinks()">
+  <div ng-repeat="categories in processedLinks">
+    <h2 class="text-center" style="padding-bottom: 15px;">{{categories.type}}</h2>
+    <div class="container">
+
+      <table class = "table borderless" align="center" style="padding-bottom: 15px;">
+        <tr ng-repeat="link in categories.links">
+          <td><img ng-src="{{link.photo}}" height="50" width="50"></img></td>
+          <td><a ng-href="{{link.url|url}}" target="_blank">{{link.url}}</a></td>
+          <td><b>{{link.name}}</b></td>
+          <td><b>{{link.phoneNumber || '----'}}</b></td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>

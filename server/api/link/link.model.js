@@ -2,6 +2,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var eventSchema = new Schema({
+  type: String,
   name: String,
   url: String,
   phoneNumber: String,
