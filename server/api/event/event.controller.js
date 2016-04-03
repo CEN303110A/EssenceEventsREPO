@@ -35,6 +35,26 @@ export function create(req, res) {
   });
 }
 
+export function toggleTodo(req, res) {
+  Event.findOne({_id: req.event._id}, function(err, event) {
+    if (err) {
+      throw err;
+      res.status(400).send(err);
+    }
+    else {
+      event.toDoList[req.body.index].done = req.body.bool;
+      event.save(function(err) {
+        if (err) {
+	  throw err;
+	  res.status(400).send(err);
+	}
+	else
+	  res.send('Todo change successful');
+      });
+    }
+  });
+}
+
 export function update(req, res) {
   var event = new Event(req.body);
   Event.update({_id: req.body._id}, req.body, function(err, event) {

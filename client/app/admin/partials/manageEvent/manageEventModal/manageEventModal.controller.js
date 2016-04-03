@@ -55,13 +55,16 @@ $scope.scheduleDateOpen = function($event) {
 $scope.addToDo = function(todo, date)
 {
   if (todo && date) {
-    $scope.event.toDoList.push({todo: todo, by: date});
+    $scope.event.toDoList.push({todo: todo, by: date, done: false});
     return 1;
   }
   else
   return 0;
 };
 
+$scope.changeDone = function(index) {
+  $scope.event.toDoList[index].done = !$scope.event.toDoList[index].done;
+};
 
 $scope.getContractors = function() {
   Subcontractors.getAll()

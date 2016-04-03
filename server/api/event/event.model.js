@@ -21,7 +21,8 @@ var eventSchema = new Schema({
   budgetGoal: Number,
   toDoList: [{
     todo: String,
-    by: Date
+    by: Date,
+    done: Boolean
   }],
   guests: [{
     name: String,
