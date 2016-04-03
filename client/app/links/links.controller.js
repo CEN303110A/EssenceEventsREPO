@@ -9,11 +9,9 @@ angular.module('essenceEventsRepoApp')
       .then(function(response) {
 	$scope.types = [];
         $scope.links = response.data;
-	console.log($scope.links);
-	console.log(response.data);
 	for (var i = 0; i < $scope.links.length; i++) {
 	  if ($scope.links[i].type) {
-	    if ($scope.types.join('~').toLowerCase().split('~').indexOf($scope.links[i].type.toLowerCase()) == -1)
+	    if ($scope.types.join('~').toLowerCase().split('^').indexOf($scope.links[i].type.toLowerCase()) == -1)
 	      $scope.types.push($scope.links[i].type);
 	  }
 	  else
