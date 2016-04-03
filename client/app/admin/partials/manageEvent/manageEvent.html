@@ -1,54 +1,59 @@
 <div class="row" ng-init="getEvents(); sort='date'">
-<h1 class="page-header">MANAGE EVENTS</h1>
-<tabset>
-<tab heading="Current Events">
-  <br>
-  <table class="table table-hover hoverSort">
-    <thead>
-      <tr>
-        <th ng-click="sort='name'"><b>Name</b></td>
-	<th ng-click="sort='userName'"><b>User</b></td>
-        <th ng-click="sort='location'"><b>Venue</b></td>
-        <th ng-click="sort='date'"><b>Date</b></td>
-        <th></td>
-      </tr>
-    </thead>
+  <h1 class="page-header">MANAGE EVENTS</h1>
+  <div class = "form-group col-md-12">
+    <div class="col-md-5">
+      <input type="text" class="form-control" placeholder="Search here..." ng-model="searchEvents"></input>
+    </div>
+  </div>
+  <tabset>
+    <tab heading="Current Events">
+      <br>
+      <table class="table table-hover hoverSort">
+        <thead>
+          <tr>
+            <th ng-click="sort='name'"><b>Name</b></td>
+              <th ng-click="sort='userName'"><b>User</b></td>
+                <th ng-click="sort='location'"><b>Venue</b></td>
+                  <th ng-click="sort='date'"><b>Date</b></td>
+                    <th></td>
+                    </tr>
+                  </thead>
 
-    <tbody>
-      <tr ng-repeat="event in events | filter: filterCurrent() | orderBy: sort">
-          <td>{{event.name}}</td>
-	  <td>{{event.userName || '----'}}</td>
-          <td>{{event.location}}</td>
-          <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
-          <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>
-      </tr>
-    </tbody>
-  </table>
-</tab>
+                  <tbody>
+                    <tr ng-repeat="event in events | filter: filterCurrent() | filter: searchEvents |orderBy: sort">
+                      <td>{{event.name}}</td>
+                      <td>{{event.userName || '----'}}</td>
+                      <td>{{event.location}}</td>
+                      <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
+                      <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </tab>
 
-<tab heading="Past Events">
-  <br>
-  <table class="table table-hover hoverSort">
-    <thead>
-      <tr>
-        <th ng-click="sort='name'"><b>Name</b></td>
-	<th ng-click="sort='userName'"><b>User</b></td>
-        <th ng-click="sort='location'"><b>Venue</b></td>
-        <th ng-click="sort='date'"><b>Date</b></td>
-        <th></td>
-      </tr>
-    </thead>
+              <tab heading="Past Events">
+                <br>
+                <table class="table table-hover hoverSort">
+                  <thead>
+                    <tr>
+                      <th ng-click="sort='name'"><b>Name</b></td>
+                        <th ng-click="sort='userName'"><b>User</b></td>
+                          <th ng-click="sort='location'"><b>Venue</b></td>
+                            <th ng-click="sort='date'"><b>Date</b></td>
+                              <th></td>
+                              </tr>
+                            </thead>
 
-    <tbody>
-      <tr ng-repeat="event in events | filter: filterPast()">
-          <td>{{event.name}}</td>
-	  <td>{{event.userName || '----'}}</td>
-          <td>{{event.location}}</td>
-          <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
-          <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>
-      </tr>
-    </tbody>
-  </table>
-</tab>
-</tabset>
-</div>
+                            <tbody>
+                              <tr ng-repeat="event in events | filter: searchEvents |filter: filterPast() | orderBy: sort">
+                                <td>{{event.name}}</td>
+                                <td>{{event.userName || '----'}}</td>
+                                <td>{{event.location}}</td>
+                                <td>{{event.date.substring(5,10) + '-' + event.date.substring(0,4)}}</td>
+                                <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(event)">Manage</button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </tab>
+                      </tabset>
+                    </div>
