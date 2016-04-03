@@ -42,7 +42,7 @@ class NavbarController {
       ]
     },
     {
-      'title': 'Reservations',
+      'title': 'Contact Us',
       'state': 'reservations',
       'hasDropDown' : false
     },
