@@ -1,7 +1,7 @@
 <div class="container" ng-controller="LinksCtrl" ng-init="getLinks()">
-  <div ng-repeat="type in types">
+  <div ng-repeat="type in types | orderBy: 'toString()'">
     <h2 class="text-center">{{type.toUpperCase()}}</h2>
-    <div class="row" ng-repeat="link in links" ng-show="link.type.toLowerCase() == type.toLowerCase()">
+    <div class="row" ng-repeat="link in links | orderBy: 'name'" ng-show="link.type.toLowerCase() == type.toLowerCase()">
       <p class="col-md-3">
         <a target="_target" href="{{link.url}}">
           <img ng-src="{{link.photo}}" class="linkImg">
@@ -17,7 +17,7 @@
   </div>
   <div ng-if="other">
     <h2 class="text-center">OTHER</h2>
-    <div class="row" ng-repeat="link in links" ng-show="!link.type">
+    <div class="row" ng-repeat="link in links | orderBy: 'name'" ng-show="!link.type">
       <p class="col-md-3">
         <a target="_target" href="{{link.url}}">
           <img ng-src="{{link.photo}}" class="linkImg">
