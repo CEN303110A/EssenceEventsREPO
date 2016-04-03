@@ -68,7 +68,7 @@
                                             'has-error': form.phoneNumber.$invalid && vm.submitted }">
           <label>Phone Number</label>
 
-          <input type="text" name="phoneNumber" class="form-control" ng-model="vm.user.phoneNumber" ng-minlength="12" placeholder="e.g.(999-999-9999)"
+          <input type="number" name="phoneNumber" class="form-control" ng-model="vm.user.phoneNumber" ng-minlength="7" placeholder="e.g.(1234567890)"
                  required/>
           <p class="help-block" ng-show="form.phoneNumber.$error.required && vm.submitted">
             A phone number is required

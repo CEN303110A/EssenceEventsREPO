@@ -17,7 +17,7 @@
       <tbody>
         <tr ng-repeat="user in mc.alldata | filter: 'user' | filter: searchClients | orderBy: sort">
             <td>{{user.name}}</td>
-            <td>{{user.phoneNumber}}</td>
+            <td>{{user.phoneNumber | phone}}</td>
             <td>{{user.email}}</td>
             <td><button type="button" class="btn btn-md btn-default" ng-click=mc.openModal(user)>Manage</button></td>
         </tr>
