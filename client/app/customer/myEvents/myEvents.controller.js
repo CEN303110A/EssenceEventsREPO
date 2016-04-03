@@ -1,12 +1,26 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp')
-.controller('MyEventsCtrl',  ['$scope' , '$stateParams', '$state', function ($scope, $stateParams, $state) {
+.controller('MyEventsCtrl',  ['$scope' , '$stateParams', '$state', 'Events', function ($scope, $stateParams, $state, Events) {
   $scope.message = 'Hello';
 
   if ($stateParams.eventt[0])
     $state.go('customer');
   $scope.ev = $stateParams.eventt;
+
+  $scope.changeDone = function(index) {
+    $scope.ev.toDoList[index].done = !$scope.ev.toDoList[index].done;
+    var body = {
+      index: index,
+      bool: $scope.ev.toDoList[index].done
+    };
+    Events.toggleTodo($scope.ev._id, body)
+      .then(function(response) {
+	console.log('done');
+      }, function(err) {
+	//do something
+    });
+  };
 
     // Pi chart for budget
     $scope.options = {
