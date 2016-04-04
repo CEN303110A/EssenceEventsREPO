@@ -10,8 +10,8 @@ describe('Create New Customer', function() {
     expect(elements.navBarButtons.count()).toEqual(6);
 
     elements.navLoginButton.click();
-    elements.emailInput.sendKeys('admin@example.com');
-    elements.passwordInput.sendKeys('admin');
+    elements.emailInput.sendKeys(email);
+    elements.passwordInput.sendKeys(password);
     elements.loginButton.click();
 
     expect(elements.navBarButtons.count()).toEqual(7);
@@ -30,19 +30,21 @@ describe('Create New Customer', function() {
     elements.customerConfirmPasswordInput.sendKeys(password);
     elements.customerPhoneNumberInput.sendKeys(phone);
     elements.createAccountButton.click();
-    elements.searchInput.sendKeys(name);
+    elements.searchClientInput.sendKeys(name);
 
     expect(elements.allClients.count()).toEqual(1);
     expect(elements.firstClientName.getText()).toEqual(name);
+    expect(elements.firstClientEmail.getText()).toEqual(email);
+    expect(elements.firstClientPhoneNumber.getText()).toEqual(phone);
   });
 
   it('should delete new customer', function() {
     var name = 'robot customer';
-    
+
     elements.firstManageButton.click();
     elements.modalDeleteButton.click();
     elements.modalYesButton.click();
-    elements.searchInput.sendKeys(name);
+    elements.searchClientInput.sendKeys(name);
 
     expect(elements.allClients.count()).toEqual(0);
   });
