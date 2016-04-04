@@ -24,7 +24,7 @@
           <tr ng-repeat="link in links | filter: searchLinks |orderBy: sort">
             <td>{{link.type}}</td>
             <td>{{link.name}}</td>
-            <td>{{link.phoneNumber || '----'}}</td>
+            <td>{{link.phoneNumber | phone}}</td>
             <td><a ng-href="{{link.url|url}}" target="_blank">{{link.url}}</a></td>
             <td><img ng-src="{{link.photo}}" height="150" width="150"></img></td>
             <td><button type="button" class="btn btn-md btn-default" ng-click="openModal(link)">Manage</button></td>

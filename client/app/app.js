@@ -21,4 +21,16 @@ angular.module('essenceEventsRepoApp', [
     $locationProvider.html5Mode(true);
 
     calendarConfig.displayAllMonthEvents = true;
-  });
+  })
+.filter('phone', function() {
+  return function(number) {
+    if (!number)
+      return '----';
+    else if (number.length == 7)
+      return (number.substring(0,3) + '-' + number.substring(3,7));
+    else if (number.length == 10)
+      return ('(' + number.substring(0,3) + ') ' + number.substring(3,6) + '-' + number.substring(6,10));
+    else
+      return number;
+  };
+});

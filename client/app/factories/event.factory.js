@@ -17,6 +17,10 @@ angular.module('essenceEventsRepoApp').factory('Events', ['$http', '$location',
 	return $http.post('http://' + $location.host() + ':' + $location.port() + '/api/events', event);
       },
 
+      toggleTodo: function(id, body) {
+	return $http.post('http://' + $location.host() + ':' + $location.port() + '/api/events/' + id, body);
+      },
+
       update: function(event) {
 	return $http.put('http://' + $location.host() + ':' + $location.port() + '/api/events', event);
       },

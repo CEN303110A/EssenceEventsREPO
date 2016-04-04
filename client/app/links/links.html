@@ -1,16 +1,34 @@
 <div class="container" ng-controller="LinksCtrl" ng-init="getLinks()">
-  <div ng-repeat="categories in processedLinks">
-    <h2 class="text-center" style="padding-bottom: 15px;">{{categories.type}}</h2>
-    <div class="container">
-
-      <table class = "table borderless" align="center" style="padding-bottom: 15px;">
-        <tr ng-repeat="link in categories.links">
-          <td><img ng-src="{{link.photo}}" height="50" width="50"></img></td>
-          <td><a ng-href="{{link.url|url}}" target="_blank">{{link.url}}</a></td>
-          <td><b>{{link.name}}</b></td>
-          <td><b>{{link.phoneNumber || '----'}}</b></td>
-        </tr>
-      </table>
+  <div ng-repeat="type in types | orderBy: 'toString()'">
+    <h2 class="text-center">{{type.toUpperCase()}}</h2>
+    <div class="row" ng-repeat="link in links | orderBy: 'name'" ng-show="link.type.toLowerCase() == type.toLowerCase()">
+      <p class="col-md-3">
+        <a target="_target" href="{{link.url}}">
+          <img ng-src="{{link.photo}}" class="linkImg">
+        </a>
+      </p>
+      <p class="col-md-6 text-center">
+        {{link.name}}<br />
+        <a target="_target" ng-href="{{link.url | url}}">{{link.url | url}}</a><br />
+        {{link.phoneNumber | phone}}<br />
+        <br />
+      </p>
+    </div>
+  </div>
+  <div ng-if="other">
+    <h2 class="text-center">OTHER</h2>
+    <div class="row" ng-repeat="link in links | orderBy: 'name'" ng-show="!link.type">
+      <p class="col-md-3">
+        <a target="_target" href="{{link.url}}">
+          <img ng-src="{{link.photo}}" class="linkImg">
+        </a>
+      </p>
+      <p class="col-md-6 text-center">
+        {{link.name}}<br />
+        <a target="_target" ng-href="{{link.url | url}}">{{link.url | url}}</a><br />
+        {{link.phoneNumber | phone}}<br />
+        <br />
+      </p>
     </div>
   </div>
 </div>
