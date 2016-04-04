@@ -25,6 +25,10 @@ angular.module('essenceEventsRepoApp').factory('Events', ['$http', '$location',
 	return $http.put('http://' + $location.host() + ':' + $location.port() + '/api/events', event);
       },
 
+      removeSubcon: function(id) {
+	return $http.put('http://' + $location.host() + ':' + $location.port() + '/api/events/' + id, {});
+      },
+
       remove: function(id) {
 	return $http.delete('http://' + $location.host() + ':' + $location.port() + '/api/events/' + id);
       },
