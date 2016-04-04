@@ -1,13 +1,29 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp')
-.controller('MyEventsCtrl',  ['$scope' , '$stateParams', '$state', 'Events', function ($scope, $stateParams, $state, Events) {
+.controller('MyEventsCtrl',  ['$scope' , '$stateParams', '$state', '$q', 'Events', 'Subcontractors', function ($scope, $stateParams, $state, $q, Events, Subcontractors) {
   $scope.message = 'Hello';
 
   if ($stateParams.eventt[0])
     $state.go('customer');
   $scope.ev = $stateParams.eventt;
+  $scope.subcontractors = [];
 
+  //Finds all subcontractors by id
+  $scope.getEventSubcons = function() {
+    var promises = $scope.ev.subcontractors.map(function(subcon) {
+      return Subcontractors.getOne(subcon);
+    });
+    $q.all(promises)
+    .then(function(response) {
+      response.forEach(function(r) {
+        $scope.subcontractors.push(r.data);
+      });
+    }, function(err) {
+      //do something
+    });
+  };
+  
   $scope.changeDone = function(index) {
     $scope.ev.toDoList[index].done = !$scope.ev.toDoList[index].done;
     var body = {
@@ -54,6 +70,7 @@ angular.module('essenceEventsRepoApp')
     $scope.calendarView = 'month';
     $scope.calendarDate = new Date();
     $scope.todo = [];
+    $scope.todo.push({title: $scope.ev.name, type: 'important', startsAt: new Date($scope.ev.date)});
     for (var i = 0; i < $scope.ev.toDoList.length; i++)
       $scope.todo.push({title: $scope.ev.toDoList[i].todo, type: 'info', startsAt: new Date($scope.ev.toDoList[i].by)});
 }]);
