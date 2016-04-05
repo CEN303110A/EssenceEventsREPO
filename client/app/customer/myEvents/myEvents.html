@@ -1,4 +1,4 @@
-<div ng-controller="MyEventsCtrl" class="row">
+<div ng-controller="MyEventsCtrl" class="row" ng-init="getEventSubcons()">
 
   <h1> Event: {{ev.name}} </h1>
   <h3> Date: {{ev.date | date: 'fullDate'}}</h3>
@@ -30,7 +30,7 @@
     </table>
   </container>
   <div class="col-md-6">
-    <div class="container" style="text-align: center">
+    <div class="container" style="text-align:center">
       <h2>{{calendarDate | date: 'MMMM yyyy'}}</h2>
       <button class="btn btn-primary" mwl-date-modifier date="calendarDate" decrement="calendarView">Prev Month</button>
       <button class="btn btn-primary" mwl-date-modifier date="calendarDate" set-to-today>Today</button>
@@ -59,6 +59,24 @@
 	  <td>{{item.phoneNumber}}</td>
 	  <td>{{item.partySize}}</td>
 	  <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </container>
+  <container class = "col-md-6" ng-show="hasItems(subcontractors)">
+    <h2 style="text-align:center">Subcontractors</h2>
+    <table class = "table table-hover">
+      <thead>
+        <tr>
+          <th><b>Name</b></th>
+	  <th><b>Link</b></th>
+        </tr>
+      </thead>
+
+      <tbody ng-repeat ="item in subcontractors">
+        <tr>
+          <td>{{item.name}}</td>
+          <td><a ng-href="{{item.link | url}}" target="_blank">{{item.link | url}}</a></td>
         </tr>
       </tbody>
     </table>
