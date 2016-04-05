@@ -17,9 +17,9 @@
         <div class="form-group row col-md-6" show-errors>
           <label for="dateOfEvent">Date:</label>
           <div class = "input-group">
-            <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="eventDate" is-open="eventDateOpened"  datepicker-options="dateOptions" close-text="Close" />
+            <input type="text" class="form-control" id="eventDate" datepicker-popup="fullDate" ng-model="eventDate" is-open="eventDateOpened"  datepicker-options="dateOptions" close-text="Close" />
             <span class="input-group-btn">
-              <button type="button" class="btn btn-default" ng-click="openEventDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              <button type="button" class="btn btn-default" ng-click="openEventDate($event)" id="eventDate"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
           </div>
         </div>
@@ -55,7 +55,7 @@
             </div>
             <div class="col-md-1">
               <label for="button">&zwnj;</label>
-              <button type="button" class="btn btn-success" ng-click="addBudget()">+</button>
+              <button type="button" class="btn btn-success" ng-click="addBudget()" id="addItem">+</button>
             </div>
           </row>
 
@@ -95,7 +95,7 @@
               <div class = "input-group">
                 <input type="text" class="form-control" id="date" datepicker-popup="fullDate" ng-model="todoDate" is-open="todoDateOpened"  datepicker-options="dateOptions" close-text="Close" ng-keyup="$event.keyCode == 13 && addToDo()"/>
                 <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="opentodoDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  <button type="button" class="btn btn-default" ng-click="opentodoDate($event)" id="todoDate"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
               </div>
             </div>
@@ -104,7 +104,7 @@
             </div>
             <div class="col-md-1">
               <label for="button">&zwnj;</label>
-              <button type="button" class="btn btn-success" ng-click="addToDo()">+</button>
+              <button type="button" class="btn btn-success" ng-click="addToDo()" id="addTodo">+</button>
             </div>
           </row>
 

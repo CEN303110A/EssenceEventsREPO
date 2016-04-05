@@ -1,7 +1,7 @@
 exports.config = {
   framework: 'jasmine',
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  specs: ['createnewcustomer.js'],
+  specs: ['createnewevent.js'],
   capabilities: {
     browserName: 'firefox'
   }
