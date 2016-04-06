@@ -4,8 +4,10 @@ var clientName = 'robot customer',
     eventName = 'robot event',
     email = 'test@test.com',
     password = 'test',
-    phone = '111-222-3333',
-    vanue = 'house',
+    phone = '1112223333',
+    venue = 'house',
+    date = 'Wednesday, April 6 2017',
+    minute = new Date().getMinutes() + 1,
     budgetGoal = '500',
     item = 'present',
     cost = '100',
@@ -48,7 +50,9 @@ describe('Create New Event', function() {
     elements.createEventButton.click();
 
     elements.eventNameInput.sendKeys(eventName);
-    elements.venueInput.sendKeys(vanue);
+    elements.minuteInput.clear();
+    elements.minuteInput.sendKeys(minute);
+    elements.venueInput.sendKeys(venue);
     elements.budgetGoalInput.sendKeys(budgetGoal);
     elements.itemInput.sendKeys(item);
     elements.itemCostInput.sendKeys(cost);
@@ -65,7 +69,7 @@ describe('Create New Event', function() {
     elements.searchEventInput.sendKeys(eventName);
 
     expect(elements.firstEventName.getText()).toEqual(eventName);
-    expect(elements.firstEventVenue.getText()).toEqual(vanue);
+    expect(elements.firstEventVenue.getText()).toEqual(venue);
   });
 
   it('should delete new user', function() {

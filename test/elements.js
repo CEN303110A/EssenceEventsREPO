@@ -29,10 +29,10 @@ var elements = {
   createEventButton: element(by.buttonText('Create Event')),
   //create event
   eventNameInput: element(by.id('eventName')),
-  eventDatePicker: element(by.id('eventDate')),
+  eventDateInput: element(by.id('eventDate')),
   todayButton: element(by.buttonText('Today')),
   hourInput: element(by.model('hours')),
-  minuteInput: element(by.model('minutes')),
+  minuteInput: element(by.css('table[ng-model="eventDate"] input[ng-model="minutes"]')),
   venueInput: element(by.id('venue')),
   budgetGoalInput: element(by.id('exampleInputAmount')),
   itemInput: element(by.model('budgetItem')),
