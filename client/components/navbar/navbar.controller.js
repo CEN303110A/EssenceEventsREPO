@@ -28,6 +28,10 @@ class NavbarController {
       'hasDropDown' : true,
       'sublinks' : [
         {
+          'title': 'Recent Events',
+          'state': 'liveGallery'
+        },
+        {
           'title': 'Celebrations',
           'state': 'celebrations'
         },
