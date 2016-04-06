@@ -15,16 +15,40 @@ var elements = {
   customerPhoneNumberInput: element(by.name('phoneNumber')),
   createAccountButton: element(by.buttonText('Create Account')),
   //admin nav
-  manageClientButton: element(by.id('Manage Client')),
+  manageClientButton: element(by.id('Manage Clients')),
   //Manage Client
-  searchInput: element(by.model('searchClients')),
+  searchClientInput: element(by.model('searchClients')),
   allClients: element.all(by.repeater('user in mc.alldata')),
   firstClientName: element.all(by.binding('user.name')).first(),
   firstClientPhoneNumber: element.all(by.binding('user.phoneNumber')).first(),
   firstClientEmail: element.all(by.binding('user.email')).first(),
   firstManageButton: element.all(by.buttonText('Manage')).first(),
   modalDeleteButton: element(by.id('delete')),
-  modalYesButton: element(by.buttonText('Yes'))
+  modalYesButton: element(by.buttonText('Yes')),
+  manageEventsTab: element(by.id('manageEvents')),
+  createEventButton: element(by.buttonText('Create Event')),
+  //create event
+  eventNameInput: element(by.id('eventName')),
+  eventDatePicker: element(by.id('eventDate')),
+  todayButton: element(by.buttonText('Today')),
+  hourInput: element(by.model('hours')),
+  minuteInput: element(by.model('minutes')),
+  venueInput: element(by.id('venue')),
+  budgetGoalInput: element(by.id('exampleInputAmount')),
+  itemInput: element(by.model('budgetItem')),
+  itemCostInput: element(by.model('itemCost')),
+  addItemButton: element(by.id('addItem')),
+  itemList: element.all(by.repeater('item in budget')),
+  taskInput: element(by.model('todoInput')),
+  todoDatePicker: element(by.id('todoDate')),
+  addTodoButton: element(by.id('addTodo')),
+  todoList: element.all(by.repeater('item in thingsToDo')),
+  submitEventButton: element(by.buttonText('Submit')),
+  //manage Event
+  searchEventInput: element(by.model('searchEvents')),
+  firstEventName: element(by.exactBinding('event.name')),
+  firstEventVenue: element(by.exactBinding('event.location'))
+
 }
 
 module.exports = elements;

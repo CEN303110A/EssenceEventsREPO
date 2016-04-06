@@ -3,13 +3,15 @@
 angular.module('essenceEventsRepoApp.admin')
 .controller('ManageEventModalCtrl', ['$scope', '$state', '$q', '$modalInstance', 'event', 'Events', 'Subcontractors', function ($scope, $state, $q, $modalInstance, event, Events, Subcontractors)
 {
+
+    //Copy object so we don't change main page concurrently and setup subcontractors
   $scope.event = JSON.parse(JSON.stringify(event));
   $scope.event.subcons = [];
   $scope.currentCost = 0;
   for (var i = 0; i < $scope.event.budget.length; i++)
   $scope.currentCost = $scope.currentCost + $scope.event.budget[i].amount;
 
-  //hideDeleteTab
+  //hideDeleteTab with functionality
   $scope.hideDeleteTab = true;
 
   $scope.showDeleteTabFunc = function()
@@ -62,10 +64,12 @@ $scope.addToDo = function(todo, date)
   return 0;
 };
 
+//Change todo checkbox
 $scope.changeDone = function(index) {
   $scope.event.toDoList[index].done = !$scope.event.toDoList[index].done;
 };
 
+//Load subcontractors for select dropdown
 $scope.getContractors = function() {
   Subcontractors.getAll()
   .then(function(response) {
@@ -75,6 +79,7 @@ $scope.getContractors = function() {
   });
 };
 
+//Finds all subcontractors by id
 $scope.getEventSubcons = function() {
   var promises = $scope.event.subcontractors.map(function(subcon) {
     return Subcontractors.getOne(subcon);
@@ -89,6 +94,7 @@ $scope.getEventSubcons = function() {
   });
 };
 
+//If unique, adds the new subcontractor
 $scope.addSubcontractor = function(contractor) {
   if (contractor)
   if ($scope.event.subcontractors.indexOf(contractor._id) === -1) {
@@ -100,6 +106,7 @@ $scope.addSubcontractor = function(contractor) {
   return 0;
 };
 
+//Push a guest object to the array
 $scope.addGuest = function(name, email, phoneNumber, partySize) {
   if(name && email) {
     $scope.event.guests.push({name: name, email: email, phoneNumber: phoneNumber, partySize: partySize, accepted: false});
@@ -109,19 +116,23 @@ $scope.addGuest = function(name, email, phoneNumber, partySize) {
   return 0;
 };
 
+//Remove a guest from the array
 $scope.deleteGuest = function(index) {
   $scope.event.guests.splice(index, 1);
 };
 
+//Change the guest accepted checkbox
 $scope.changeAccepted = function(index) {
   $scope.event.guests[index].accepted = !$scope.event.guests[index].accepted;
 };
 
+//Check if array is empty
 $scope.hasItems = function(arr)
 {
   return (arr.length > 0);
 };
 
+//Push budget object
 $scope.addBudget = function(item, cost)
 {
   if (item && cost) {
@@ -138,17 +149,20 @@ $scope.deleteToDo = function(index) {
   $scope.event.toDoList.splice(index, 1);
 };
 
+//Delete a budget object and update current cost
 $scope.deleteBudget = function(index)
 {
   $scope.currentCost = $scope.currentCost - $scope.event.budget[index].amount;
   $scope.event.budget.splice(index, 1);
 };
 
+//Remove a subcontractor object
 $scope.deleteSubcon = function(index) {
   $scope.event.subcontractors.splice($scope.event.subcontractors.indexOf($scope.event.subcons[index]._id), 1);
   $scope.event.subcons.splice(index, 1);
 };
 
+//Update the object on save call
 $scope.submit = function() {
   if ($scope.event.name && $scope.event.date)
   Events.update($scope.event)

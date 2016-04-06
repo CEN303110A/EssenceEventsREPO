@@ -13,7 +13,8 @@ angular.module('essenceEventsRepoApp')
         },
         templateUrl: 'app/customer/customer.html',
         controller: 'CustomerCtrl',
-        controllerAs: 'cust'
+        controllerAs: 'cust',
+        authenticate: 'user'
 
       });
   });

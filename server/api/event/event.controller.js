@@ -68,6 +68,17 @@ export function update(req, res) {
   });
 }
 
+export function removeSubcon(req, res) {
+  Event.update({}, { $pull: { subcontractors: req.params.plainId } }, {multi: true}, function(err) {
+    if (err) {
+      throw err;
+      res.status(400).send(err);
+    }
+    else
+      res.send('Subcontractor removed');
+  });
+}
+
 export function remove(req, res) {
   Event.remove({_id: req.event._id}, function(err) {
     if (err) {

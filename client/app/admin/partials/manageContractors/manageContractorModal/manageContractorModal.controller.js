@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-.controller('ManageContractorModalCtrl', ['$scope', '$state', '$modalInstance', 'subcontractor', 'Subcontractors', function ($scope, $state, $modalInstance, subcontractor, Subcontractors)
+.controller('ManageContractorModalCtrl', ['$scope', '$state', '$modalInstance', 'subcontractor', 'Subcontractors', 'Events', function ($scope, $state, $modalInstance, subcontractor, Subcontractors, Events)
 {
   $scope.subcontractor = JSON.parse(JSON.stringify(subcontractor));
 
@@ -21,14 +21,15 @@ angular.module('essenceEventsRepoApp.admin')
   //deleteSubcontractor
   $scope.deleteSubcontractor = function()
   {
-    console.log('in here');
-    Subcontractors.remove(subcontractor._id).then(
-      function()
-      {
-        $modalInstance.close();
-        $state.reload();
-      }
-    );
+    Events.removeSubcon(subcontractor._id).then(function() {
+      Subcontractors.remove(subcontractor._id).then(
+        function()
+        {
+          $modalInstance.close();
+          $state.reload();
+        }
+      );
+    });
   }
 
   $scope.submit = function() {
