@@ -103,11 +103,11 @@
         <form class="row" name="forms">
           <div id="budget" class="col-md-7">
             <label for="budgetItem">Item:</label>
-            <input type="text" name="budgetItem" ng-model="budgetItem" class="form-control">
+            <input type="text" name="budgetItem" ng-model="budgetItem" ng-style="addItemStyle" class="form-control">
           </div>
           <div id="budget" class="col-md-4">
             <label for="amount">Cost:</label>
-            <input type="number" name="itemCost" ng-model="itemCost" class="form-control">
+            <input type="number" name="itemCost" ng-model="itemCost" ng-style="addItemStyle" class="form-control">
           </div>
           <div class="col-md-1">
             <label for="button">&zwnj;</label>
@@ -125,7 +125,7 @@
               </tr>
             </thead>
 
-            <tbody ng-repeat ="item in event.budget">
+            <tbody ng-repeat ="item in event.budget" ng-if="$index > 0">
               <tr>
                 <td>{{item.title}}</td>
                 <td>{{item.amount}}</td>

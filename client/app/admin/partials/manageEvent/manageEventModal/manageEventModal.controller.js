@@ -8,8 +8,9 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.event = JSON.parse(JSON.stringify(event));
   $scope.event.subcons = [];
   $scope.currentCost = 0;
-  for (var i = 0; i < $scope.event.budget.length; i++)
-  $scope.currentCost = $scope.currentCost + $scope.event.budget[i].amount;
+  $scope.currentCost = $scope.event.budgetGoal - $scope.event.budget[0].amount;
+  console.log($scope.event.budgetGoal, $scope.event.budget[0].amount)
+  //$scope.currentCost = $scope.event.currCost;
 
   //hideDeleteTab with functionality
   $scope.hideDeleteTab = true;
@@ -136,8 +137,21 @@ $scope.hasItems = function(arr)
 $scope.addBudget = function(item, cost)
 {
   if (item && cost) {
-    $scope.event.budget.push({title: item, amount: cost});
-    $scope.currentCost = $scope.currentCost + cost;
+
+    //ADD IF STATEMENT FOR ERROR HANDLING
+    if($scope.event.budget[0].amount >= cost) {
+      $scope.event.budget[0].amount = $scope.event.budget[0].amount - cost;
+      $scope.addItemStyle = {}
+      $scope.event.budget.push({title: item, amount: cost});
+      $scope.currentCost = $scope.currentCost + cost;
+    }
+    else {
+      $scope.addItemStyle = {
+        "border-color" : "red",
+        "border-width": "3px",
+        "border-style": "groove"
+      }
+    }
     return 1;
   }
   else
@@ -152,6 +166,7 @@ $scope.deleteToDo = function(index) {
 //Delete a budget object and update current cost
 $scope.deleteBudget = function(index)
 {
+  $scope.event.budget[0].amount = $scope.event.budget[0].amount + $scope.event.budget[index].amount;
   $scope.currentCost = $scope.currentCost - $scope.event.budget[index].amount;
   $scope.event.budget.splice(index, 1);
 };
