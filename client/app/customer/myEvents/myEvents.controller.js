@@ -23,7 +23,7 @@ angular.module('essenceEventsRepoApp')
       //do something
     });
   };
-  
+
   $scope.changeDone = function(index) {
     $scope.ev.toDoList[index].done = !$scope.ev.toDoList[index].done;
     var body = {
@@ -43,7 +43,7 @@ angular.module('essenceEventsRepoApp')
       chart: {
         type: 'pieChart',
         height: 500,
-        x: function(d){return d.title;},
+        x: function(d){return d.title},
         y: function(d){return d.amount;},
         showLabels: true,
         duration: 500,
