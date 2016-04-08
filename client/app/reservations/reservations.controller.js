@@ -17,6 +17,7 @@ angular.module('essenceEventsRepoApp')
     };
 
     $scope.submit = function() {
+      console.log('done');
       var email = {
         firstName: $scope.fname,
         lastName: $scope.lname,
