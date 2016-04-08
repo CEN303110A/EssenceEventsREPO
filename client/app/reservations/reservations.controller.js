@@ -4,7 +4,6 @@ angular.module('essenceEventsRepoApp')
   .controller('ReservationsCtrl', ['$scope', 'Auth', '$http', '$location', function ($scope, Auth, $http, $location) {
     var isDraggable = !('ontouchstart' in document.documentElement);
 
-    $scope.message = 'Hello';
     $scope.map = { center: { latitude: 29.65253, longitude: -82.330276 }, zoom: 17, options: {draggable: isDraggable}};
     $scope.coordsUpdates = 0;
     $scope.dynamicMoveCtr = 0;
@@ -19,14 +18,20 @@ angular.module('essenceEventsRepoApp')
 
     $scope.submit = function() {
       var email = {
-        something: 'thing',
-	else: 'why'
+        firstName: $scope.fname,
+        lastName: $scope.lname,
+        address: $scope.email,
+        phone: $scope.phone,
+        message: $scope.message
       };
-      $http.post('http://' + $location.host() + ':' + $location.port() + '/api/email', email)
+
+      $http.post('http://' + $location.host() + ':' + $location.port() +'/api/email', email)
         .then(function(response) {
-	  //do something on success
-	}, function(error) {
-	  //do something else on error
+          console.log(response);
+	        //do something on success
+	      }, function(error) {
+          console.log(error);
+	         //do something else on error
       });
     }
   }]);
