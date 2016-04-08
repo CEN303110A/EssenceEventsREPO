@@ -1,95 +1,109 @@
 <div ng-controller="MyEventsCtrl" ng-init="getEventSubcons()">
-  <h1> Event: {{ev.name}} </h1>
-  <h3> Date: {{ev.date | date: 'fullDate'}}</h3>
-  <h3> Location: {{ev.location}}</h3>
-  
-  <!--Your budget-->
-  <div class = "col-md-12">
-    <div class = "col-md-6">
-      <h3 align="center">Your Budget</h3>
-      <nvd3 options="options" data="ev.budget"></nvd3>
-    </div>
-    <!-- Display Guest List -->
-    <div class = "col-md-6" ng-init="sortGuest='name'">
-      <h2 style="text-align:center">Guest List</h2>
-      <table class = "table table-hover hoverSort">
-        <thead>
-          <tr>
-            <th ng-click="sortGuest='name'"><b>Name</b></th>
-            <th ng-click="sortGuest='email'"><b>Email</b></th>
-            <th ng-click="sortGuest='phoneNumber'"><b>Phone Number</b></th>
-            <th ng-click="sortGuest='partySize'"><b>Party Size</b></th>
-            <th ng-click="sortGuest='accepted'"><b>Accepted</b></th>
-          </tr>
-        </thead>
-        <tbody ng-repeat ="item in ev.guests | orderBy: sortGuest" ng-show="hasItems(ev.guests)">
-          <tr>
-            <td>{{item.name}}</td>
-            <td>{{item.email}}</td>
-            <td>{{item.phoneNumber}}</td>
-            <td>{{item.partySize}}</td>
-            <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class = "heading text-center">
+    <h1> Event: {{ev.name}} </h1>
+    <h3> Date: {{ev.date | date: 'EEEE, MMMM d, yyyy @h:mm a'}}</h3>
+    <h3> Location: {{ev.location}}</h3>
   </div>
-  <!-- Display Todo Calendar -->
-  <div class = "col-md-12">
-    <div class="col-md-6">
-      <div style="text-align:center">
-        <h2>{{calendarDate | date: 'MMMM yyyy'}}</h2>
-        <button class="btn btn-primary" mwl-date-modifier date="calendarDate" decrement="calendarView">Prev Month</button>
-        <button class="btn btn-primary" mwl-date-modifier date="calendarDate" set-to-today>Today</button>
-        <button class="btn btn-primary" mwl-date-modifier date="calendarDate" increment="calendarView">Next Month</button>
-        <br>
-        <!-- <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'year'">Year</label>
-        <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'month'">Month</label>
-        <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'week'">Week</label>
-        <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'day'">Day</label> -->
+
+  <tabset justified="true">
+    <tab heading="Budget">
+      <!--Your budget-->
+      <div class = "col-md-12">
+        <h3 align="center">Your Budget</h3>
+        <div class="text-center">
+          <nvd3 options="options" data="ev.budget"></nvd3>
+        </div>
       </div>
-      <mwl-calendar view="calendarView" view-date="calendarDate" events="todo" view-title="calendarTitle">
-      </mwl-calendar>
-    </div>
-    <!-- display table of todolist -->
-    <div class = "col-md-6">
-      <h2 style="text-align:center">Task List</h2>
-      <table class = "table table-hover">
-        <thead>
-          <tr>
-            <th><b>Task</b></th>
-            <th><b>Date</b></th>
-            <th><b>Done</b></th>
-          </tr>
-        </thead>
+    </tab>
 
-        <tbody ng-repeat ="item in ev.toDoList" ng-show="hasItems(ev.toDoList)">
-          <tr>
-            <td>{{item.todo}}</td>
-            <td>{{item.by | date:"EEEE, MMM. d, yyyy @h:mm a"}}</td>
-            <td><span ng-class="(item.done) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeDone($index)"></span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <!-- Display Subcontractors -->
-  <!-- <div class = "col-md-6" ng-show="hasItems(subcontractors)">
-  <h2 style="text-align:center">Subcontractors</h2>
-  <table class = "table table-hover">
-  <thead>
+    <tab heading="Guest List">
+      <!-- Display Guest List -->
+      <div class = "col-md-12" ng-init="sortGuest='name'">
+        <h2 style="text-align:center">Guest List</h2>
+        <table class = "table table-hover hoverSort">
+          <thead>
+            <tr>
+              <th ng-click="sortGuest='name'"><b>Name</b></th>
+              <th ng-click="sortGuest='email'"><b>Email</b></th>
+              <th ng-click="sortGuest='phoneNumber'"><b>Phone Number</b></th>
+              <th ng-click="sortGuest='partySize'"><b>Party Size</b></th>
+              <th ng-click="sortGuest='accepted'"><b>Accepted</b></th>
+            </tr>
+          </thead>
+          <tbody ng-repeat ="item in ev.guests | orderBy: sortGuest" ng-show="hasItems(ev.guests)">
+            <tr>
+              <td>{{item.name}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.phoneNumber}}</td>
+              <td>{{item.partySize}}</td>
+              <td><span ng-class="(item.accepted) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </tab>
+    <tab heading = "Calendar">
+
+      <!-- display table of todolist -->
+      <div class = "col-md-12">
+        <h2 style="text-align:center">Task List</h2>
+        <table class = "table table-hover">
+          <thead>
+            <tr>
+              <th><b>Task</b></th>
+              <th><b>Date</b></th>
+              <th><b>Done</b></th>
+            </tr>
+          </thead>
+
+          <tbody ng-repeat ="item in ev.toDoList" ng-show="hasItems(ev.toDoList)">
+            <tr>
+              <td>{{item.todo}}</td>
+              <td>{{item.by | date:"EEEE, MMM. d, yyyy @h:mm a"}}</td>
+              <td><span ng-class="(item.done) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeDone($index)"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Display Todo Calendar -->
+      <div class = "col-md-12">
+          <div style="text-align:center">
+            <h2>{{calendarDate | date: 'MMMM yyyy'}}</h2>
+            <button class="btn btn-primary" mwl-date-modifier date="calendarDate" decrement="calendarView">Prev Month</button>
+            <button class="btn btn-primary" mwl-date-modifier date="calendarDate" set-to-today>Today</button>
+            <button class="btn btn-primary" mwl-date-modifier date="calendarDate" increment="calendarView">Next Month</button>
+            <br>
+            <!-- <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'year'">Year</label>
+            <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'month'">Month</label>
+            <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'week'">Week</label>
+            <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'day'">Day</label> -->
+          </div>
+          <mwl-calendar view="calendarView" view-date="calendarDate" events="todo" view-title="calendarTitle">
+          </mwl-calendar>
+        </div>
+      </div>
+    </tab>
+
+    <!-- Display Subcontractors -->
+    <!-- <div class = "col-md-6" ng-show="hasItems(subcontractors)">
+    <h2 style="text-align:center">Subcontractors</h2>
+    <table class = "table table-hover">
+    <thead>
+    <tr>
+    <th><b>Name</b></th>
+    <th><b>Link</b></th>
+  </tr>
+  </thead>
+
+  <tbody ng-repeat ="item in subcontractors">
   <tr>
-  <th><b>Name</b></th>
-  <th><b>Link</b></th>
-</tr>
-</thead>
+  <td>{{item.name}}</td>
+  <td><a ng-href="{{item.link | url}}" target="_blank">{{item.link | url}}</a></td>
+  </tr>
+  </tbody>
+  </table>
+  </div> -->
+</tabset>
 
-<tbody ng-repeat ="item in subcontractors">
-<tr>
-<td>{{item.name}}</td>
-<td><a ng-href="{{item.link | url}}" target="_blank">{{item.link | url}}</a></td>
-</tr>
-</tbody>
-</table>
-</div> -->
 </div>
