@@ -34,7 +34,9 @@ export function email(req, res)
       res.status(400).end();
       return console.log(error);
     }
-    res.send('Message sent: ' + info.response);
-    console.log('Message sent: ' + info.response);
+    else {
+      res.send('Message sent: ' + info.response);
+      console.log('Message sent: ' + info.response);
+    }
   });
 }

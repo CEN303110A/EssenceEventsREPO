@@ -48,7 +48,7 @@
         <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'week'">Week</label>
         <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'day'">Day</label> -->
       </div>
-      <mwl-calendar view="calendarView" view-date="calendarDate" events="todo" view-title="calendarTitle">
+      <mwl-calendar view="calendarView" view-date="calendarDate" events="todo" view-title="calendarTitle" on-view-change-click="false">
       </mwl-calendar>
     </div>
     <!-- display table of todolist -->
