@@ -3,6 +3,7 @@
 import config from '../../config/environment';
 var nodemailer = require('nodemailer');
 
+
 /*
   For this email to work, please use a gmail account and put it in the developent.js
   It should follow this format:
@@ -18,7 +19,7 @@ var nodemailer = require('nodemailer');
 export function email(req, res)
 {
   var email = req.body;
-  var user = config.essEventsEmail.user;
+  var user = config.essEventsEmail.user;  //truncated email
   var pass = config.essEventsEmail.password;
   var transporter = nodemailer.createTransport('smtps://' + user + '%40gmail.com:' + pass + '@smtp.gmail.com');
   var mailOptions = {
