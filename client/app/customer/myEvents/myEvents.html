@@ -2,6 +2,7 @@
   <h1> Event: {{ev.name}} </h1>
   <h3> Date: {{ev.date | date: 'fullDate'}}</h3>
   <h3> Location: {{ev.location}}</h3>
+  
   <!--Your budget-->
   <div class = "col-md-12">
     <div class = "col-md-6">
@@ -65,7 +66,7 @@
         <tbody ng-repeat ="item in ev.toDoList" ng-show="hasItems(ev.toDoList)">
           <tr>
             <td>{{item.todo}}</td>
-            <td>{{item.by | date:"fullDate"}}</td>
+            <td>{{item.by | date:"EEEE, MMM. d, yyyy @h:mm a"}}</td>
             <td><span ng-class="(item.done) ? 'fa fa-check-square-o fa-lg' : 'fa fa-square-o fa-lg'" ng-click="changeDone($index)"></span></td>
           </tr>
         </tbody>
