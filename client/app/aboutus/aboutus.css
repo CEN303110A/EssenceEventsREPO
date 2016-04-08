@@ -8,9 +8,9 @@ body, html{
 	color: #5a5a5a;
 }
 
-h1{
+/*h1{
 	text-transform: uppercase;
-}
+}*/
 h1 strong{
 	font-weight: 900;
 }
