@@ -3,7 +3,20 @@
 import config from '../../config/environment';
 var nodemailer = require('nodemailer');
 
-export function email(req, res) {
+/*
+  For this email to work, please use a gmail account and put it in the developent.js
+  It should follow this format:
+
+  essEventsEmail: {
+    user:   'GMAILUSERNAME',
+    password: 'GMAILPASSWORD',
+    address:  'emailAddressthatTheGmailIsSendingTheEmailTo'
+  }
+
+*/
+
+export function email(req, res)
+{
   var email = req.body;
   var user = config.essEventsEmail.user;
   var pass = config.essEventsEmail.password;
@@ -12,7 +25,7 @@ export function email(req, res) {
     from: email.address,
     to: config.essEventsEmail.address,
     subject: 'Contact Request from ' + email.firstName + ' ' + email.lastName,
-    text: email.message + '\n\n' + 'Phone: ' + email.phone
+    text: email.firstName + ' ' + email.lastName + 'has requested to contact you!' + '\n' + mail.message + '\n\n' + 'Phone: ' + email.phone
   };
 
   transporter.sendMail(mailOptions, function(error, info) {
