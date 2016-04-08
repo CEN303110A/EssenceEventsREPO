@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp')
-.controller('ReservationsCtrl', ['$scope', 'Auth', '$http', '$location', function ($scope, Auth, $http, $location) {
+.controller('ReservationsCtrl', ['$scope', 'Auth', '$http', '$location', '$state', function ($scope, Auth, $http, $location, $state) {
   var isDraggable = !('ontouchstart' in document.documentElement);
 
-  $scope.emailSuccess = false;		 
+  $scope.emailSuccess = false;
   $scope.emailError = false;
 
   $scope.map = { center: { latitude: 29.65253, longitude: -82.330276 }, zoom: 17, options: {draggable: isDraggable}};
@@ -31,6 +31,7 @@ angular.module('essenceEventsRepoApp')
     $http.post('http://' + $location.host() + ':' + $location.port() +'/api/email', email)
     .then(function(response) {
       $state.reload();
+      $scope.emailSuccess = true;
     }, function(error) {
       console.log(error);
       $scope.emailError = true;

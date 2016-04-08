@@ -11,6 +11,12 @@
                 <form name="form" class="form-horizontal" ng-submit="form.$valid && submit()">
                     <fieldset>
                         <legend class="text-center header">Contact us</legend>
+                        <p class="text-center" ng-if="emailSuccess">
+                          Your email has been successfully send.  Thank you!
+                        </p>
+                        <p class="text-center" ng-if="emailError">
+                          Oops!  An error occured while sending your email.
+                        </p>
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon fa-2x"></i></span>
                             <div class="col-md-8">
