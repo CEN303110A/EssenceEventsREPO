@@ -3,20 +3,30 @@
 import config from '../../config/environment';
 var nodemailer = require('nodemailer');
 
-export function email(req, res) {
-  console.log('here');
+
+/*
+  For this email to work, please use a gmail account and put it in the developent.js
+  It should follow this format:
+
+  essEventsEmail: {
+    user:   'GMAILUSERNAME',
+    password: 'GMAILPASSWORD',
+    address:  'emailAddressthatTheGmailIsSendingTheEmailTo'
+  }
+
+*/
+
+export function email(req, res)
+{
   var email = req.body;
   var user = config.essEventsEmail.user;  //truncated email
   var pass = config.essEventsEmail.password;
-  console.log('user: ', user, ' pass: ', pass);
   var transporter = nodemailer.createTransport('smtps://' + user + '%40gmail.com:' + pass + '@smtp.gmail.com');
-    //fill in user and pass
-  //use nodemailer here and call res.send('message here') if it succeeds and res.status(400).end() if it fails
   var mailOptions = {
     from: email.address,
     to: config.essEventsEmail.address,
     subject: 'Contact Request from ' + email.firstName + ' ' + email.lastName,
-    text: email.message + '\n\n' + 'Phone: ' + email.phone
+    text: email.firstName + ' ' + email.lastName + 'has requested to contact you!' + '\n' + mail.message + '\n\n' + 'Phone: ' + email.phone
   };
 
   transporter.sendMail(mailOptions, function(error, info) {
