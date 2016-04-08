@@ -43,7 +43,7 @@ angular.module('essenceEventsRepoApp')
       chart: {
         type: 'pieChart',
         height: 500,
-        x: function(d){return d.title +' '+ d.amount},
+        x: function(d){return d.title +' $'+ d.amount},
         y: function(d){return d.amount;},
         showLabels: true,
         duration: 500,
