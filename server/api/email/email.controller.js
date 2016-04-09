@@ -64,7 +64,7 @@ export function resetPass(req, res) {
           var mailOptions = {
             to: req.body.email,
 	    subject: 'Password Reset',
-	    text: 'Your new password is: ' + user.password,
+	    text: 'Your new password is: ' + newPass,
           };
 	  transporter.sendMail(mailOptions, function(error, info) {
 	    if (error) {
