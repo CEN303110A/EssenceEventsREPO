@@ -51,9 +51,11 @@ export function resetPass(req, res) {
     else if (!user)
       res.status(400).end();
     else {
-      var newPass = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+      var newPass = '';
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for( var i=0; i < 6; i++ )
+        newPass += possible.charAt(Math.floor(Math.random() * possible.length));
       user.password = newPass;
-      console.log(newPass);
       user.save(function(err) {
 	if (err) {
 	  throw err;
