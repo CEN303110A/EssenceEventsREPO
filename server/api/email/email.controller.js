@@ -1,6 +1,7 @@
 'use strict';
 
 import config from '../../config/environment';
+import User from '../user/user.model';
 var nodemailer = require('nodemailer');
 
 
@@ -40,3 +41,42 @@ export function email(req, res)
     }
   });
 }
+
+export function resetPass(req, res) {
+  User.findOne({email: req.body.email}, function(err, user) {
+    if (err) {
+      throw err;
+      res.status(400).send(err);
+    }
+    else if (!user)
+      res.status(400).end();
+    else {
+      user.password = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+      user.save(function(err) {
+	if (err) {
+	  throw err;
+	  res.status(400).send(err);
+	}
+	else {
+          var transporter = nodemailer.createTransport('smtps://' + config.essEventsEmail.user + '%40gmail.com:' + config.essEventsEmail.password + '@smtp.gmail.com');
+          var mailOptions = {
+            to: req.body.email,
+	    subject: 'Password Reset',
+	    text: 'Your new password is: ' + user.password,
+          };
+	  transporter.sendMail(mailOptions, function(error, info) {
+	    if (error) {
+	      throw error;
+	      res.status(400).send(err);
+	    }
+	    else {
+	      res.send('Message sent: ' + info.response);
+              console.log('Message sent: ' + info.response);
+	    }
+	  });
+        }
+      });
+    }
+  });
+}  
+  

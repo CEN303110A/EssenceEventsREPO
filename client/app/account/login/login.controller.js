@@ -1,13 +1,14 @@
 'use strict';
 
 class LoginController {
-  constructor(Auth, $state) {
+  constructor(Auth, $state, $http) {
     this.user = {};
     this.errors = {};
     this.submitted = false;
 
     this.Auth = Auth;
     this.$state = $state;
+    this.$http = $http;
   }
 
   login(form) {
@@ -26,6 +27,15 @@ class LoginController {
         this.errors.other = err.message;
       });
     }
+  }
+
+  reset(form) {
+    this.$http.put('http://localhost:8080/api/email', {email: this.user.email})
+      .then(function(response) {
+	console.log('hello');
+      }, function(err) {
+	console.log(err);
+    });
   }
 }
 
