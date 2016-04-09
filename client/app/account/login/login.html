@@ -25,8 +25,6 @@
           <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
              Please enter a valid email.
           </p>
-
-          <p class="help-block">{{ vm.errors.other }}</p>
         </div>
 
         <div>
@@ -42,6 +40,9 @@
       <br>
       <div class="alert alert-success" ng-show="vm.success">
         <strong>Success!</strong> New password sent.
+      </div>
+      <div class="alert alert-danger" ng-show="vm.errors.other">
+        <strong>Error!</strong> Login or Reset failed.
       </div>
     </div>
   </div>
