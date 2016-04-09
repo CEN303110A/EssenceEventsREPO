@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp')
-.controller('ReservationsCtrl', ['$scope', 'Auth', '$http', '$location', '$state', function ($scope, Auth, $http, $location, $state) {
+.controller('ReservationsCtrl', ['$scope', 'Auth', 'Email', '$state', function ($scope, Auth, Email, $state) {
   //Disallowing touch screens to drag helps phones scroll down the page easier
   var isDraggable = !('ontouchstart' in document.documentElement);
 
@@ -32,7 +32,7 @@ angular.module('essenceEventsRepoApp')
       message: $scope.message
     };
 
-    $http.post('http://' + $location.host() + ':' + $location.port() +'/api/email', email)
+    Email.contactUs(email)
     .then(function(response) {
       $state.reload();
       $scope.emailSuccess = true;
