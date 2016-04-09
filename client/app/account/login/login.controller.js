@@ -3,7 +3,6 @@
 class LoginController {
   constructor(Auth, $state, Email) {
     this.user = {};
-    this.errors = {};
     this.submitted = false;
 
     this.Auth = Auth;
@@ -24,7 +23,7 @@ class LoginController {
         this.$state.go('main');
       })
       .catch(err => {
-        this.errors.other = err.message;
+        this.errors = err.message;
       });
     }
   }
@@ -34,7 +33,7 @@ class LoginController {
       .then(function(response) {
 	this.success = 'New password sent';
       }, function(err) {
-	this.errors.other = 'Reset Failed!';
+	this.errors = 'Reset Failed!';
     });
   }
 }
