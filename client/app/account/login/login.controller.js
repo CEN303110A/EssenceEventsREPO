@@ -4,7 +4,7 @@ class LoginController {
   constructor(Auth, $state, Email) {
     this.user = {};
     this.submitted = false;
-
+    this.errors = '';
     this.Auth = Auth;
     this.$state = $state;
     this.Email = Email;
