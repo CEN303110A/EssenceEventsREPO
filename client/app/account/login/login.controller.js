@@ -1,7 +1,7 @@
 'use strict';
 
 class LoginController {
-  constructor(Auth, $state, $http) {
+  constructor(Auth, $state, $http, $location) {
     this.user = {};
     this.errors = {};
     this.submitted = false;
@@ -9,6 +9,7 @@ class LoginController {
     this.Auth = Auth;
     this.$state = $state;
     this.$http = $http;
+    this.$location = $location;
   }
 
   login(form) {
@@ -30,7 +31,7 @@ class LoginController {
   }
 
   reset(form) {
-    this.$http.put('http://localhost:8080/api/email', {email: this.user.email})
+    this.$http.put('http://' + this.$location.host() + ':' + this.$location.port() + '/api/email', {email: this.user.email})
       .then(function(response) {
 	console.log('hello');
       }, function(err) {
