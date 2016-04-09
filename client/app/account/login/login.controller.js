@@ -29,6 +29,7 @@ class LoginController {
   }
 
   reset(form) {
+    var vm = this;
     this.Email.resetPass(this.user.email)
       .then(function(response) {
 	vm.success = 'New password sent';
