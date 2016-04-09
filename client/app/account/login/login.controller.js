@@ -32,9 +32,9 @@ class LoginController {
   reset(form) {
     this.Email.resetPass(this.user.email)
       .then(function(response) {
-	console.log('hello');
+	this.success = 'New password sent';
       }, function(err) {
-	console.log(err);
+	this.errors.other = 'Reset Failed!';
     });
   }
 }
