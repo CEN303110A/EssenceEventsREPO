@@ -34,7 +34,7 @@ class LoginController {
       .then(function(response) {
 	vm.success = 'New password sent';
       }, function(err) {
-	vm.errors = 'Reset Failed!';
+	vm.errors.other = 'Reset Failed!';
     });
   }
 }

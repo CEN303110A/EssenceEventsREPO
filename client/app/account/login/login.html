@@ -39,7 +39,10 @@
         </div>
 
       </form>
-      <span ng-bind="vm.success"></span>
+      <br>
+      <div class="alert alert-success" ng-show="vm.success">
+        <strong>Success!</strong> New password sent.
+      </div>
     </div>
   </div>
   <hr>
