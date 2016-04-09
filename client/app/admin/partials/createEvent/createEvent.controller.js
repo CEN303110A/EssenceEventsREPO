@@ -39,6 +39,8 @@ angular.module('essenceEventsRepoApp.admin')
       amount: $scope.freeCash
     }
   ];
+
+  //Update the free cash variable and check for errors
   $scope.updateFreeCash = function()
   {
     if ($scope.budgetGoal < $scope.currCost) {
@@ -60,33 +62,36 @@ angular.module('essenceEventsRepoApp.admin')
       $scope.mybudgetGoalStyle = {};
     }
   }
-  // $scope.addBudgetGoal = function()
-  // {
-  //   if($scope.budgetGoal && $scope.budget.length == 0 )
-  //   $scope.budget.push({title: "Free Cash", amount: $scope.freeCash});
-  // }
+
+  //Change free cash when updated in the budget array
   $scope.changeFreeCashArr = function()
   {
     $scope.budget[0] = ({title: "Free Cash", amount: $scope.freeCash});
-    console.log("you good fam");
   }
 
+  //Check if Todo List is empty
   $scope.hasItems = function(arr)
   {
     return (arr.length > 0);
   };
+
+  //Since free cash isn't shown, check if Budget has more than one item
   $scope.budgetHasItems = function(arr)
   {
     return (arr.length > 1);
   };
+
+  //Logic to remove budget item and update free cash
   $scope.delete = function(arr, index)
   {
     $scope.freeCash = $scope.freeCash + $scope.budget[index].amount;
     $scope.changeFreeCashArr();
-    $scope.currCost -=$scope.budget[index].amount;
+    $scope.currCost -= $scope.budget[index].amount;
 
     arr.splice(index, 1);
   };
+
+  //Update Budget array when a new item is added
   $scope.addBudget = function()
   {
     if ($scope.budgetItem && $scope.itemCost && $scope.freeCash >= $scope.itemCost) {
@@ -106,9 +111,8 @@ angular.module('essenceEventsRepoApp.admin')
       }
       alert("Invalid input");
     }
-    // $scope.budgetItem = null;
-    // $scope.itemCost = null;
   }
+
   // Pi chart for budget
   $scope.options = {
     chart: {
@@ -131,9 +135,6 @@ angular.module('essenceEventsRepoApp.admin')
     }
   };
 
-
-  //adds item into todo list
-
   //set up date for event
   $scope.todoDate = new Date();
   $scope.opentodoDate = function($event) {
@@ -142,6 +143,7 @@ angular.module('essenceEventsRepoApp.admin')
     $scope.todoDateOpened = true;
   };
 
+  //Adds item to Todo Array
   $scope.addToDo = function()
   {
     if ($scope.todoInput)
@@ -150,17 +152,15 @@ angular.module('essenceEventsRepoApp.admin')
     $scope.todoInput = '';
   };
 
-
   //deletes item from todo list
   $scope.deletethingsToDo = function(arr, index)
   {
     arr.splice(index,1);
   }
 
-
-
+  //Saves all of the $scope fields into an event object and saves it to the database
   $scope.submit = function() {
-      var event = {
+    var event = {
       name: $scope.eventName,
       date: $scope.eventDate,
       location: $scope.venue,
@@ -170,10 +170,10 @@ angular.module('essenceEventsRepoApp.admin')
       budget: $scope.budget
     };
     Events.create(event)
-    .then(function(response) {
-      $state.go('admin.manageEvent');
-    }, function(err) {
-      //do something
+      .then(function(response) {
+        $state.go('admin.manageEvent');
+      }, function(err) {
+        //do something
     });
   };
 

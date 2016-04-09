@@ -2,6 +2,7 @@
 
 angular.module('essenceEventsRepoApp.admin')
   .controller('ManageContractorsCtrl', ['$scope', '$state', '$modal', 'Subcontractors', function ($scope, $state, $modal, Subcontractors) {
+    //Get all subcontractors from database and save to $scope.subcontractors
     $scope.getSubcontractors = function() {
       Subcontractors.getAll()
         .then(function(response) {
@@ -10,6 +11,8 @@ angular.module('essenceEventsRepoApp.admin')
 	  //do something
       });
     };
+
+    //Open Manage Contractor Modal to edit subcontractor information
     $scope.openModal = function(subcontractor) {
       var modalInstance = $modal.open({
         animation: true,
@@ -24,6 +27,7 @@ angular.module('essenceEventsRepoApp.admin')
       });
     };
 }])
+  //Custom filter to add 'http://' to links so that they redirect away from essenceevents.net
   .filter('url', function() {
     return function(link) {
       if (link) {

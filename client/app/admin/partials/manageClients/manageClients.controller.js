@@ -10,6 +10,7 @@
 	      this.modalService = $modal;
       }
 
+      //Open Manage Clients Modal to manage client information and create events for a client
       openModal(user){
         // console.log(user);
         var modalInstance = this.modalService.open({
@@ -25,6 +26,7 @@
         });
       }
 
+      //Delete user from database
       delete(user) {
         user.$remove();
         this.alldata.splice(this.alldata.indexOf(user), 1);
@@ -33,6 +35,5 @@
   }
   angular.module('essenceEventsRepoApp.admin')
     .controller('ManageClientsCtrl', ManageClientsCtrl);
-
 
 })();

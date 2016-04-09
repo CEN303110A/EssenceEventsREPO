@@ -98,6 +98,7 @@ export function changePassword(req, res, next) {
     });
 }
 
+//Get updated info from req.body and update by userId
 export function updateUser(req, res, next) {
   var userId = String(req.body._id);
   var newEmail = String(req.body.email);

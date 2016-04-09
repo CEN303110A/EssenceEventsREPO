@@ -8,9 +8,7 @@ import errors from './components/errors';
 import path from 'path';
 
 export default function(app) {
-  // Insert routes below
-  //app.use('/api/customers', require('./api/customer'));
-  app.use('/api/things', require('./api/thing'));
+  // Routes used
   app.use('/api/users', require('./api/user'));
   app.use('/api/subcontractors', require('./api/subcontractor'));
   app.use('/api/events', require('./api/event'));

@@ -4,6 +4,7 @@
 
 class AdminController {
 
+  //Setup states
   Functions = [
     {
       'title': 'New Client',
@@ -15,12 +16,6 @@ class AdminController {
       'description': 'Manage existing clients',
       'state': 'admin.manageClients',
     },
-    //commented out because you should never have direct access to this
-    // {
-    //   'title': 'Create Event',
-    //   'description': 'Create an event for a existing client',
-    //   'state': 'admin.createEvent',
-    // },
     {
       'title': 'Manage Event(s)',
       'description': 'Manage an event for a existing client',

@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp')
-.controller('LinksCtrl', ['$scope', 'LinksFactory', function ($scope, LinksFactory) {
+.controller('LinksCtrl', ['$scope', 'Links', function ($scope, Links) {
+  //Boolean value on whether to show the OTHER heading
   $scope.other = false;
 
+  //Gets all links from Links Factory, and finds all unique types case insensitive to be used to sort,
+  //set $scope .other to true if any link does not have a type
   $scope.getLinks = function() {
-    LinksFactory.getAll()
+    Links.getAll()
       .then(function(response) {
 	$scope.types = [];
         $scope.links = response.data;
