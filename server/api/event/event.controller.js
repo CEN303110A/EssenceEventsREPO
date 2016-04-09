@@ -5,6 +5,7 @@ import passport from 'passport';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
 
+//Sends back all events with open find call
 export function findAll(req, res) {
   Event.find({}, function(err, events) {
     if (err)
@@ -14,14 +15,17 @@ export function findAll(req, res) {
   });
 }
 
+//Uses the findByUser to send all user events back
 export function findAllByUser(req, res) {
   res.send(req.events);
 }
 
+//Uses the findOneById middleman to send back event by ID
 export function findOneById(req, res) {
   res.send(req.event);
 }
 
+//Create a new event based on req.body and save it to the database
 export function create(req, res) {
   var event = new Event(req.body);
   event.save(function(err, event) {
@@ -35,6 +39,7 @@ export function create(req, res) {
   });
 }
 
+//Find event by ID and then change toDoList array, used for client side interaction
 export function toggleTodo(req, res) {
   Event.findOne({_id: req.event._id}, function(err, event) {
     if (err) {
@@ -55,8 +60,8 @@ export function toggleTodo(req, res) {
   });
 }
 
+//Update event by ID
 export function update(req, res) {
-  var event = new Event(req.body);
   Event.update({_id: req.body._id}, req.body, function(err, event) {
     if (err) {
       res.status(400).send(err);
@@ -68,6 +73,7 @@ export function update(req, res) {
   });
 }
 
+//Remove subcontractor ID from subcontractor array of all Event documents
 export function removeSubcon(req, res) {
   Event.update({}, { $pull: { subcontractors: req.params.plainId } }, {multi: true}, function(err) {
     if (err) {
@@ -79,6 +85,7 @@ export function removeSubcon(req, res) {
   });
 }
 
+//Remove an event by it's Mongoose ID
 export function remove(req, res) {
   Event.remove({_id: req.event._id}, function(err) {
     if (err) {
@@ -90,6 +97,7 @@ export function remove(req, res) {
   });
 }
 
+//Remove all events by a certain user, req.events.length checks if User exists
 export function removeUser(req, res) {
   if (req.events.length > 0)
     Event.find({userId: req.events[0].userId})
@@ -105,6 +113,7 @@ export function removeUser(req, res) {
     res.status(400).end();
 }
 
+//Middleman to find a particular event by ID
 export function eventById(req, res, next, id) {
   Event.findById(id, function(err, event) {
     if (err) {
@@ -118,6 +127,7 @@ export function eventById(req, res, next, id) {
   });
 }
 
+//Middleman to find all events by a certain UserId
 export function eventsByUserId(req, res, next, userId) {
   Event.find({userId: userId}, function(err, events) {
     if (err) {

@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-.controller('ManageLinksCtrl', ['$scope', '$state', '$modal', 'LinksFactory', function ($scope, $state, $modal, LinksFactory) {
+.controller('ManageLinksCtrl', ['$scope', '$state', '$modal', 'Links', function ($scope, $state, $modal, Links) {
+  //Get all links from Links Factory
   $scope.getLinks = function() {
-    LinksFactory.getAll()
+    Links.getAll()
     .then(function(response) {
       $scope.links = response.data;
     }, function(err) {
@@ -11,6 +12,7 @@ angular.module('essenceEventsRepoApp.admin')
     });
   };
 
+  //Setup link from form information and save to database
   $scope.submit = function(type, name, url, phoneNumber, imageUrl) {
     var link = {
       type: type,
@@ -19,10 +21,7 @@ angular.module('essenceEventsRepoApp.admin')
       phoneNumber: phoneNumber,
       photo: imageUrl
     };
-
-
-    console.log(link);
-    LinksFactory.create(link)
+    Links.create(link)
     .then(function(response) {
       $state.reload();
     }, function (err) {
@@ -30,6 +29,7 @@ angular.module('essenceEventsRepoApp.admin')
     });
   };
 
+  //Open Manage Links Modal to edit link information
   $scope.openModal = function(link) {
     var modalInstance = $modal.open({
       animation: true,

@@ -66,7 +66,6 @@ class NavbarController {
   //end-non-standard
 
   navigate(){
-    console.log('called navigate');
     var curUsr = this.getCurrentUser();
     let state = this.state;
     //console.log(curUsr);

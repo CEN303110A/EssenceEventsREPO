@@ -5,6 +5,7 @@ import passport from 'passport';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
 
+//Uses empty find to get all subcontractors from the database
 export function getAll(req, res) {
   Subcontractor.findAsync({}, function(err, subcontractors) {
     if (err) {
@@ -15,10 +16,12 @@ export function getAll(req, res) {
   });
 }
 
+//Uses findId middleman to find subcontractor by ID and return it
 export function getOne(req, res) {
   res.send(req.subcontractor);
 }
 
+//Checks if subcontractor with name already exists and if a new name, saves to database
 export function create(req, res) {
   var newSubcontractor = new Subcontractor(req.body);
   Subcontractor.findAsync({name: req.body.name}, function(err, response) {
@@ -36,6 +39,7 @@ export function create(req, res) {
   });
 }
 
+//Updates subcontractor by id and req.body
 export function update(req, res) {
   Subcontractor.update({_id: req.body._id}, req.body, function(err) {
     if (err) {
@@ -48,6 +52,7 @@ export function update(req, res) {
   });
 }
 
+//Removes subcontractor by ID
 export function remove(req, res) {
   Subcontractor.remove({_id: req.subcontractor._id}, function(err) {
     if (err) {
@@ -60,6 +65,7 @@ export function remove(req, res) {
   });
 }
 
+//Middleman function to find subcontractor by ID and save to req.subcontractor
 export function findId(req, res, next, id) {
   Subcontractor.findById(id, function(err, subcontractor) {
     if (err) {

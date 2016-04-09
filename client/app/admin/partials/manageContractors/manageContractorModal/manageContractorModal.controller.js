@@ -32,6 +32,7 @@ angular.module('essenceEventsRepoApp.admin')
     });
   }
 
+  //Save changes to subcontractor to database on submit
   $scope.submit = function() {
     if ($scope.subcontractor.name)
     Subcontractors.update($scope.subcontractor)

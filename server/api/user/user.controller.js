@@ -56,7 +56,7 @@ export function show(req, res, next) {
   User.findByIdAsync(userId)
     .then(user => {
       if (!user) {
-        return res.status(404).end();
+        return res.status(400).end();
       }
       res.json(user.profile);
     })
@@ -98,6 +98,7 @@ export function changePassword(req, res, next) {
     });
 }
 
+//Get updated info from req.body and update by userId
 export function updateUser(req, res, next) {
   var userId = String(req.body._id);
   var newEmail = String(req.body.email);

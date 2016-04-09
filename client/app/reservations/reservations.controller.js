@@ -2,11 +2,14 @@
 
 angular.module('essenceEventsRepoApp')
 .controller('ReservationsCtrl', ['$scope', 'Auth', '$http', '$location', '$state', function ($scope, Auth, $http, $location, $state) {
+  //Disallowing touch screens to drag helps phones scroll down the page easier
   var isDraggable = !('ontouchstart' in document.documentElement);
 
+  //Setup email response messages
   $scope.emailSuccess = false;
   $scope.emailError = false;
 
+  //Setup map properties
   $scope.map = { center: { latitude: 29.65253, longitude: -82.330276 }, zoom: 17, options: {draggable: isDraggable}};
   $scope.coordsUpdates = 0;
   $scope.dynamicMoveCtr = 0;
@@ -19,6 +22,7 @@ angular.module('essenceEventsRepoApp')
     options: {draggable: false}
   };
 
+  //Setup email fields based on form and send it to backend where nodemailer sends message
   $scope.submit = function() {
     var email = {
       firstName: $scope.fname,

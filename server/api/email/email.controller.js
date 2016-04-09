@@ -26,13 +26,13 @@ export function email(req, res)
     from: email.address,
     to: config.essEventsEmail.address,
     subject: 'Contact Request from ' + email.firstName + ' ' + email.lastName,
-    text: email.firstName + ' ' + email.lastName + 'has requested to contact you!' + '\n' + email.message + '\n\n' + 'Phone: ' + email.phone
+    text: ((!email.message)? '' : email.message + '\n\n') + 'Phone: ' + email.phone + '\nEmail: ' + email.address
   };
 
   transporter.sendMail(mailOptions, function(error, info) {
     if (error) {
+      throw error;
       res.status(400).end();
-      return console.log(error);
     }
     else {
       res.send('Message sent: ' + info.response);

@@ -3,6 +3,7 @@
 angular.module('essenceEventsRepoApp.admin')
 .controller('ManageClientsModalCtrl', ['$scope', '$state', '$modal', '$modalInstance', 'user', 'Events', function ($scope, $state, $modal, $modalInstance, user, Events)
 {
+  //Instantiate $scope variables so they show up in modal
   $scope.username = user.name;
   $scope.email = user.email;
   $scope.phoneNumber = user.phoneNumber;
@@ -29,6 +30,7 @@ angular.module('essenceEventsRepoApp.admin')
     $state.go('admin.createEvent', {userID : user._id, usersName : user.name});
   };
 
+  //Get all events for the user
   $scope.getEvents = function() {
     $scope.events = null;
     Events.getByUser(user._id)
@@ -40,6 +42,7 @@ angular.module('essenceEventsRepoApp.admin')
     });
   };
 
+  //Switches states to Manage Events and opens the modal for the event clicked
   $scope.manageEvent = function(event) {
     $modalInstance.close();
     $state.go('admin.manageEvent');
@@ -56,13 +59,6 @@ angular.module('essenceEventsRepoApp.admin')
     });
   };
 
-  //implementing delete within modal
-  // $scope.deleteUser = function()
-  // {
-  //   $modalInstance.close();
-  //   $state.go('admin.deleteUserPage', {userID : user._id, usersName : user.name})
-  // }
-
   //logic for delete user page
   $scope.toggleDeleteUser = function()
   {
@@ -74,6 +70,7 @@ angular.module('essenceEventsRepoApp.admin')
     $scope.deleteHTML = false;
   }
 
+  //Remove user from database and then reload the state
   $scope.deleteUser = function() {
     $modalInstance.close();
     Events.removeUser(user._id);

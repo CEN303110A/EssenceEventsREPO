@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-.controller('ManageLinksModalCtrl', ['$scope', '$state', '$modalInstance', 'link', 'LinksFactory', function ($scope, $state, $modalInstance, link, LinksFactory)
+.controller('ManageLinksModalCtrl', ['$scope', '$state', '$modalInstance', 'link', 'Links', function ($scope, $state, $modalInstance, link, Links)
 {
+  //Prevent changes from automatically changing the table behind the modal
   $scope.link = JSON.parse(JSON.stringify(link));
 
-  //hideDeleteTab
+  //hideDeleteTab functionality
   $scope.hideDeleteTab = true;
 
   $scope.showDeleteTabFunc = function()
@@ -21,7 +22,7 @@ angular.module('essenceEventsRepoApp.admin')
   //delete link
   $scope.deleteLink = function()
   {
-    LinksFactory.remove(link._id).then(function()
+    Links.remove(link._id).then(function()
       {
         $modalInstance.close();
         $state.reload();
@@ -29,11 +30,10 @@ angular.module('essenceEventsRepoApp.admin')
     );
   }
 
-
-
+  //On submit, checks if user didn't just blank out fields and then saves to database
   $scope.submit = function() {
     if ($scope.link.name && $scope.link.url)
-    LinksFactory.update($scope.link)
+    Links.update($scope.link)
     .then(function(response) {
       $modalInstance.close();
       $state.reload();

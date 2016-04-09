@@ -1,4 +1,4 @@
-angular.module('essenceEventsRepoApp').factory('LinksFactory', ['$http', '$location',
+angular.module('essenceEventsRepoApp').factory('Links', ['$http', '$location',
   function($http, $location) {
     var methods = {
       getAll: function() {
