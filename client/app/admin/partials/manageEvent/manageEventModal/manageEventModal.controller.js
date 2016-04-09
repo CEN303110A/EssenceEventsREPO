@@ -141,11 +141,14 @@ $scope.addBudget = function(item, cost)
     //ADD IF STATEMENT FOR ERROR HANDLING
     if($scope.event.budget[0].amount >= cost) {
       $scope.event.budget[0].amount = $scope.event.budget[0].amount - cost;
-      $scope.addItemStyle = {}
+      $scope.addItemStyle = {};
+      $scope.errorMessege = "";
       $scope.event.budget.push({title: item, amount: cost});
       $scope.currentCost = $scope.currentCost + cost;
     }
     else {
+      $scope.errorMessege = "You went over budget!";
+
       $scope.addItemStyle = {
         "border-color" : "red",
         "border-width": "3px",

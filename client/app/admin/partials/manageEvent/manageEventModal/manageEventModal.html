@@ -1,47 +1,56 @@
-<div ng-click="resetPicker()">
+<div id="manageEventModal" ng-click="resetPicker()">
   <tabset justified="true">
     <tab heading="Basic Info" ng-if="hideDeleteTab">
       <h2 class="modal-header">Event information:</h2>
       <div class="modal-body">
-        <form class="row" name="form">
-
-          <!-- Div to input the event name -->
-          <div class="form-group row col-md-12" show-errors>
-            <label for="eventName">Event Name:</label>
-            <input name="eventName" type="eventName" ng-model="event.name" id="eventName" class="form-control" required>
-          </div>
-
-          <!-- Div to input the date -->
-          <div class="form-group row col-md-6" show-errors>
-            <label for="dateOfEvent">Date:</label>
-            <div class = "input-group">
-              <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="event.date" is-open="datePicker.opened" picker-options="dateOptions" ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
+        <div class = "">
+          <form name="form">
+            <!-- Div to input the event name -->
+            <div class="form-group row col-md-12" show-errors>
+              <label for="eventName">Event Name:</label>
+              <input name="eventName" type="eventName" ng-model="event.name" id="eventName" class="form-control" required>
             </div>
-          </div>
 
-          <!-- Div to input time for date -->
-          <div class = "form-group row col-md-6" show errors>
-            <timepicker ng-model="event.date" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
-          </div>
+            <!-- Div to input the date -->
+            <div id="dateTime" class="form-group row col-md-12" show-errors>
+              <div class = "col-md-6" style="padding-left: 0px;">
+                <label for="dateOfEvent">Date:</label>
+                <div class = "input-group">
+                  <input type="text" class="form-control" id="dateOfEvent" datepicker-popup="fullDate" ng-model="event.date" is-open="datePicker.opened" picker-options="dateOptions" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </div>
+              </div>
 
-          <!-- Div to input then venue  -->
-          <div class="form-group row col-md-12" show-errors>
-            <label for="venue">Venue:</label>
-            <input name="venue" type="venue" ng-model="event.location" id="venue" class="form-control" required>
-          </div>
-
-          <!-- Div to input the goal budget -->
-          <div class="form-group row col-md-12" show-errors>
-            <label for="budgetGoal">BudgetGoal:</label>
-            <div class="input-group">
-              <div class="input-group-addon">$</div>
-              <input type="number" min="0" ng-model="event.budgetGoal" name="budgetGoal" class="form-control" id="exampleInputAmount">
+              <!-- Div to input time for date -->
+              <div class = "col-md-5 col-md-offset-1" show errors>
+                <timepicker ng-model="event.date" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+              </div>
             </div>
-          </div>
-        </form>
+
+            <!-- Div to input then venue  -->
+            <div class="form-group row col-md-12" show-errors>
+              <label for="venue">Venue:</label>
+              <input name="venue" type="venue" ng-model="event.location" id="venue" class="form-control" required>
+            </div>
+
+            <!-- Div to input the goal budget -->
+            <div class="form-group row col-md-12" show-errors>
+              <label for="budgetGoal">Budget Goal:</label>
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="number" min="0" ng-model="event.budgetGoal" name="budgetGoal" class="form-control" id="exampleInputAmount">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer" ng-if="hideDeleteTab" style="border-top: 0px;">
+        <div class="col-md-12" style="padding-left:0px; padding-top:35px; text-align:left;">
+          <button class="btn btn-default"  ng-click="submit()">Save Changes</button>
+          <button class = "btn btn-danger" ng-click="showDeleteTabFunc()">Delete Event</button>
+        </div>
       </div>
     </tab>
 
@@ -49,25 +58,27 @@
       <h2 class="modal-header">Schedule:</h2>
       <div class="modal-body">
         <form class="row" name="$parent.hello">
-          <div id="budget" class="col-md-3">
+          <div id="budget" class="col-md-12">
             <label for="todoInput">Item:</label>
             <input type="text" name="todoInput" ng-model="todoInput" class="form-control">
           </div>
-          <div class="form-group row col-md-5" show-errors>
-            <label for="dateOfEvent">Date:</label>
-            <div class = "input-group">
-              <input type="text" class="form-control" id="eventDate" datepicker-popup="fullDate" ng-model="newDueDate" is-open="datePicker.scheduleDateOpened" picker-options="dateOptions" close-text="Close">
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="scheduleDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
+          <div class="form-group row col-md-12" show-errors>
+            <div class = "col-md-6">
+              <label for="dateOfEvent">Date:</label>
+              <div class = "input-group">
+                <input type="text" class="form-control" id="eventDate" datepicker-popup="fullDate" ng-model="newDueDate" is-open="datePicker.scheduleDateOpened" picker-options="dateOptions" close-text="Close">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="scheduleDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </div>
             </div>
-          </div>
-          <div class ="form-group row col-md-3" show errors>
-            <timepicker ng-model="newDueDate" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
-          </div>
-          <div class="col-md-1">
-            <label for="button">&zwnj;</label>
-            <button type="submit" class="btn btn-success" ng-click="addToDo(todoInput,newDueDate) ? todoInput = newDueDate = null : null">+</button>
+            <div class ="col-md-3" style="margin-left: 5px;" show errors>
+              <timepicker ng-model="newDueDate" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+            </div>
+            <div class="col-md-1 col-md-offset-1">
+              <label for="button">&zwnj;</label>
+              <button type="submit" class="btn btn-success" ng-click="addToDo(todoInput,newDueDate) ? todoInput = newDueDate = null : null">+</button>
+            </div>
           </div>
         </form>
 
@@ -77,7 +88,7 @@
               <tr>
                 <th><b>Task</b></th>
                 <th><b>Date due:</b></th>
-		<th><b>Done:</b></th>
+                <th><b>Done:</b></th>
                 <th style="text-align:right"></th>
               </tr>
             </thead>
@@ -94,12 +105,19 @@
           </table>
         </div>
       </div>
+      <div class="modal-footer" ng-if="hideDeleteTab">
+        <div style="text-align:left">
+          <button class="btn btn-default"  ng-click="submit()">Save Changes</button>
+          <button class = "btn btn-danger" ng-click="showDeleteTabFunc()">Delete Event</button>
+        </div>
+      </div>
     </tab>
 
     <tab heading="Budget" ng-if="hideDeleteTab">
       <h2 class="modal-header">Event Budget:</h2>
       <h4 style="text-align:center">Cost: {{currentCost}} Goal: {{event.budgetGoal}}</h4>
       <div class="modal-body">
+        <p style="color: red;">{{errorMessege}}</p>
         <form class="row" name="forms">
           <div id="budget" class="col-md-7">
             <label for="budgetItem">Item:</label>
@@ -136,6 +154,12 @@
           </table>
         </div>
       </div>
+      <div class="modal-footer" ng-if="hideDeleteTab">
+        <div style="text-align:left">
+          <button class="btn btn-default"  ng-click="submit()">Save Changes</button>
+          <button class = "btn btn-danger" ng-click="showDeleteTabFunc()">Delete Event</button>
+        </div>
+      </div>
     </tab>
 
     <tab heading="Subcontractors" ng-if="hideDeleteTab" ng-init="getContractors();getEventSubcons()">
@@ -170,6 +194,12 @@
             </tbody>
 
           </table>
+        </div>
+      </div>
+      <div class="modal-footer" ng-if="hideDeleteTab">
+        <div style="text-align:left">
+          <button class="btn btn-default"  ng-click="submit()">Save Changes</button>
+          <button class = "btn btn-danger" ng-click="showDeleteTabFunc()">Delete Event</button>
         </div>
       </div>
     </tab>
@@ -226,6 +256,12 @@
           </table>
         </div>
       </div>
+      <div class="modal-footer" ng-if="hideDeleteTab">
+        <div style="text-align:left">
+          <button class="btn btn-default"  ng-click="submit()">Save Changes</button>
+          <button class = "btn btn-danger" ng-click="showDeleteTabFunc()">Delete Event</button>
+        </div>
+      </div>
     </tab>
 
     <div ng-if="!hideDeleteTab">
@@ -246,8 +282,5 @@
 
   </tabset>
 
-  <div class="modal-footer" style="text-align:left" ng-if="hideDeleteTab">
-    <button class="btn btn-default"  ng-click="submit()">Save Changes</button>
-    <button class = "btn btn-danger" ng-click="showDeleteTabFunc()">Delete Event</button>
-  </div>
+  <!-- WHERE FOOTER USED TO BE -->
 </div>
