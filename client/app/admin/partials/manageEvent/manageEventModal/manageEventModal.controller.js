@@ -8,9 +8,35 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.event = JSON.parse(JSON.stringify(event));
   $scope.event.subcons = [];
   $scope.currentCost = 0;
-  $scope.currentCost = $scope.event.budgetGoal - $scope.event.budget[0].amount;
-  console.log($scope.event.budgetGoal, $scope.event.budget[0].amount)
-  //$scope.currentCost = $scope.event.currCost;
+  if (!$scope.event.budgetGoal) $scope.event.budgetGoal = 0;
+  $scope.currentCost = 0;
+  for (var i = 1; i < $scope.event.budget.length; i++)
+    $scope.currentCost += $scope.event.budget[i].amount;
+  if ($scope.currentCost > $scope.event.budgetGoal) {
+    $scope.errorMessege = "Over Budget";
+    $scope.addItemStyle = {
+      "border-color" : "red",
+      "border-width": "3px",
+      "border-style": "groove"
+    };
+  }
+
+  //Check for budget errors every time budgetGoal is updated
+  $scope.budgetCheck = function() {
+    if($scope.currentCost <= $scope.event.budgetGoal) {
+      $scope.addItemStyle = {};
+      $scope.errorMessege = "";
+    }
+    else {
+      $scope.errorMessege = "Over Budget";
+
+      $scope.addItemStyle = {
+        "border-color" : "red",
+        "border-width": "3px",
+        "border-style": "groove"
+      }
+    }
+  }
 
   //hideDeleteTab with functionality
   $scope.hideDeleteTab = true;
@@ -137,17 +163,16 @@ $scope.hasItems = function(arr)
 $scope.addBudget = function(item, cost)
 {
   if (item && cost) {
+    $scope.event.budget.push({title: item, amount: cost});
+    $scope.currentCost = $scope.currentCost + cost;
 
     //ADD IF STATEMENT FOR ERROR HANDLING
-    if($scope.event.budget[0].amount >= cost) {
-      $scope.event.budget[0].amount = $scope.event.budget[0].amount - cost;
+    if($scope.currentCost <= $scope.event.budgetGoal) {
       $scope.addItemStyle = {};
       $scope.errorMessege = "";
-      $scope.event.budget.push({title: item, amount: cost});
-      $scope.currentCost = $scope.currentCost + cost;
     }
     else {
-      $scope.errorMessege = "You went over budget!";
+      $scope.errorMessege = "Over Budget";
 
       $scope.addItemStyle = {
         "border-color" : "red",
@@ -169,8 +194,11 @@ $scope.deleteToDo = function(index) {
 //Delete a budget object and update current cost
 $scope.deleteBudget = function(index)
 {
-  $scope.event.budget[0].amount = $scope.event.budget[0].amount + $scope.event.budget[index].amount;
   $scope.currentCost = $scope.currentCost - $scope.event.budget[index].amount;
+  if ($scope.currentCost <= $scope.event.budgetGoal) {
+    $scope.addItemStyle = {};
+    $scope.errorMessege = "";
+  }
   $scope.event.budget.splice(index, 1);
 };
 
@@ -182,6 +210,7 @@ $scope.deleteSubcon = function(index) {
 
 //Update the object on save call
 $scope.submit = function() {
+  $scope.event.budget[0].amount = ($scope.currentCost > $scope.event.budgetGoal)? 0 : $scope.event.budgetGoal - $scope.currentCost;
   if ($scope.event.name && $scope.event.date)
   Events.update($scope.event)
   .then(function(response) {
