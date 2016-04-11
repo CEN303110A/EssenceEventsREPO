@@ -72,6 +72,65 @@ describe('Create New Event', function() {
     expect(elements.firstEventVenue.getText()).toEqual(venue);
   });
 
+  it('should manage newly created event', function() {
+    var newName = 'new name',
+        newVenue = 'new venue',
+        newBudget = '600',
+        newTodo = 'get stuff',
+        newItem = 'item 2',
+        newCost = '250',
+        guestName = 'robot guest',
+        guestPhone = '9999999999',
+        guestEmail = 'guest@robot',
+        partySize = '1';
+
+    elements.searchEventInput.sendKeys(eventName);
+    elements.manageButton.click();
+    elements.eventModNameInput.sendKeys(newName);
+    elements.eventModVenueInput.sendKeys(newVenue);
+    elements.eventModBudgetInput.sendKeys(newBudget);
+    elements.eventModTab('Schedule').click();
+
+    expect(elements.eventModTodoList.count()).toEqual(1);
+    elements.eventModTodoInput.sendKeys(newTodo);
+    elements.eventModSchCalButton.click();
+    elements.todayButton.click();
+    elements.eventModAddTodo.click();
+    expect(elements.eventModTodoList.count()).toEqual(2);
+
+    elements.eventModFirstRemoveTodo.click()
+    expect(elements.eventModTodoList.count()).toEqual(1);
+
+    elements.eventModTab('Budget').click();
+    expect(elements.eventModCost.getText()).toEqual(cost);
+    expect(elements.eventModBudgetGoal.getText()).toEqual(budgetGoal);
+    expect(elements.eventModCostList.count()).toEqual(1);
+    elements.eventModItemInput.sendKeys(newItem);
+    elements.eventModCostInput.sendKeys(newCost);
+    elements.eventModAddItem.click();
+    expect(elements.eventModCostList.count()).toEqual(2);
+    expect(elements.eventModCost.getText()).toEqual(cost + newCost);
+    elements.eventModItemInput.sendKeys(newItem);
+    elements.eventModCostInput.sendKeys(budgetGoal + 1);
+    elements.eventModAddItem.click();
+    expect(elements.eventModCostList.count()).toEqual(3);
+    expect(elements.alertBox.isDisplayed()).toEqual(true);
+
+    elements.eventModTab('Guests').click();
+    elements.eventModGuestName.sendKeys(guestName);
+    elements.eventModGuestPhone.sendKeys(guestPhone);
+    elements.eventModGuestEmail.sendKeys(guestEmail);
+    elements.eventModGuestSize.sendKeys(partySize);
+    elements.eventModAddGuestButton.click();
+    expect(elements.eventModGuestList.count()).toEqual(1);
+
+    elements.eventModSaveChangesButton.click();
+    elements.searchEventInput.sendKeys(eventName);
+    elements.manageButton.click();
+    elements.eventModDelete.click();
+    elements.modalYesButton.click();
+  });
+
   it('should delete new user', function() {
     elements.manageClientButton.click();
     elements.searchClientInput.sendKeys(clientName);
