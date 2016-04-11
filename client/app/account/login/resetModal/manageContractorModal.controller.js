@@ -13,6 +13,7 @@ angular.module('essenceEventsRepoApp.admin')
     Email.resetPass($scope.user)
       .then(function(response) {
 	vm.success = 'New password sent';
+	vm.errors.other = null;
 	$modalInstance.close();
       }, function(err) {
 	vm.errors.other = 'Reset Failed!';
