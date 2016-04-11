@@ -47,8 +47,33 @@ var elements = {
   //manage Event
   searchEventInput: element(by.model('searchEvents')),
   firstEventName: element(by.exactBinding('event.name')),
-  firstEventVenue: element(by.exactBinding('event.location'))
-
+  firstEventVenue: element(by.exactBinding('event.location')),
+  manageButton: element(by.buttonText('Manage')),
+  //manage event modal
+  eventModNameInput: element(by.id('eventName')),
+  eventModVenueInput: element(by.id('venue')),
+  eventModBudgetInput: element(by.name('budgetGoal')),
+  eventModTodoInput: element(by.name('todoInput')),
+  eventModTodoList: element.all(by.repeater('item in event.todoList')),
+  eventModSchCalButton: element(by.id('todoCal')),
+  eventModAddTodo: element(by.id('addTodo')),
+  eventModFirstRemoveTodo: element.all(by.buttonText('Remove')).first(),
+  alertBox: element(by.css('.alert')),
+  eventModItemInput: element(by.name('budgetItem')),
+  eventModCostInput: element(by.name('itemCost')),
+  eventModAddItem: element(by.id('addItem')),
+  eventModCost: element(by.binding('currentCost')),
+  eventModBudgetGoal: element(by.binding('event.budgetGoal')),
+  eventModCostList: element.all(by.repeater('item in event.budget')),
+  eventModGuestName: element(by.name('guestName')),
+  eventModGuestPhone: element(by.name('guestPhone')),
+  eventModGuestEmail: element(by.name('guestEmail')),
+  eventModGuestSize: element(by.name('guestSize')),
+  eventModAddGuestButton: element(by.id('addGuest')),
+  eventModGuestList: element.all(by.repeater('item in event.guests')),
+  eventModTab: function(tabName) {return element(by.linkText(tabName));},
+  eventModSaveChangesButton: element(by.buttonText('Save Changes')),
+  eventModDelete: element(by.buttonText('Delete Event'))
 }
 
 module.exports = elements;

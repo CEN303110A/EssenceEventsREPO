@@ -68,7 +68,7 @@
               <div class = "input-group">
                 <input type="text" class="form-control" id="eventDate" datepicker-popup="fullDate" ng-model="newDueDate" is-open="datePicker.scheduleDateOpened" picker-options="dateOptions" close-text="Close">
                 <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="scheduleDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  <button type="button" class="btn btn-default" ng-click="scheduleDateOpen($event)"><i id="todoCal" class="glyphicon glyphicon-calendar"></i></button>
                 </span>
               </div>
             </div>
@@ -77,7 +77,7 @@
             </div>
             <div class="col-md-1 col-md-offset-1">
               <label for="button">&zwnj;</label>
-              <button type="submit" class="btn btn-success" ng-click="addToDo(todoInput,newDueDate) ? todoInput = newDueDate = null : null">+</button>
+              <button type="submit" class="btn btn-success" id="addTodo" ng-click="addToDo(todoInput,newDueDate) ? todoInput = newDueDate = null : null">+</button>
             </div>
           </div>
         </form>
@@ -131,7 +131,7 @@
           </div>
           <div class="col-md-1">
             <label for="button">&zwnj;</label>
-            <button class="btn btn-success" ng-click="addBudget(budgetItem, itemCost) ? budgetItem=itemCost=null : null">+</button>
+            <button class="btn btn-success" id="addItem" ng-click="addBudget(budgetItem, itemCost) ? budgetItem=itemCost=null : null">+</button>
           </div>
         </form>
 
@@ -227,7 +227,7 @@
           </div>
           <div class="col-md-1">
             <label for="button">&zwnj;</label>
-            <button class="btn btn-success" ng-click="addGuest(guestName,guestEmail,guestPhone,guestSize) ? guestName=guestEmail=guestPhone=guestSize=null : null">+</button>
+            <button class="btn btn-success" id="addGuest" ng-click="addGuest(guestName,guestEmail,guestPhone,guestSize) ? guestName=guestEmail=guestPhone=guestSize=null : null">+</button>
           </div>
         </form>
 
