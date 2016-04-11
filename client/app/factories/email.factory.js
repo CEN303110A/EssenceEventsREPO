@@ -5,8 +5,8 @@ angular.module('essenceEventsRepoApp').factory('Email', ['$http', '$location',
         return $http.post('http://' + $location.host() + ':' + $location.port() +'/api/email', email);
       },
 
-      resetPass: function (email) {
-	return $http.put('http://' + $location.host() + ':' + $location.port() + '/api/email', {email: email});
+      resetPass: function (body) {
+	return $http.put('http://' + $location.host() + ':' + $location.port() + '/api/email', body);
       }
     };
     return methods;
