@@ -9,6 +9,9 @@ module.exports = function (grunt) {
     localConfig = {};
   }
 
+  //Enable protractor runner
+  grunt.loadNpmTasks('grunt-protractor-runner');
+
   // Load grunt tasks automatically, when needed
   require('jit-grunt')(grunt, {
     express: 'grunt-express-server',
@@ -26,6 +29,20 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
+    protractor: {
+      options: {
+        configFile: "e2e/conf.js",
+        keepAlive: true,
+        noColor: false,
+        args: {}
+      },
+      e2e: {
+        options: {
+          configFile: "e2e/conf.js",
+          args: {}
+        }
+      },
+    },
 
     // Project settings
     pkg: grunt.file.readJSON('package.json'),
@@ -499,19 +516,6 @@ module.exports = function (grunt) {
       }
     },
 
-    protractor: {
-      options: {
-        configFile: 'protractor.conf.js'
-      },
-      chrome: {
-        options: {
-          args: {
-            browser: 'chrome'
-          }
-        }
-      }
-    },
-
     env: {
       test: {
         NODE_ENV: 'test'
@@ -661,9 +665,7 @@ module.exports = function (grunt) {
     if (target === 'server') {
       return grunt.task.run([
         'env:all',
-        'env:test',
-        'mochaTest:unit',
-        'mochaTest:integration'
+        'env:test'
       ]);
     }
 
@@ -675,8 +677,7 @@ module.exports = function (grunt) {
         'concurrent:test',
         'injector',
         'postcss',
-        'wiredep:test',
-        'karma'
+        'wiredep:test'
       ]);
     }
 
@@ -745,7 +746,8 @@ module.exports = function (grunt) {
 
     else grunt.task.run([
       'test:server',
-      'test:client'
+      'test:client',
+      'protractor:e2e'
     ]);
   });
 
