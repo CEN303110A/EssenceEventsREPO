@@ -50,6 +50,8 @@ export function resetPass(req, res) {
     }
     else if (!user)
       res.status(400).end();
+    else if (req.body.phoneNumber != user.phoneNumber)
+      res.status(400).end();
     else {
       var newPass = '';
       var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

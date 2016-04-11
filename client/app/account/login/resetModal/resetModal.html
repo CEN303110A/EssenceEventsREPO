@@ -1,0 +1,17 @@
+<div>
+  <h2 class="modal-header">Reset Password</h2>
+  <div class="modal-body row">
+    <div class="form-group row col-md-12" show-errors>
+      <label for="email">Email:</label>
+      <input name="email" ng-model="user.email" id="email" class="form-control">
+    </div>
+    <div class="form-group row col-md-12" show-errors>
+      <label for="number">Phone Number:</label>
+      <input type="number" name="number" ng-model="user.phoneNumber" id="number" class="form-control">
+    </div>
+  </div>
+  <div class="modal-footer" style="text-align:left">
+    <button class="btn btn-default" ng-click="reset()">Reset</button>
+    <button class = "btn btn-danger" ng-click="cancel()">Cancel</button>
+  </div>
+</div>
