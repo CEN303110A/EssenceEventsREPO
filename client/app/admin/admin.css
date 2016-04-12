@@ -44,6 +44,12 @@
     background-color: #e7e7e7;;
 }
 
+#mobileNavBar a {
+  display: block;
+  heigh: 100%;
+  width: 100%;
+}
+
 @media(max-width: 768px) {
 
 	 #mobileNavBar {
