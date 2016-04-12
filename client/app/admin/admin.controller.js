@@ -38,5 +38,4 @@ angular.module('essenceEventsRepoApp.admin')
     ];
 
 
-
   }]);

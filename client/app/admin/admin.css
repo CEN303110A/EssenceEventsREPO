@@ -26,8 +26,22 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-#mobileNavBar{
+#mobileNavBar {
 	display: none;
+}
+
+
+#mobileNavBar li a {
+    display: block;
+    text-decoration: none;
+    color: #555;
+		padding: 10px;
+}
+
+#mobileNavBar li a:hover {
+    text-decoration: none;
+    color: #555;
+    background-color: #e7e7e7;;
 }
 
 @media(max-width: 768px) {
@@ -37,6 +51,8 @@
 
 	 }
  }
+
+
 
 /* Toggle Styles */
 

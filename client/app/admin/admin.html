@@ -6,11 +6,14 @@
     <adminnav></adminnav>
 
     <!-- Mobile view menu -->
-    <accordion id="mobileNavBar" close-others="oneAtATime">
-      <accordion-group heading="Admin Panel">
+    <accordion id="mobileNavBar">
+      <accordion-group is-open = "status.open">
+        <accordion-heading>
+          <i class="fa fa-chevron-down"></i> Admin Panel
+        </accordion-heading>
         <ul>
           <li ng-repeat="function in Functions">
-            <a ui-sref="{{function.state}}">{{function.title}}</a>
+            <a ng-click = "status.open = !status.open" ui-sref="{{function.state}}">{{function.title}}</a>
           </li>
         </ul>
       </accordion-group>
