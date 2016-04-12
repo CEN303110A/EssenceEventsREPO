@@ -15,6 +15,7 @@ var elements = {
   customerPhoneNumberInput: element(by.name('phoneNumber')),
   createAccountButton: element(by.buttonText('Create Account')),
   //admin nav
+  adminNavButtons: function(pageName) {return element(by.linkText(pageName));},
   manageClientButton: element(by.id('Manage Clients')),
   //Manage Client
   searchClientInput: element(by.model('searchClients')),
@@ -23,6 +24,7 @@ var elements = {
   firstClientPhoneNumber: element.all(by.binding('user.phoneNumber')).first(),
   firstClientEmail: element.all(by.binding('user.email')).first(),
   firstManageButton: element.all(by.buttonText('Manage')).first(),
+  manageButton: element(by.buttonText('Manage')),
   modalDeleteButton: element(by.id('delete')),
   modalYesButton: element(by.buttonText('Yes')),
   manageEventsTab: element(by.id('manageEvents')),
@@ -54,7 +56,7 @@ var elements = {
   eventModVenueInput: element(by.id('venue')),
   eventModBudgetInput: element(by.name('budgetGoal')),
   eventModTodoInput: element(by.name('todoInput')),
-  eventModTodoList: element.all(by.repeater('item in event.todoList')),
+  eventModTodoList: element.all(by.repeater('item in event.toDoList')),
   eventModSchCalButton: element(by.id('todoCal')),
   eventModAddTodo: element(by.id('addTodo')),
   eventModFirstRemoveTodo: element.all(by.buttonText('Remove')).first(),

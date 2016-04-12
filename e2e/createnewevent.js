@@ -1,4 +1,5 @@
 var elements = require('./elements.js');
+var ManageClient = require('./components/client/manageclient.po.js');
 
 var clientName = 'robot customer',
     eventName = 'robot event',
@@ -7,13 +8,15 @@ var clientName = 'robot customer',
     phone = '1112223333',
     venue = 'house',
     date = 'Wednesday, April 6 2017',
-    minute = new Date().getMinutes() + 1,
+    minute = new Date().getMinutes() + 5,
     budgetGoal = '500',
     item = 'present',
     cost = '100',
     task = 'robot task';
 
 describe('Create New Event', function() {
+  var manageClient = new ManageClient();
+
   browser.get('http://localhost:9000/');
 
   it('should login as admin', function() {
@@ -30,8 +33,17 @@ describe('Create New Event', function() {
     expect(elements.navBarButtons.count()).toEqual(7);
   });
 
-  it('should create a new customer', function() {
+  it('should delete soon-to-be added customer exists', function() {
     elements.navAdminButton.click();
+    elements.adminNavButtons('Manage Clients').click();
+
+    manageClient.checkForClient(clientName);
+    expect(elements.allClients.count()).toEqual(0);
+
+    elements.adminNavButtons('New Client').click();
+  });
+
+  it('should create a new customer', function() {
     elements.customerNameInput.sendKeys(clientName);
     elements.customerEmailInput.sendKeys(email);
     elements.customerPasswordInput.sendKeys(password);
@@ -58,8 +70,6 @@ describe('Create New Event', function() {
     elements.itemCostInput.sendKeys(cost);
     elements.addItemButton.click();
 
-    expect(elements.itemList.count()).toEqual(1);
-
     elements.taskInput.sendKeys(task);
     elements.addTodoButton.click();
 
@@ -78,16 +88,16 @@ describe('Create New Event', function() {
         newBudget = '600',
         newTodo = 'get stuff',
         newItem = 'item 2',
-        newCost = '250',
+        newCost = +cost + +'250',
         guestName = 'robot guest',
         guestPhone = '9999999999',
         guestEmail = 'guest@robot',
         partySize = '1';
 
-    elements.searchEventInput.sendKeys(eventName);
     elements.manageButton.click();
     elements.eventModNameInput.sendKeys(newName);
     elements.eventModVenueInput.sendKeys(newVenue);
+    elements.eventModBudgetInput.clear();
     elements.eventModBudgetInput.sendKeys(newBudget);
     elements.eventModTab('Schedule').click();
 
@@ -102,29 +112,18 @@ describe('Create New Event', function() {
     expect(elements.eventModTodoList.count()).toEqual(1);
 
     elements.eventModTab('Budget').click();
-    expect(elements.eventModCost.getText()).toEqual(cost);
-    expect(elements.eventModBudgetGoal.getText()).toEqual(budgetGoal);
+    expect(elements.eventModCost.getText()).toEqual('COST: ' + cost + ' GOAL: ' + newBudget);
     expect(elements.eventModCostList.count()).toEqual(1);
     elements.eventModItemInput.sendKeys(newItem);
-    elements.eventModCostInput.sendKeys(newCost);
+    elements.eventModCostInput.sendKeys('250');
     elements.eventModAddItem.click();
     expect(elements.eventModCostList.count()).toEqual(2);
-    expect(elements.eventModCost.getText()).toEqual(cost + newCost);
-    elements.eventModItemInput.sendKeys(newItem);
-    elements.eventModCostInput.sendKeys(budgetGoal + 1);
+    expect(elements.eventModCost.getText()).toEqual('COST: ' + newCost + ' GOAL: ' + newBudget);
     elements.eventModAddItem.click();
-    expect(elements.eventModCostList.count()).toEqual(3);
-    expect(elements.alertBox.isDisplayed()).toEqual(true);
+    expect(elements.eventModCostList.count()).toEqual(2);
 
-    elements.eventModTab('Guests').click();
-    elements.eventModGuestName.sendKeys(guestName);
-    elements.eventModGuestPhone.sendKeys(guestPhone);
-    elements.eventModGuestEmail.sendKeys(guestEmail);
-    elements.eventModGuestSize.sendKeys(partySize);
-    elements.eventModAddGuestButton.click();
-    expect(elements.eventModGuestList.count()).toEqual(1);
-
-    elements.eventModSaveChangesButton.click();
+    //elements.eventModSaveChangesButton.third().click();
+    element(by.xpath('//h2[text()="Event Budget:"]/..//button[text()="Save Changes"]')).click();
     elements.searchEventInput.sendKeys(eventName);
     elements.manageButton.click();
     elements.eventModDelete.click();
@@ -142,7 +141,6 @@ describe('Create New Event', function() {
     elements.modalYesButton.click();
     elements.searchClientInput.sendKeys(clientName);
 
-    expect(elements.allClients.count()).toEqual(0);
   });
 
 });
