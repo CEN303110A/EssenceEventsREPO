@@ -31,7 +31,7 @@ class LoginController {
 
   openModal(){
     var vm = this;
-    var email = this.user.email;
+    var email = this.user.email || '';
     var modalInstance = this.modalService.open({
       animation: true,
       templateUrl: 'app/account/login/resetModal/resetModal.html',
@@ -46,19 +46,6 @@ class LoginController {
       }
     });
   }
-
-/*
-  reset(form) {
-    var vm = this;
-    vm.errors.other = null;
-    this.Email.resetPass(this.user.email)
-      .then(function(response) {
-	vm.success = 'New password sent';
-      }, function(err) {
-	vm.errors.other = 'Reset Failed!';
-    });
-  }
-*/
 }
 
 angular.module('essenceEventsRepoApp')
