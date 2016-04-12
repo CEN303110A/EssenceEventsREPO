@@ -37,7 +37,6 @@ angular.module('essenceEventsRepoApp')
       $state.reload();
       $scope.emailSuccess = true;
     }, function(error) {
-      console.log(error);
       $scope.emailError = true;
     });
   }
