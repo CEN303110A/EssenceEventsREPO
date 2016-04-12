@@ -16,7 +16,7 @@ angular.module('essenceEventsRepoApp.admin')
         'state': 'admin.manageClients',
       },
       {
-        'title': 'Manage Event(s)',
+        'title': 'Manage Events',
         'description': 'Manage an event for a existing client',
         'state': 'admin.manageEvent',
       },
