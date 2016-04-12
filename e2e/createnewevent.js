@@ -131,7 +131,7 @@ describe('Create New Event', function() {
   });
 
   it('should delete new user', function() {
-    elements.manageClientButton.click();
+    elements.adminNavButtons('Manage Clients').click();
     elements.searchClientInput.sendKeys(clientName);
 
     expect(elements.allClients.count()).toEqual(1);
