@@ -42,5 +42,8 @@ angular.module('essenceEventsRepoApp.admin')
     });
   };
 
-
+  //Close modals without making changes
+  $scope.cancel = function() {
+    $modalInstance.close();
+  }
 }]);

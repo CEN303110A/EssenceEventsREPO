@@ -76,4 +76,9 @@ angular.module('essenceEventsRepoApp.admin')
     Events.removeUser(user._id);
     user.$remove().then($state.reload());
   }
+
+  //Close modal without making changes
+  $scope.cancel = function() {
+    $modalInstance.close();
+  }
 }]);

@@ -221,5 +221,8 @@ $scope.submit = function() {
   });
 };
 
-
+//Close modal without making changes
+$scope.cancel = function() {
+  $modalInstance.close();
+}
 }]);

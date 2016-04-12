@@ -31,7 +31,6 @@
         user.$remove();
         this.alldata.splice(this.alldata.indexOf(user), 1);
       }
-
   }
   angular.module('essenceEventsRepoApp.admin')
     .controller('ManageClientsCtrl', ManageClientsCtrl);
