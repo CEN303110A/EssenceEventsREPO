@@ -5,6 +5,17 @@
     <!-- Sidebar -->
     <adminnav></adminnav>
 
+    <!-- Mobile view menu -->
+    <accordion id="mobileNavBar" close-others="oneAtATime">
+      <accordion-group heading="Admin Panel">
+        <ul>
+          <li ng-repeat="function in Functions">
+            <a ui-sref="{{function.state}}">{{function.title}}</a>
+          </li>
+        </ul>
+      </accordion-group>
+    </accordion>
+
       <container>
         <div ui-view></div>
       </container>

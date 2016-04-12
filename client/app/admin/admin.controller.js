@@ -37,26 +37,6 @@ angular.module('essenceEventsRepoApp.admin')
       }
     ];
 
-    // $scope.expanded = 'expandedMenu';
-    // $scope.isActive = 'active';
-    // $scope.menuToggle = function() {   //$event
-    //
-    //   console.log("poo");
-    //   // $event.preventDefault();
-    //
-    //   if($scope.isActive == 'active')
-    //   {
-    //     $scope.expanded = '';
-    //     $scope.isActive = '';
-    //   }
-    //
-    //   else {
-    //     $scope.expanded = 'expandedMenu';
-    //     $scope.isActive = 'active';
-    //   }
-    //
-    // }
-
 
 
   }]);

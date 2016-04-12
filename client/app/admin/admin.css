@@ -26,6 +26,18 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+#mobileNavBar{
+	display: none;
+}
+
+@media(max-width: 768px) {
+
+	 #mobileNavBar {
+		 display: block;
+
+	 }
+ }
+
 /* Toggle Styles */
 
 #wrapper {
@@ -130,7 +142,7 @@
     }
 
     #wrapper.toggled #sidebar-wrapper {
-        width: 0;
+        width: 250 px;
     }
 
     #page-content-wrapper {
