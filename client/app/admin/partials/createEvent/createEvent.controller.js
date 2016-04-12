@@ -8,7 +8,6 @@ angular.module('essenceEventsRepoApp.admin')
   //handle people trying to hit url directly.
   if($stateParams.userID == 'undefined')
   {
-    console.log('noUserIdPassed');
     $state.go('admin.manageClients');
   }
 

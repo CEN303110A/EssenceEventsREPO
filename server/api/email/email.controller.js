@@ -37,7 +37,6 @@ export function email(req, res)
     }
     else {
       res.send('Message sent: ' + info.response);
-      console.log('Message sent: ' + info.response);
     }
   });
 }
@@ -77,12 +76,10 @@ export function resetPass(req, res) {
 	    }
 	    else {
 	      res.send('Message sent: ' + info.response);
-              console.log('Message sent: ' + info.response);
 	    }
 	  });
         }
       });
     }
   });
-}  
-  
+}

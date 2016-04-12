@@ -27,10 +27,6 @@ $scope.getEvents = function(){
     });
 };
 
-$scope.openEvent = function(id){
-  console.log("Event  : " + id);
-}
-
 $scope.navigate = function(eevent){
 
   $state.go('myEvents' ,{eventt: eevent});
