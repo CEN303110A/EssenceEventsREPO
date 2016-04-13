@@ -12,20 +12,24 @@
     <div collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main" role="navigation">
       <ul class="nav navbar-nav">
         <span ng-repeat-start="item in nav.menu"></span>
+
+        <!-- Rules for items with dropdowns -->
         <li ng-if="item.hasDropDown" dropdown ui-sref-active="active">
             <a  dropdown-toggle href="#" class="navBarButton">{{item.title}}<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li ng-repeat="subItem in $parent.item.sublinks">
-                <a ui-sref="{{subItem.state}}" ng-click="nav.isCollapsed = false">{{subItem.title}}</a>
+                <a ui-sref="{{subItem.state}}" ng-click="nav.isCollapsed = true">{{subItem.title}}</a>
               </li>
             </ul>
         </li>
+
+        <!-- Rules for ItemsWithoutDropdowns -->
         <li ng-if="!item.hasDropDown" ui-sref-active="active">
-          <a ui-sref="{{item.state}}" class="navBarButton" ng-click="nav.isCollapsed = false">{{item.title}}</a>
+          <a ui-sref="{{item.state}}" class="navBarButton" ng-click="nav.isCollapsed = true">{{item.title}}</a>
         </li>
         <span ng-repeat-end></span>
-        <li ng-if="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin.createAccount" class="navBarButton" id="Admin" ng-click="nav.isCollapsed = false">Admin</a></li>
-        <li ng-if="nav.isLoggedIn() && !nav.isAdmin()" ui-sref-active="active"><a ng-click="nav.isCollapsed = false; nav.navigate()" ui-sref="customer">Manage</a></li>
+        <li ng-if="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin.createAccount" class="navBarButton" id="Admin" ng-click="nav.isCollapsed = true">Admin</a></li>
+        <li ng-if="nav.isLoggedIn() && !nav.isAdmin()" ui-sref-active="active"><a ng-click="nav.isCollapsed = true; nav.navigate()" ui-sref="customer">Manage</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
