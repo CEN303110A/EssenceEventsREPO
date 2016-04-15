@@ -12,7 +12,6 @@
 
       //Open Manage Clients Modal to manage client information and create events for a client
       openModal(user){
-        // console.log(user);
         var modalInstance = this.modalService.open({
           animation: true,
           templateUrl: 'app/admin/partials/manageClients/manageClientsModal/manageClientsModal.html',
