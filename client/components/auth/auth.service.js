@@ -57,7 +57,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
      * @return {Promise}
      */
     createUser(user, callback) {
-      return User.save({user, access_token: $cookies.get('token')},
+      return User.save({access_token: $cookies.get('token')}, user,
         function(data) {
           // $cookies.put('token', data.token);
           currentUser = User.get({access_token: $cookies.get('token')});
@@ -78,7 +78,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
      * @return {Promise}
      */
     changePassword(oldPassword, newPassword, callback) {
-      return User.changePassword({access_token: $cookies.get('token')}, { id: currentUser._id }, {
+      return User.changePassword({ id: currentUser._id, access_token: $cookies.get('token') }, {
         oldPassword: oldPassword,
         newPassword: newPassword
       }, function() {
