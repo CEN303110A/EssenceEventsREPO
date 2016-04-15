@@ -6,7 +6,7 @@
       //pass dependencies through constructor
       constructor(User, $modal, $scope, $state, $cookies) {
         // Use the User $resource to fetch all users
-        this.alldata = User.query({acess_token: $cookies.get('token')});
+        this.alldata = User.query({access_token: $cookies.get('token')});
 	      this.modalService = $modal;
       }
 
