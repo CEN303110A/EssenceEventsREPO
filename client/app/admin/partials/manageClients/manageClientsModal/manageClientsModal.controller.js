@@ -16,7 +16,7 @@ angular.module('essenceEventsRepoApp.admin')
       user.name = username;
       user.email = email;
       user.phoneNumber = phoneNumber;
-      user.$save({access_token: $cookies.get('token')).then(function () {
+      user.$save({access_token: $cookies.get('token')}).then(function () {
         $modalInstance.close();
 	$state.reload();
       });
@@ -74,7 +74,7 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.deleteUser = function() {
     $modalInstance.close();
     Events.removeUser(user._id);
-    user.$remove({access_token: $cookies.get('token')).then($state.reload());
+    user.$remove({access_token: $cookies.get('token')}).then($state.reload());
   }
 
   //Close modal without making changes
