@@ -33,10 +33,10 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login" id="login">Login</a></li>
+        <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login" id="login" ng-click="nav.isCollapsed = true">Login</a></li>
         <li ng-show="nav.isLoggedIn()"><p class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p> </li>
-        <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+        <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog" ng-click="nav.isCollapsed = true"></span></a></li>
+        <li ng-show="nav.isLoggedIn()"><a ui-sref="logout" ng-click="nav.isCollapsed = true">Logout</a></li>
 	<li>
 	  <span>
             <a target="_tab" href="https://www.facebook.com/Essence-Events-116220178400183/" class="fa fa-facebook-official fa-2x"></a>

@@ -34,7 +34,7 @@ angular.module('essenceEventsRepoApp.admin')
         var result;
         var httpStart = "http://";
         var httpsStart = "https://";
-        if (link.startsWith(httpStart) || link.startsWith(httpsStart))
+        if (!link.indexOf(httpStart) || !link.indexOf(httpsStart))
 	  result = link;
         else
 	  result = httpStart + link;
