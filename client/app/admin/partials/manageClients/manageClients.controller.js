@@ -4,15 +4,14 @@
   class ManageClientsCtrl{
 
       //pass dependencies through constructor
-      constructor(User, $modal, $scope, $state) {
+      constructor(User, $modal, $scope, $state, $cookies) {
         // Use the User $resource to fetch all users
-        this.alldata = User.query();
+        this.alldata = User.query({access_token: $cookies.get('token')});
 	      this.modalService = $modal;
       }
 
       //Open Manage Clients Modal to manage client information and create events for a client
       openModal(user){
-        // console.log(user);
         var modalInstance = this.modalService.open({
           animation: true,
           templateUrl: 'app/admin/partials/manageClients/manageClientsModal/manageClientsModal.html',

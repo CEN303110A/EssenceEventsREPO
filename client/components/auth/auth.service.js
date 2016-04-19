@@ -8,7 +8,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
   var userRoles = appConfig.userRoles || [];
 
   if ($cookies.get('token') && $location.path() !== '/logout') {
-    currentUser = User.get();
+    currentUser = User.get({access_token: $cookies.get('token')});
   }
 
   var Auth = {
@@ -27,7 +27,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
       })
         .then(res => {
           $cookies.put('token', res.data.token);
-          currentUser = User.get();
+          currentUser = User.get({access_token: $cookies.get('token')});
           return currentUser.$promise;
         })
         .then(user => {
@@ -57,11 +57,10 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
      * @return {Promise}
      */
     createUser(user, callback) {
-      return User.save(user,
+      return User.save({access_token: $cookies.get('token')}, user,
         function(data) {
-          // console.log(data);
           // $cookies.put('token', data.token);
-          currentUser = User.get();
+          currentUser = User.get({access_token: $cookies.get('token')});
           return safeCb(callback)(null, user);
         },
         function(err) {
@@ -79,7 +78,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
      * @return {Promise}
      */
     changePassword(oldPassword, newPassword, callback) {
-      return User.changePassword({ id: currentUser._id }, {
+      return User.changePassword({ id: currentUser._id, access_token: $cookies.get('token') }, {
         oldPassword: oldPassword,
         newPassword: newPassword
       }, function() {
@@ -181,7 +180,7 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
     },
 
     getById(id) {
-      return $http.get('http://' + $location.host() + ':' + $location.port() + '/api/users/' + id);
+      return $http.get('http://' + $location.host() + ':' + $location.port() + '/api/users/' + id + '?access_token=' + $cookies.get('token'));
     }
   };
 

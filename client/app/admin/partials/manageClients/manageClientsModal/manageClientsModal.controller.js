@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('essenceEventsRepoApp.admin')
-.controller('ManageClientsModalCtrl', ['$scope', '$state', '$modal', '$modalInstance', 'user', 'Events', function ($scope, $state, $modal, $modalInstance, user, Events)
+.controller('ManageClientsModalCtrl', ['$scope', '$state', '$modal', '$modalInstance', 'user', 'Events', '$cookies', function ($scope, $state, $modal, $modalInstance, user, Events, $cookies)
 {
   //Instantiate $scope variables so they show up in modal
   $scope.username = user.name;
@@ -16,7 +16,7 @@ angular.module('essenceEventsRepoApp.admin')
       user.name = username;
       user.email = email;
       user.phoneNumber = phoneNumber;
-      user.$save().then(function () {
+      user.$save({access_token: $cookies.get('token')}).then(function () {
         $modalInstance.close();
 	$state.reload();
       });
@@ -74,7 +74,7 @@ angular.module('essenceEventsRepoApp.admin')
   $scope.deleteUser = function() {
     $modalInstance.close();
     Events.removeUser(user._id);
-    user.$remove().then($state.reload());
+    user.$remove({access_token: $cookies.get('token')}).then($state.reload());
   }
 
   //Close modal without making changes

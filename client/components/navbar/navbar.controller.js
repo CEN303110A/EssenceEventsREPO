@@ -68,7 +68,6 @@ class NavbarController {
   navigate(){
     var curUsr = this.getCurrentUser();
     let state = this.state;
-    //console.log(curUsr);
     this.Evs.getByUser(curUsr._id)
     .then(function(response) {
       var events = response.data;

@@ -41,6 +41,6 @@ User.find({}).removeAsync()
       phoneNumber: '555-555-5555'
     })
     .then(() => {
-      //console.log('finished populating users');
+      console.log('finished populating users');
     });
   });

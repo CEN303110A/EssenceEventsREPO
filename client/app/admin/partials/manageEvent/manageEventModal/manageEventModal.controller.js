@@ -217,7 +217,7 @@ $scope.submit = function() {
     $modalInstance.close();
     $state.reload();
   }, function(err) {
-    //console.log(err);
+    console.log(err);
   });
 };
 
