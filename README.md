@@ -1,5 +1,14 @@
 # essence-events-repo
 
+##Link to Deployed Website
+
+http://www.essenceevents.net/
+
+##README Details (for assignment submission)
+
+https://drive.google.com/open?id=0B1tlQl7ckmbkeHdjektjSXM1TGM
+
+
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0.
 
 ## Getting Started
